@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">TheBlockLogicsJava</string>
+  
+  <!-- Palette Selector Categories -->
+  <string name="block_category_component_func">Component</string>
+  <string name="block_category_control">Control</string>
+  <string name="block_category_file">File</string>
+  <string name="block_category_list">List</string>
+  <string name="block_category_math">Math</string>
+  <string name="block_category_moreblock">More Block</string>
+  <string name="block_category_operator">Operator</string>
+  <string name="block_category_var">Variable</string>
+  <string name="block_category_view_func">View</string>
+  
+  <!-- Button labels -->
+  <string name="btn_cancel">Cancel</string>
+  <string name="btn_accept">Accept</string>
+
+  <!-- Popup titles -->
+  <string name="title_popup_input_int_value">Enter Integer Value</string>
+  <string name="title_popup_input_str_value">Enter String Value</string>
+  <string name="title_popup_select_int_var">Select Integer Variable</string>
+  <string name="title_popup_select_bool_var">Select Boolean Variable</string>
+  <string name="title_popup_select_str_var">Select String Variable</string>
+  <string name="title_popup_select_int_list">Select Integer List</string>
+  <string name="title_popup_select_str_list">Select String List</string>
+  <string name="title_popup_select_list">Select List</string>
+
+  <!-- Block labels -->
+  <string name="block_else">Else</string>
+  
+  <!-- Hints --> 
+  <string name="hint_enter_value">Enter value</string>
+</resources>
