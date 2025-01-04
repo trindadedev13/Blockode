@@ -64,6 +64,10 @@ public class PaletteBlock extends LinearLayout {
     binding.actionsContainer.addView(cardView);
     return textView;
   }
+  
+  public PaletteSelector getPaletteSelector() {
+    return binding.paletteSelector;
+  }
 
   private LinearLayout.LayoutParams getLayoutParams(float heightMultiplier) {
     return new LinearLayout.LayoutParams(

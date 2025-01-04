@@ -9,8 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import dev.trindadedev.theblocklogicsjava.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
+import dev.trindadedev.theblocklogicsjava.ui.editor.block.OnBlockCategorySelectListener;
 
-public class LogicEditorActivity extends AppCompatActivity {
+public class LogicEditorActivity extends AppCompatActivity implements OnBlockCategorySelectListener {
 
   private ActivityLogicEditorBinding binding;
 
@@ -29,11 +30,17 @@ public class LogicEditorActivity extends AppCompatActivity {
     configureBlockPane();
     configureAnimators(getResources().getConfiguration().orientation);
     binding.fabTogglePalette.setOnClickListener(v -> showHidePalette(!isPaletteOpen));
+    binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
   }
 
   @Override
   public void onSaveInstanceState(final Bundle bundle) {
     bundle.putString("sc_id", scId);
+  }
+  
+  @Override
+  public void onBlockCategorySelect(final int id, final int color) {
+    // do nothing for now
   }
 
   /** Get and define all needed variables */
