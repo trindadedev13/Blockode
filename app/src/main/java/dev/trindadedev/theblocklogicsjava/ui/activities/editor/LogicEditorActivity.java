@@ -14,7 +14,8 @@ public class LogicEditorActivity extends AppCompatActivity {
 
   private ActivityLogicEditorBinding binding;
 
-  @Nullable private String scId;
+  @Nullable
+  private String scId;
   
   private boolean isPaletteOpen = false;
   private ObjectAnimator openAnimator;
@@ -28,6 +29,7 @@ public class LogicEditorActivity extends AppCompatActivity {
     configureData();
     configureBlockPane();
     configureAnimators(getResources().getConfiguration().orientation);
+    binding.fabTogglePalette.setOnClickListener(v -> showHidePalette(!isPaletteOpen));
   }
 
   @Override
