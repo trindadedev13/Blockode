@@ -14,9 +14,8 @@ public class LogicEditorActivity extends AppCompatActivity {
 
   private ActivityLogicEditorBinding binding;
 
-  @Nullable
-  private String scId;
-  
+  @Nullable private String scId;
+
   private boolean isPaletteOpen = false;
   private ObjectAnimator openAnimator;
   private ObjectAnimator closeAnimator;
@@ -61,7 +60,7 @@ public class LogicEditorActivity extends AppCompatActivity {
       return;
     }
     this.isPaletteOpen = isPaletteOpen;
-    
+
     var animator = isPaletteOpen ? openAnimator : closeAnimator;
     animator.start();
   }
@@ -74,12 +73,16 @@ public class LogicEditorActivity extends AppCompatActivity {
   private final void configureAnimators(int orientation) {
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
       openAnimator = ObjectAnimator.ofFloat(binding.layoutPalette, View.TRANSLATION_X, 0f);
-      closeAnimator = ObjectAnimator.ofFloat(binding.layoutPalette, View.TRANSLATION_X, LayoutUtil.getDip(this, 320f));
+      closeAnimator =
+          ObjectAnimator.ofFloat(
+              binding.layoutPalette, View.TRANSLATION_X, LayoutUtil.getDip(this, 320f));
     } else {
       openAnimator = ObjectAnimator.ofFloat(binding.layoutPalette, View.TRANSLATION_Y, 0f);
-      closeAnimator = ObjectAnimator.ofFloat(binding.layoutPalette, View.TRANSLATION_Y, LayoutUtil.getDip(this, 240f));
+      closeAnimator =
+          ObjectAnimator.ofFloat(
+              binding.layoutPalette, View.TRANSLATION_Y, LayoutUtil.getDip(this, 240f));
     }
-    
+
     openAnimator.setDuration(500L);
     openAnimator.setInterpolator(new DecelerateInterpolator());
     closeAnimator.setDuration(300L);

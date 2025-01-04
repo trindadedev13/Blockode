@@ -1,8 +1,8 @@
 package dev.trindadedev.theblocklogicsjava.ui.editor.manager;
 
-import com.google.gson.reflect.TypeToken;
 import static dev.trindadedev.theblocklogicsjava.TheBlockLogics.getPublicFolderFile;
 
+import com.google.gson.reflect.TypeToken;
 import dev.trindadedev.theblocklogicsjava.beans.VariableBean;
 import dev.trindadedev.theblocklogicsjava.utils.FileUtil;
 import dev.trindadedev.theblocklogicsjava.utils.GsonUtil;

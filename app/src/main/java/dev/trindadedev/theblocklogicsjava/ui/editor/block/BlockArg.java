@@ -20,8 +20,8 @@ import dev.trindadedev.theblocklogicsjava.R;
 import dev.trindadedev.theblocklogicsjava.ui.editor.manager.VariablesManager;
 import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 public class BlockArg extends BlockBase {
   private Object argValue = "";

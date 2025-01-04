@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(binding.getRoot());
     openTestProject();
   }
-  
+
   private void openTestProject() {
     var intent = new Intent(this, LogicEditorActivity.class);
     intent.putExtra("sc_id", "601"); // use fake SC ID for now
