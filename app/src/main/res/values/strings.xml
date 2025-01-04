@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">TheBlockLogicsJava</string>
-  
+
   <!-- Common -->
   <string name="common_word_delete">Delete</string>
   <string name="common_word_duplicate">Duplicate</string>
   <string name="common_word_collection">Collection</string>
   <string name="common_word_detail">Detail</string>
-  
+
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>
   <string name="block_category_control">Control</string>
@@ -18,7 +18,7 @@
   <string name="block_category_operator">Operator</string>
   <string name="block_category_var">Variable</string>
   <string name="block_category_view_func">View</string>
-  
+
   <!-- Button labels -->
   <string name="btn_cancel">Cancel</string>
   <string name="btn_accept">Accept</string>
@@ -34,11 +34,208 @@
   <string name="title_popup_select_list">Select List</string>
 
   <!-- Block labels -->
-  <string name="block_else">Else</string>
-  
-  <!-- Hints --> 
+  <string
+    name="block_add_list_int"
+    formatted="false">add %d to %m.listInt</string>
+  <string
+    name="block_add_list_str"
+    formatted="false">add %s to %m.listStr</string>
+  <string
+    name="block_and"
+    formatted="false">%b and %b</string>
+  <string
+    name="block_bigger"
+    formatted="false">%d > %d</string>
+  <string name="block_break">stop</string>
+  <string
+    name="block_calendar_add"
+    formatted="false">Calendar %m.calendar add %m.calendarField value %d</string>
+  <string
+    name="block_calendar_diff"
+    formatted="false">Calendar Difference %m.calendar - %m.calendar</string>
+  <string
+    name="block_calendar_format"
+    formatted="false">Calendar %m.calendar Format %s</string>
+  <string name="block_calendar_get_now">Calendar %m.calendar getNow</string>
+  <string
+    name="block_calendar_set"
+    formatted="false">Calendar %m.calendar set %m.calendarField value %d</string>
+  <string name="block_clear_list">clear %m.list</string>
+  <string
+    name="block_contain_list_int"
+    formatted="false">%m.listInt contains %d</string>
+  <string
+    name="block_contain_list_str"
+    formatted="false">%m.listStr contains %s</string>
+  <string name="block_decrease_int">%m.varInt decrease 1</string>
+  <string
+    name="block_delete_list"
+    formatted="false">delete at %d of %m.list</string>
+  <string
+    name="block_divide"
+    formatted="false">%d / %d</string>
+  <string name="block_do_toast">showMessage %s</string>
+  <string name="block_else">else</string>
+  <string
+    name="block_equal"
+    formatted="false">%d = %d</string>
+  <string name="block_false">false</string>
+  <string
+    name="block_file_get_data"
+    formatted="false">File %m.file getData key %s</string>
+  <string
+    name="block_file_remove_data"
+    formatted="false">File %m.file removeData key %s</string>
+  <string
+    name="block_file_set_data"
+    formatted="false">File %m.file setData key %s value %s</string>
+  <string name="block_finish_activity">Finish Activity</string>
+  <string name="block_forever">forever</string>
+  <string
+    name="block_get_at_list_int"
+    formatted="false">get at %d of %m.listInt</string>
+  <string
+    name="block_get_at_list_str"
+    formatted="false">get at %d of %m.listStr</string>
+  <string name="block_get_checked">CheckBox %m.checkbox getChecked</string>
+  <string name="block_get_enable">%m.view getEnable</string>
+  <string name="block_get_rotate">ImageView %m.imageview getRotation</string>
+  <string name="block_get_text">%m.textview getText</string>
+  <string name="block_if">if %b then</string>
+  <string name="block_if_else">if %b then</string>
+  <string name="block_increase_int">%m.varInt increase 1</string>
+  <string
+    name="block_indexof_list_int"
+    formatted="false">index %d in %m.listInt</string>
+  <string
+    name="block_indexof_list_str"
+    formatted="false">index %s in %m.listStr</string>
+  <string
+    name="block_insert_list_int"
+    formatted="false">insert %d at %d to %m.listInt</string>
+  <string
+    name="block_insert_list_str"
+    formatted="false">insert %s at %d to %m.listStr</string>
+  <string name="block_intent_get_string">Activity getExtra key %s</string>
+  <string
+    name="block_intent_put_extra"
+    formatted="false">Intent %m.intent putExtra key %s value %s</string>
+  <string
+    name="block_intent_set_action"
+    formatted="false">Intent %m.intent setAction %m.intentAction</string>
+  <string
+    name="block_intent_set_data"
+    formatted="false">Intent %m.intent setData %s.intentData</string>
+  <string
+    name="block_intent_set_screen"
+    formatted="false">Intent %m.intent setScreen %m.activity</string>
+  <string name="block_length_list">length of %m.list</string>
+  <string name="block_list_get_checked_count">ListView %m.listview getCheckedCount</string>
+  <string name="block_list_get_checked_position">ListView %m.listview getCheckedPosition</string>
+  <string
+    name="block_list_get_checked_positions"
+    formatted="false">ListView %m.listview getCheckedPositions to %m.listInt</string>
+  <string name="block_list_refresh">ListView %m.listview refreshData</string>
+  <string
+    name="block_list_set_data"
+    formatted="false">ListView %m.listview setListViewData %m.listStr</string>
+  <string
+    name="block_list_set_item_checked"
+    formatted="false">ListView %m.listview setItemChecked pos %d value %b</string>
+  <string
+    name="block_minus"
+    formatted="false">%d - %d</string>
+  <string name="block_not">not %b</string>
+  <string
+    name="block_or"
+    formatted="false">%b or %b</string>
+  <string
+    name="block_plus"
+    formatted="false">%d + %d</string>
+  <string
+    name="block_random"
+    formatted="false">pick random %d to %d</string>
+  <string name="block_repeat">repeat %d</string>
+  <string
+    name="block_rest"
+    formatted="false">%d % %d</string>
+  <string
+    name="block_set_bg_color"
+    formatted="false">%m.view setBackgroundColor %m.color</string>
+  <string
+    name="block_set_checked"
+    formatted="false">CheckBox %m.checkbox setChecked %b</string>
+  <string
+    name="block_set_clickable"
+    formatted="false">%m.view setClickable %b</string>
+  <string
+    name="block_set_enable"
+    formatted="false">%m.view setEnable %b</string>
+  <string
+    name="block_set_image"
+    formatted="false">ImageView %m.imageview setImage %m.resource</string>
+  <string
+    name="block_set_rotate"
+    formatted="false">ImageView %m.imageview setRotation %d</string>
+  <string
+    name="block_set_text"
+    formatted="false">%m.textview setText %s</string>
+  <string
+    name="block_set_text_color"
+    formatted="false">%m.textview setTextColor %m.color</string>
+  <string
+    name="block_set_var_bool"
+    formatted="false">set %m.varBool to %b</string>
+  <string
+    name="block_set_var_int"
+    formatted="false">set %m.varInt to %d</string>
+  <string
+    name="block_set_var_str"
+    formatted="false">set %m.varStr to %s</string>
+  <string
+    name="block_set_visible"
+    formatted="false">%m.view setVisible %m.visible</string>
+  <string
+    name="block_smaller"
+    formatted="false">%d &lt; %d</string>
+  <string name="block_spn_get_selection">Spinner %m.spinner getSelection</string>
+  <string name="block_spn_refresh">Spinner %m.spinner refreshData</string>
+  <string
+    name="block_spn_set_data"
+    formatted="false">Spinner %m.spinner setSpinnerData %m.listStr</string>
+  <string
+    name="block_spn_set_selection"
+    formatted="false">Spinner %m.spinner setSelection %d</string>
+  <string name="block_start_activity">StartActivity %m.intent</string>
+  <string
+    name="block_string_equals"
+    formatted="false">%s equals %s</string>
+  <string
+    name="block_string_index"
+    formatted="false">index %s of %s</string>
+  <string
+    name="block_string_join"
+    formatted="false">join %s and %s</string>
+  <string name="block_string_length">length of %s</string>
+  <string
+    name="block_string_sub"
+    formatted="false">%s substring %d to %d</string>
+  <string
+    name="block_times"
+    formatted="false">%d * %d</string>
+  <string name="block_to_lower_case">toLowerCase %s</string>
+  <string name="block_to_number">toNumber %s</string>
+  <string name="block_to_string">toString %d</string>
+  <string name="block_to_upper_case">toUpperCase %s</string>
+  <string name="block_trim">trim %s</string>
+  <string name="block_true">true</string>
+  <string
+    name="block_vibrator_action"
+    formatted="false">Vibrator %m.vibrator vibrate %d milliseconds</string>
+
+  <!-- Hints -->
   <string name="hint_enter_value">Enter value</string>
-  
+
   <!-- Logic -->
   <string name="logic_btn_add_variable">Add variable</string>
   <string name="logic_btn_remove_variable">Remove variable</string>
