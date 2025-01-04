@@ -9,10 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import dev.trindadedev.theblocklogicsjava.R;
 import dev.trindadedev.theblocklogicsjava.databinding.ActivityLogicEditorBinding;
-import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
 import dev.trindadedev.theblocklogicsjava.ui.editor.block.OnBlockCategorySelectListener;
+import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
 
-public class LogicEditorActivity extends AppCompatActivity implements OnBlockCategorySelectListener {
+public class LogicEditorActivity extends AppCompatActivity
+    implements OnBlockCategorySelectListener {
 
   private ActivityLogicEditorBinding binding;
 
@@ -41,72 +42,76 @@ public class LogicEditorActivity extends AppCompatActivity implements OnBlockCat
   public void onSaveInstanceState(final Bundle bundle) {
     bundle.putString("sc_id", scId);
   }
-  
+
   @Override
   public void onBlockCategorySelect(final int id, final int color) {
     binding.paletteBlock.removeAllBlocks();
-				switch (id) {
-						case 0:
-						paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_add_variable), "variableAdd");
-						paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_remove_variable), "variableRemove");
-						return;
-						case 1:
-						paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_add_list), "listAdd");
-						paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_remove_list), "listRemove");
-					
-						return;
-						case 2:
-						paletteBlocksManager.addBlockToPalette("", "c", "repeat", color, Integer.valueOf(10));
-						paletteBlocksManager.addBlockToPalette("", "c", "forever", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "f", "break", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "c", "if", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "e", "ifElse", color, new Object[0]);
-						return;
-						case 3:
-						paletteBlocksManager.addBlockToPalette("", "b", "true", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "false", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "<", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "=", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", ">", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "&&", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "||", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "not", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "+", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "-", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "*", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "/", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "%", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "random", color, Integer.valueOf(1), Integer.valueOf(10));
-						paletteBlocksManager.addBlockToPalette("", "d", "stringLength", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "stringJoin", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "stringIndex", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "stringSub", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "stringEquals", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "d", "toNumber", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "toString", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "trim", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "toUpperCase", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "toLowerCase", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "addSourceDirectly", color, new Object[0]);
-						return;
-						case 4:
-						paletteBlocksManager.addBlockToPalette("", " ", "setEnable", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "b", "getEnable", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "setVisible", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "setText", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", "s", "getText", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "setBgColor", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "setTextColor", color, new Object[0]);
-						paletteBlocksManager.addBlockToPalette("", " ", "doToast", -13851166, new Object[0]);
-			
-				
-						return;
-						case 5:
-						paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_make_block), "blockAdd");
-						return;
-						default:
-						return;
-				}
+    switch (id) {
+      case 0:
+        paletteBlocksManager.addButtonToPalette(
+            getString(R.string.logic_btn_add_variable), "variableAdd");
+        paletteBlocksManager.addButtonToPalette(
+            getString(R.string.logic_btn_remove_variable), "variableRemove");
+        return;
+      case 1:
+        paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_add_list), "listAdd");
+        paletteBlocksManager.addButtonToPalette(
+            getString(R.string.logic_btn_remove_list), "listRemove");
+
+        return;
+      case 2:
+        paletteBlocksManager.addBlockToPalette("", "c", "repeat", color, Integer.valueOf(10));
+        paletteBlocksManager.addBlockToPalette("", "c", "forever", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "f", "break", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "c", "if", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "e", "ifElse", color, new Object[0]);
+        return;
+      case 3:
+        paletteBlocksManager.addBlockToPalette("", "b", "true", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "false", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "<", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "=", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", ">", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "&&", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "||", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "not", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "+", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "-", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "*", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "/", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "%", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette(
+            "", "d", "random", color, Integer.valueOf(1), Integer.valueOf(10));
+        paletteBlocksManager.addBlockToPalette("", "d", "stringLength", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "stringJoin", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "stringIndex", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "stringSub", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "stringEquals", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "d", "toNumber", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "toString", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "trim", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "toUpperCase", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "toLowerCase", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "addSourceDirectly", color, new Object[0]);
+        return;
+      case 4:
+        paletteBlocksManager.addBlockToPalette("", " ", "setEnable", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "b", "getEnable", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "setVisible", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "setText", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", "s", "getText", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "setBgColor", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "setTextColor", color, new Object[0]);
+        paletteBlocksManager.addBlockToPalette("", " ", "doToast", -13851166, new Object[0]);
+
+        return;
+      case 5:
+        paletteBlocksManager.addButtonToPalette(
+            getString(R.string.logic_btn_make_block), "blockAdd");
+        return;
+      default:
+        return;
+    }
   }
 
   /** Get and define all needed variables */

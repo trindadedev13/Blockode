@@ -14,7 +14,7 @@ public class PaletteBlocksManager {
     block.setClickable(true);
     /* TODO block.setOnTouchListener(this); */
   }
-  
+
   public void addButtonToPalette(String text, String id) {
     var button = paletteBlock.addButton(text);
     button.setTag(id);

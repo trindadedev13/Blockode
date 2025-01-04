@@ -64,7 +64,7 @@ public class PaletteSelector extends LinearLayout implements View.OnClickListene
       }
     }
   }
-  
+
   @Override
   public void onClick(final View view) {
     if (view instanceof PaletteSelectorItem) {
