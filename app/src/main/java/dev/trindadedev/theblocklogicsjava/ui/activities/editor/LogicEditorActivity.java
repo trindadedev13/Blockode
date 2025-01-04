@@ -46,7 +46,7 @@ public class LogicEditorActivity extends AppCompatActivity {
     }
   }
 
-  /** Configures editor BlockPane */,
+  /** Configures editor BlockPane */
   private final void configureBlockPane() {
     binding.editor.getBlockPane().setScId(scId);
   }
