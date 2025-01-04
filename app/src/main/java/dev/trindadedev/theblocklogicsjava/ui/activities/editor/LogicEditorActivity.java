@@ -26,7 +26,7 @@ public class LogicEditorActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     binding = ActivityLogicEditorBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
-    configureData();
+    configureData(savedInstanceState);
     configureBlockPane();
     configureAnimators(getResources().getConfiguration().orientation);
     binding.fabTogglePalette.setOnClickListener(v -> showHidePalette(!isPaletteOpen));
@@ -38,7 +38,7 @@ public class LogicEditorActivity extends AppCompatActivity {
   }
 
   /** Get and define all needed variables */
-  private void configureData() {
+  private void configureData(@Nullable final Bundle savedInstanceState) {
     if (savedInstanceState == null) {
       scId = getIntent().getStringExtra("sc_id");
     } else {
