@@ -29,6 +29,8 @@ public class LogicEditorActivity extends AppCompatActivity implements OnBlockCat
     configureData(savedInstanceState);
     configureBlockPane();
     configureAnimators(getResources().getConfiguration().orientation);
+    updatePalettePosition(getResources().getConfiguration().orientation);
+    showHidePalette(!isPaletteOpen);
     binding.fabTogglePalette.setOnClickListener(v -> showHidePalette(!isPaletteOpen));
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
   }
