@@ -1,62 +1,66 @@
 package dev.trindadedev.theblocklogicsjava.ui.editor.block;
 
 /** Decompiled from Sketchware 1.1.13 */
+
+import static dev.trindadedev.theblocklogicsjava.utils.LayoutUtil.getDip;
+
 import android.content.Context;
-import android.view.View;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
+import dev.trindadedev.theblocklogicsjava.utils.ThemeUtil;
+import dev.trindadedev.theblocklogicsjava.databinding.LayoutPaletteSelectorItemBinding;
+import dev.trindadedev.theblocklogicsjava.ui.base.Selectable;
 
-public class PaletteSelectorItem extends RelativeLayout {
-  private View bg;
-  private int mColor;
-  private int mId;
-  private String mName;
-  private TextView tvCategory;
-  private int widthNonSelected = 0;
+public class PaletteSelectorItem extends RelativeLayout implements Selectable {
 
-  public PaletteSelectorItem(Context context, int i, String str, int i2) {
+  private LayoutPaletteSelectorItemBinding binding;
+
+  private int color;
+  private int id;
+  private boolean selected;
+  private String name;
+
+  public PaletteSelectorItem(final Context context, final int id, final String name, final int color) {
     super(context);
-    this.mId = i;
-    this.mName = str;
-    this.mColor = i2;
-    init(context);
-  }
-
-  private void init(Context context) {
-    LayoutUtil.inflate(context, this, 2130968710);
-    this.tvCategory = (TextView) findViewById(2131689882);
-    this.bg = findViewById(2131689881);
-    this.widthNonSelected = (int) LayoutUtil.getDip(context, 4.0f);
-    this.tvCategory.setText(this.mName);
-    this.bg.setBackgroundColor(this.mColor);
+    this.color = color;
+    this.id = id;
+    this.name = name;
+    binding = LayoutPaletteSelectorItemBinding.inflate(LayoutInflater.from(getContext()), this, true);
+    binding.label.setText(name);
+    binding.color.setBackgroundColor(color);
     setSelected(false);
   }
 
+  @Override
+  public void setSelected(final boolean selected) {
+    this.selected = selected;
+    var colorLp = binding.color.getLayoutParams();
+    if (selected) {
+      binding.label.setTextColor(Color.WHITE);
+      colorLp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+    } else {
+      binding.label.setTextColor(ThemeUtil.getColor(binding.label, com.google.android.material.R.attr.colorOnSurface));
+      colorLp.width = (int) getDip(getContext(), 4.0f);
+    }
+    binding.color.setLayoutParams(colorLp);
+  }
+
+  @Override
+  public boolean getSelected() {
+    return selected;
+  }
+
   public int getColor() {
-    return this.mColor;
+    return color;
   }
 
   public int getId() {
-    return this.mId;
+    return id;
   }
 
   public String getName() {
-    return this.mName;
-  }
-
-  public void setSelected(boolean z) {
-    if (z) {
-      this.tvCategory.setTextColor(-1);
-      ViewGroup.LayoutParams layoutParams = this.bg.getLayoutParams();
-      layoutParams.width = -1;
-      this.bg.setLayoutParams(layoutParams);
-      return;
-    }
-    this.tvCategory.setTextColor(-11513776);
-    ViewGroup.LayoutParams layoutParams2 = this.bg.getLayoutParams();
-    layoutParams2.width = this.widthNonSelected;
-    this.bg.setLayoutParams(layoutParams2);
+    return name;
   }
 }
