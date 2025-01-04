@@ -16,5 +16,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity android:name="dev.trindadedev.theblocklogicsjava.ui.activities.editor.LogicEditorActivity" />
   </application>
 </manifest>
