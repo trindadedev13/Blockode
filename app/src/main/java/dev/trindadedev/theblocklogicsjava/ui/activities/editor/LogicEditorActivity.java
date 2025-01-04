@@ -48,18 +48,21 @@ public class LogicEditorActivity extends AppCompatActivity
     paletteBlocksManager.removeAll();
     switch (id) {
       case 0:
+        // Variable Blocks
         paletteBlocksManager.addButtonToPalette(
             getString(R.string.logic_btn_add_variable), "variableAdd");
         paletteBlocksManager.addButtonToPalette(
             getString(R.string.logic_btn_remove_variable), "variableRemove");
         return;
       case 1:
+        // List Blocks
         paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_add_list), "listAdd");
         paletteBlocksManager.addButtonToPalette(
             getString(R.string.logic_btn_remove_list), "listRemove");
 
         return;
       case 2:
+        // Control Blocks
         paletteBlocksManager.addBlockToPalette("", "c", "repeat", color, Integer.valueOf(10));
         paletteBlocksManager.addBlockToPalette("", "c", "forever", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", "f", "break", color, new Object[0]);
@@ -67,6 +70,7 @@ public class LogicEditorActivity extends AppCompatActivity
         paletteBlocksManager.addBlockToPalette("", "e", "ifElse", color, new Object[0]);
         return;
       case 3:
+        // Operator Blocks
         paletteBlocksManager.addBlockToPalette("", "b", "true", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", "b", "false", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", "b", "<", color, new Object[0]);
@@ -95,6 +99,13 @@ public class LogicEditorActivity extends AppCompatActivity
         paletteBlocksManager.addBlockToPalette("", " ", "addSourceDirectly", color, new Object[0]);
         return;
       case 4:
+        // Math Blocks
+        return;
+      case 5:
+        // File Blocks
+        return;
+      case 6:
+        // View Blocks
         paletteBlocksManager.addBlockToPalette("", " ", "setEnable", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", "b", "getEnable", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", " ", "setVisible", color, new Object[0]);
@@ -103,9 +114,9 @@ public class LogicEditorActivity extends AppCompatActivity
         paletteBlocksManager.addBlockToPalette("", " ", "setBgColor", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", " ", "setTextColor", color, new Object[0]);
         paletteBlocksManager.addBlockToPalette("", " ", "doToast", -13851166, new Object[0]);
-
         return;
-      case 5:
+      case 7:
+        // More Block/Methods
         paletteBlocksManager.addButtonToPalette(
             getString(R.string.logic_btn_make_block), "blockAdd");
         return;
