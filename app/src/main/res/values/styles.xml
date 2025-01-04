@@ -1,0 +1,6 @@
+<resources>
+  <style name="Widget.TheBlockLogics.Toolbar.SmallText" parent="Widget.Material3.Toolbar">
+    <item name="titleTextAppearance">?attr/textAppearanceBodyLarge</item>
+    <item name="subtitleTextAppearance">?attr/textAppearanceBodyMedium</item>
+  </style>
+</resources>

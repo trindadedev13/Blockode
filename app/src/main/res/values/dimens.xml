@@ -1,0 +1,3 @@
+<resources>
+  <dimen name="action_button_margin">16dp</dimen>
+</resources>

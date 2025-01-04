@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
-import dev.trindadedev.theblocklogicsjava.databinding.PaletteBlockBinding;
+import dev.trindadedev.theblocklogicsjava.databinding.LayoutPaletteBlockBinding;
 import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
 
 public class PaletteBlock extends LinearLayout {
 
-  private PaletteBlockBinding binding;
+  private LayoutPaletteBlockBinding binding;
 
   private float dip = 0.0f;
   private Context mContext;
@@ -30,7 +30,7 @@ public class PaletteBlock extends LinearLayout {
   }
 
   private void init(Context context) {
-    binding = PaletteBlockBinding.inflate(LayoutInflater.from(context), this, true);
+    binding = LayoutPaletteBlockBinding.inflate(LayoutInflater.from(context), this, true);
     this.mContext = context;
     this.dip = LayoutUtil.getDip(this.mContext, 1.0f);
   }

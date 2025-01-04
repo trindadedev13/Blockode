@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <color name="view_property_tab_deactive_text">#ff000000</color>
+  <color name="scolor_green_normal">#ff26a59a</color>
+  <color name="scolor_red_02">#ffff7c79</color>
+  <color name="scolor_green_violet">#ff8a55d7</color>
+  <color name="scolor_blue_01">#ff09a7ec</color>
 </resources>

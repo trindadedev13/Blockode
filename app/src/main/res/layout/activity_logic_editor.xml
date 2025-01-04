@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.TheBlockLogics.Toolbar.SmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Activity"
+                app:subtitle="onCreate"
+                app:subtitleTextColor="?colorSecondary"
+                app:navigationIcon="?attr/homeAsUpIndicator" />
+
+            <dev.trindadedev.theblocklogicsjava.ui.activities.editor.components.ViewLogicEditor
+                android:id="@+id/editor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_palette"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_toggle_palette"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/action_button_margin"
+                android:src="@drawable/block_flled_white"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:id="@+id/area_palette"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                android:orientation="horizontal">
+
+                <dev.trindadedev.theblocklogicsjava.ui.editor.block.PaletteBlock
+                    android:id="@+id/palette_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <dev.trindadedev.theblocklogicsjava.ui.editor.logic.LogicTopMenu
+            android:id="@+id/top_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationY="-48dp" />
+
+        <dev.trindadedev.theblocklogicsjava.ui.editor.view.ViewDummy
+            android:id="@+id/dummy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</LinearLayout>

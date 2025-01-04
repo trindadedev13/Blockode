@@ -2,6 +2,12 @@
 <resources>
   <string name="app_name">TheBlockLogicsJava</string>
   
+  <!-- Common -->
+  <string name="common_word_delete">Delete</string>
+  <string name="common_word_duplicate">Duplicate</string>
+  <string name="common_word_collection">Collection</string>
+  <string name="common_word_detail">Detail</string>
+  
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>
   <string name="block_category_control">Control</string>
