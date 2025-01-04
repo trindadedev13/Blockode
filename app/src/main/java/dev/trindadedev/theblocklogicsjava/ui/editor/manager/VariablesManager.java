@@ -71,7 +71,7 @@ public class VariablesManager {
 
   /** The file where variables are stored */
   private File getVariablesFile() {
-    return new File(getPublicFolderFile(), "data/variables.json");
+    return new File(getPublicFolderFile(), "projects/" + scId + "/data/variables.json");
   }
 
   public void setScId(final String scId) {
