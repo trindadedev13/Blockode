@@ -38,4 +38,11 @@
   
   <!-- Hints --> 
   <string name="hint_enter_value">Enter value</string>
+  
+  <!-- Logic -->
+  <string name="logic_btn_add_variable">Add variable</string>
+  <string name="logic_btn_remove_variable">Remove variable</string>
+  <string name="logic_btn_add_list">Add list</string>
+  <string name="logic_btn_remove_list">Remove list</string>
+  <string name="logic_btn_make_block">Make block</string>
 </resources>
