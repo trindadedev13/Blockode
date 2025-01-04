@@ -76,6 +76,7 @@ public class PaletteBlock extends LinearLayout {
 
   public void removeAllBlocks() {
     binding.blockBuilder.removeAllViews();
+    binding.actionsContainer.removeAllViews();
   }
 
   public void setDragEnabled(boolean dragEnabled) {

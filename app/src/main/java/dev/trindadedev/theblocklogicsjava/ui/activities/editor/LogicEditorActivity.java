@@ -45,7 +45,7 @@ public class LogicEditorActivity extends AppCompatActivity
 
   @Override
   public void onBlockCategorySelect(final int id, final int color) {
-    binding.paletteBlock.removeAllBlocks();
+    paletteBlocksManager.removeAll();
     switch (id) {
       case 0:
         paletteBlocksManager.addButtonToPalette(
