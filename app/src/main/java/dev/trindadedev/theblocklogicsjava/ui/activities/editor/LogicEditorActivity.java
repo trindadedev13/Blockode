@@ -11,13 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import dev.trindadedev.theblocklogicsjava.R;
 import dev.trindadedev.theblocklogicsjava.databinding.ActivityLogicEditorBinding;
+import dev.trindadedev.theblocklogicsjava.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.theblocklogicsjava.ui.editor.block.OnBlockCategorySelectListener;
 import dev.trindadedev.theblocklogicsjava.utils.LayoutUtil;
 
-public class LogicEditorActivity extends AppCompatActivity
+public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
 
   private ActivityLogicEditorBinding binding;
@@ -33,10 +33,14 @@ public class LogicEditorActivity extends AppCompatActivity
   private ObjectAnimator blockPaneCloseAnimator;
 
   @Override
-  protected void onCreate(@Nullable final Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+  @NonNull
+  protected View bindLayout() {
     binding = ActivityLogicEditorBinding.inflate(getLayoutInflater());
-    setContentView(binding.getRoot());
+    return binding.getRoot();
+  }
+
+  @Override
+  protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
     configureData(savedInstanceState);
     configurePaletteManager();
     configureBlockPane();

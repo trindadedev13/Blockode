@@ -2,10 +2,6 @@
     <style
         name="Base.AppTheme"
         parent="@style/Theme.Material3.DynamicColors.Dark">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
-    <style
-        name="AppTheme"
-        parent="Base.AppTheme" />
 </resources>
