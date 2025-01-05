@@ -14,6 +14,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "TheBlockLogicsJava"
+rootProject.name = "Blockode"
 
 include(":app")

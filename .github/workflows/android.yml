@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build TheBlockLogicsJava
+    name: Build Blockode
     runs-on: ubuntu-latest
 
     steps:
@@ -33,11 +33,11 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/actions/wrapper-validation@v4
         
-      - name: Build TheBlockLogicsJava Release
+      - name: Build Blockode Release
         run: ./gradlew assembleRelease
 
       - name: Upload release app
         uses: actions/upload-artifact@v4
         with:
-          name: theblocklogicsjava-release
+          name: blockode-release
           path: app/build/outputs/apk/release/

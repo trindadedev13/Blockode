@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-  namespace = "dev.trindadedev.theblocklogicsjava"
+  namespace = "dev.trindadedev.blockode"
   compileSdk = 33
 
   defaultConfig {
-    applicationId = "dev.trindadedev.theblocklogicsjava"
+    applicationId = "dev.trindadedev.blockode"
     minSdk = 21
     targetSdk = 33
     versionCode = 1

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">TheBlockLogicsJava</string>
+  <string name="app_name">Blockode</string>
 
   <!-- Common -->
   <string name="common_word_delete">Delete</string>

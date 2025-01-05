@@ -4,7 +4,7 @@
   android:background="?attr/colorSurfaceContainer"
   android:orientation="horizontal">
 
-  <dev.trindadedev.theblocklogicsjava.ui.editor.scroll.CustomScrollView
+  <dev.trindadedev.blockode.ui.editor.scroll.CustomScrollView
     android:id="@+id/scroll"
     android:layout_width="0dp"
     android:layout_height="match_parent"
@@ -23,7 +23,7 @@
         android:paddingStart="8dp"
         android:paddingLeft="8dp" />
 
-      <dev.trindadedev.theblocklogicsjava.ui.editor.scroll.CustomHorizontalScrollView
+      <dev.trindadedev.blockode.ui.editor.scroll.CustomHorizontalScrollView
         android:id="@+id/scroll_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,15 +34,15 @@
           android:layout_height="wrap_content"
           android:orientation="vertical"
           android:padding="8dp" />
-      </dev.trindadedev.theblocklogicsjava.ui.editor.scroll.CustomHorizontalScrollView>
+      </dev.trindadedev.blockode.ui.editor.scroll.CustomHorizontalScrollView>
     </LinearLayout>
-  </dev.trindadedev.theblocklogicsjava.ui.editor.scroll.CustomScrollView>
+  </dev.trindadedev.blockode.ui.editor.scroll.CustomScrollView>
 
   <ScrollView
     android:layout_width="120dp"
     android:layout_height="match_parent">
 
-    <dev.trindadedev.theblocklogicsjava.ui.editor.block.PaletteSelector
+    <dev.trindadedev.blockode.ui.editor.block.PaletteSelector
       android:id="@+id/palette_selector"
       android:layout_width="120dp"
       android:layout_height="wrap_content" />
