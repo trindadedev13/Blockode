@@ -1,12 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style
-        name="Base.AppTheme"
+        name="Base.Theme.Blockode"
         parent="@style/Theme.Material3.DynamicColors.Light">
         <item name="android:windowLightStatusBar">true</item>
     </style>
     <style
-        name="AppTheme"
-        parent="Base.AppTheme">
+        name="Theme.Blockode"
+        parent="Base.Theme.Blockode">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

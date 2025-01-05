@@ -17,6 +17,7 @@ import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
 import dev.trindadedev.blockode.utils.LayoutUtil;
+import dev.trindadedev.blockode.utils.ThemeUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {

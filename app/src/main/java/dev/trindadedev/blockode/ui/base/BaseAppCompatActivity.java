@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
+import dev.trindadedev.blockode.utils.EdgeToEdge;
 import java.io.Serializable;
 
 @SuppressWarnings("DEPRECATION")
@@ -20,6 +21,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     rootView = bindLayout();
     setContentView(rootView);
     onBindLayout(savedInstanceState);
+    EdgeToEdge.enable(this);
   }
 
   @NonNull
