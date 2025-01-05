@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -23,6 +24,13 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
 
   private ActivityLogicEditorBinding binding;
+  
+  private OnBackPressedCallback onBackPressedCalback = new OnBackPressedCallback(true) {
+    @Override
+    public void handleOnBackPressed() {
+      paletteAnimator.showHidePalette(false);
+    }
+  };
 
   @Nullable private EditorState editorState;
   private PaletteBlocksManager paletteBlocksManager;
@@ -43,6 +51,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     configurePaletteManager();
     configureBlockPane();
     configureToolbar(binding.toolbar);
+    getOnBackPressedDispatcher().addCallback(onBackPressedCalback);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
     blocks = new Blocks(paletteBlocksManager);
   }
@@ -85,7 +94,6 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     toolbar.setSubtitle(editorState.getClassName());
   }
   
-
   /** Get and define all needed variables */
   private final void configureData(@Nullable final Bundle savedInstanceState) {
     if (savedInstanceState == null) {

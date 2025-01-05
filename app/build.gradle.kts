@@ -4,12 +4,12 @@ plugins {
 
 android {
   namespace = "dev.trindadedev.blockode"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     applicationId = "dev.trindadedev.blockode"
     minSdk = 21
-    targetSdk = 33
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
     
@@ -42,6 +42,9 @@ android {
       isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       signingConfig = signingConfigs.getByName("release")
+    }
+    debug {
+      applicationIdSuffix = ".debug"
     }
   }
 
