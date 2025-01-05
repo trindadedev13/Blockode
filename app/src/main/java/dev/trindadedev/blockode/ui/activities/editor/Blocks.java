@@ -1,8 +1,13 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
+import static dev.trindadedev.blockode.utils.StringUtil.getString;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.Blockode;
+import dev.trindadedev.blockode.utils.SpecUtil;
 
 public class Blocks {
   private PaletteBlocksManager paletteBlocksManager;
@@ -10,9 +15,10 @@ public class Blocks {
   public Blocks(final PaletteBlocksManager paletteBlockManager) {
     this.paletteBlocksManager = paletteBlockManager;
   }
-
-  private final String getString(@StringRes int stringResId) {
-    return Blockode.getAppContext().getString(stringResId);
+  
+  @Nullable
+  public void createRoot(@Nullable final String className) {
+    paletteBlocksManager.getBlockPane().addRoot(SpecUtil.getSpecForFileName(className), className);
   }
 
   public void createVariableBlocksPalette() {

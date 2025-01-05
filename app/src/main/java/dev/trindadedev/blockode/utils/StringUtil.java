@@ -4,6 +4,9 @@ package dev.trindadedev.blockode.utils;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import dev.trindadedev.blockode.Blockode;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -177,5 +180,10 @@ public class StringUtil {
       i++;
     }
     return str2;
+  }
+
+  @NonNull
+  public static final String getString(@StringRes int stringResId) {
+    return Blockode.getAppContext().getString(stringResId);
   }
 }

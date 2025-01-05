@@ -1,6 +1,8 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
 import android.content.Context;
+import androidx.annotation.NonNull;
+import dev.trindadedev.blockode.ui.editor.block.BlockPane;
 import dev.trindadedev.blockode.ui.editor.block.PaletteBlock;
 
 public class PaletteBlocksManager {
@@ -9,6 +11,7 @@ public class PaletteBlocksManager {
   private PaletteBlock paletteBlock;
   private PaletteButtonClickListener paletteButtonClickListener;
   private PaletteBlockTouchListener paletteBlockTouchListener;
+  private BlockPane blockPane;
 
   public PaletteBlocksManager(final Context context, final PaletteBlock paletteBlock) {
     paletteButtonClickListener = new PaletteButtonClickListener();
@@ -34,35 +37,50 @@ public class PaletteBlocksManager {
     paletteBlock.removeAllBlocks();
   }
 
+  @NonNull
   public Context getContext() {
     return this.context;
   }
 
-  public void setContext(Context context) {
+  public void setContext(@NonNull Context context) {
     this.context = context;
   }
 
+  @NonNull
   public PaletteBlock getPaletteBlock() {
     return this.paletteBlock;
   }
 
-  public void setPaletteBlock(PaletteBlock paletteBlock) {
+  public void setPaletteBlock(@NonNull PaletteBlock paletteBlock) {
     this.paletteBlock = paletteBlock;
   }
 
+  @NonNull
   public PaletteButtonClickListener getPaletteButtonClickListener() {
     return this.paletteButtonClickListener;
   }
 
-  public void setPaletteButtonClickListener(PaletteButtonClickListener paletteButtonClickListener) {
+  public void setPaletteButtonClickListener(
+      @NonNull PaletteButtonClickListener paletteButtonClickListener) {
     this.paletteButtonClickListener = paletteButtonClickListener;
   }
 
+  @NonNull
   public PaletteBlockTouchListener getPaletteBlockTouchListener() {
     return this.paletteBlockTouchListener;
   }
 
-  public void setPaletteBlockTouchListener(PaletteBlockTouchListener paletteBlockTouchListener) {
+  public void setPaletteBlockTouchListener(
+      @NonNull PaletteBlockTouchListener paletteBlockTouchListener) {
     this.paletteBlockTouchListener = paletteBlockTouchListener;
+  }
+
+  @NonNull
+  public BlockPane getBlockPane() {
+    return this.blockPane;
+  }
+
+  public void setBlockPane(@NonNull final BlockPane blockPane) {
+    this.blockPane = blockPane;
   }
 }

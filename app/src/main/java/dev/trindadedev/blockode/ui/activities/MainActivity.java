@@ -9,7 +9,6 @@ import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
-import dev.trindadedev.blockode.ui.base.State;
 
 public class MainActivity extends BaseAppCompatActivity {
   private ActivityMainBinding binding;
@@ -29,6 +28,7 @@ public class MainActivity extends BaseAppCompatActivity {
   private void openTestProject() {
     var editorState = new EditorState();
     editorState.scId = "100"; // use fake sc id for now
+    editorState.className = "Main";
     var intent = new Intent(this, LogicEditorActivity.class);
     intent.putExtra("editor_state", editorState);
     startActivity(intent);

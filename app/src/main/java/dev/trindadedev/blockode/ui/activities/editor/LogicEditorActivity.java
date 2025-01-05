@@ -48,10 +48,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   public void onPostCreate(@Nullable final Bundle bundle) {
     super.onPostCreate(bundle);
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
+    blocks.createRoot(editorState.className);
   }
-
-  @Nullable
-  private void getRootBlockText(@Nullable final String eventName) {}
 
   @Override
   public void onConfigurationChanged(@NonNull final Configuration configuration) {
@@ -107,6 +105,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   private final void configurePaletteManager() {
     paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    paletteBlocksManager.setBlockPane(binding.editor.getBlockPane());
     var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
     paletteBlockTouchListener.dummy = binding.dummy;
     paletteBlockTouchListener.editor = binding.editor;

@@ -242,4 +242,7 @@
   <string name="logic_btn_add_list">Add list</string>
   <string name="logic_btn_remove_list">Remove list</string>
   <string name="logic_btn_make_block">Make block</string>
+  
+  <!-- root -->
+  <string name="root_spec_define">Define</string>
 </resources>
