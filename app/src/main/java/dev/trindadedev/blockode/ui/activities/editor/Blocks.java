@@ -2,7 +2,7 @@ package dev.trindadedev.blockode.ui.activities.editor;
 
 import androidx.annotation.StringRes;
 import dev.trindadedev.blockode.R;
-import dev.trindadedev.blockode.TheBlockLogics;
+import dev.trindadedev.blockode.Blockode;
 
 public class Blocks {
   private PaletteBlocksManager paletteBlocksManager;
@@ -12,7 +12,7 @@ public class Blocks {
   }
 
   private final String getString(@StringRes int stringResId) {
-    return TheBlockLogics.getAppContext().getString(stringResId);
+    return Blockode.getAppContext().getString(stringResId);
   }
 
   public void createVariableBlocksPalette() {

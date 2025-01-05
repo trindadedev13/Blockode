@@ -1,6 +1,6 @@
 package dev.trindadedev.blockode.ui.editor.manager;
 
-import static dev.trindadedev.blockode.TheBlockLogics.getPublicFolderFile;
+import static dev.trindadedev.blockode.Blockode.getPublicFolderFile;
 
 import com.google.gson.reflect.TypeToken;
 import dev.trindadedev.blockode.beans.VariableBean;

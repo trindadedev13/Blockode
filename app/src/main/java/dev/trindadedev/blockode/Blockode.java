@@ -6,7 +6,7 @@ import android.os.Environment;
 import com.google.android.material.color.DynamicColors;
 import java.io.File;
 
-public final class TheBlockLogics extends Application {
+public final class Blockode extends Application {
 
   private static Context appContext;
 
@@ -22,7 +22,7 @@ public final class TheBlockLogics extends Application {
   }
 
   public static final File getPublicFolderFile() {
-    return new File(Environment.getExternalStorageDirectory(), ".theblocklogics/java/");
+    return new File(Environment.getExternalStorageDirectory(), ".blockode/java/");
   }
 
   public static final Context getAppContext() {
