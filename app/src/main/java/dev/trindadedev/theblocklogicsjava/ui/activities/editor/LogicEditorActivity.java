@@ -24,6 +24,7 @@ public class LogicEditorActivity extends AppCompatActivity
 
   @Nullable private String scId;
   private PaletteBlocksManager paletteBlocksManager;
+  private Blocks blocks;
   private boolean isPaletteOpen = false;
   private boolean adjustLayout4Runned = false;
   private ObjectAnimator paletteOpenAnimator;
@@ -37,13 +38,14 @@ public class LogicEditorActivity extends AppCompatActivity
     binding = ActivityLogicEditorBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
     configureData(savedInstanceState);
+    configurePaletteManager();
     configureBlockPane();
     configureAnimators(getResources().getConfiguration().orientation);
     updatePalettePosition(getResources().getConfiguration().orientation);
     showHidePalette(!isPaletteOpen);
     binding.fabTogglePalette.setOnClickListener(v -> showHidePalette(!isPaletteOpen));
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
-    paletteBlocksManager = new PaletteBlocksManager(binding.paletteBlock);
+    blocks = new Blocks(paletteBlocksManager);
   }
 
   @Override
@@ -67,86 +69,18 @@ public class LogicEditorActivity extends AppCompatActivity
   public void onBlockCategorySelect(final int id, final int color) {
     paletteBlocksManager.removeAll();
     switch (id) {
-      case 0:
-        // Variable Blocks
-        paletteBlocksManager.addButtonToPalette(
-            getString(R.string.logic_btn_add_variable), "variableAdd");
-        paletteBlocksManager.addButtonToPalette(
-            getString(R.string.logic_btn_remove_variable), "variableRemove");
-        return;
-      case 1:
-        // List Blocks
-        paletteBlocksManager.addButtonToPalette(getString(R.string.logic_btn_add_list), "listAdd");
-        paletteBlocksManager.addButtonToPalette(
-            getString(R.string.logic_btn_remove_list), "listRemove");
-
-        return;
-      case 2:
-        // Control Blocks
-        paletteBlocksManager.addBlockToPalette("", "c", "repeat", color, Integer.valueOf(10));
-        paletteBlocksManager.addBlockToPalette("", "c", "forever", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "f", "break", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "c", "if", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "e", "ifElse", color, new Object[0]);
-        return;
-      case 3:
-        // Operator Blocks
-        paletteBlocksManager.addBlockToPalette("", "b", "true", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "false", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "<", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "=", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", ">", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "&&", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "||", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "not", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "+", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "-", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "*", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "/", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "%", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette(
-            "", "d", "random", color, Integer.valueOf(1), Integer.valueOf(10));
-        paletteBlocksManager.addBlockToPalette("", "d", "stringLength", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "stringJoin", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "stringIndex", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "stringSub", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "stringEquals", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "d", "toNumber", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "toString", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "trim", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "toUpperCase", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "toLowerCase", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "addSourceDirectly", color, new Object[0]);
-        return;
-      case 4:
-        // Math Blocks
-        return;
-      case 5:
-        // File Blocks
-        return;
-      case 6:
-        // View Blocks
-        paletteBlocksManager.addBlockToPalette("", " ", "setEnable", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "b", "getEnable", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "setVisible", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "setText", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", "s", "getText", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "setBgColor", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "setTextColor", color, new Object[0]);
-        paletteBlocksManager.addBlockToPalette("", " ", "doToast", -13851166, new Object[0]);
-        return;
-      case 7:
-        // More Block/Methods
-        paletteBlocksManager.addButtonToPalette(
-            getString(R.string.logic_btn_make_block), "blockAdd");
-        return;
-      default:
-        return;
+      case 0 -> blocks.createVariableBlocksPalette();
+      case 1 -> blocks.createListBlocksPalette();
+      case 2 -> blocks.createControlBlocksPalette(color);
+      case 3 -> blocks.createOperatorBlocksPalette(color);
+      case 4 -> blocks.createMathBlocksPalette(color);
+      case 5 -> blocks.createFileBlocksPalette(color);
+      case 6 -> blocks.createViewBlocksPalette(color);
     }
   }
 
   /** Get and define all needed variables */
-  private void configureData(@Nullable final Bundle savedInstanceState) {
+  private final void configureData(@Nullable final Bundle savedInstanceState) {
     if (savedInstanceState == null) {
       scId = getIntent().getStringExtra("sc_id");
     } else {
@@ -157,6 +91,15 @@ public class LogicEditorActivity extends AppCompatActivity
   /** Configures editor BlockPane */
   private final void configureBlockPane() {
     binding.editor.getBlockPane().setScId(scId);
+  }
+  
+  private final void configurePaletteManager() {
+    paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
+    paletteBlockTouchListener.dummy = binding.dummy;
+    paletteBlockTouchListener.editor = binding.editor;
+    paletteBlockTouchListener.paletteBlock = binding.paletteBlock;
+    paletteBlockTouchListener.pane = binding.editor.getBlockPane();
   }
 
   /**
@@ -192,7 +135,7 @@ public class LogicEditorActivity extends AppCompatActivity
     LinearLayout.LayoutParams layoutParams;
     int layoutHeight;
     int layoutWidth =
-        ViewGroup.LayoutParams.MATCH_PARENT; // Initialize width as MATCH_PARENT by default
+        ViewGroup.LayoutParams.MATCH_PARENT;
 
     if (isPaletteOpen) {
       int screenWidth = getResources().getDisplayMetrics().widthPixels;
