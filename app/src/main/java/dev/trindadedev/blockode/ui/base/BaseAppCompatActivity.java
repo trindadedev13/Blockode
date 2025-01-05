@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.appbar.MaterialToolbar;
 import java.io.Serializable;
 
 @SuppressWarnings("DEPRECATION")
@@ -28,6 +29,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
   public View getRootView() {
     return rootView;
+  }
+
+  protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
+    toolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
   }
 
   @Nullable

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.google.android.material.appbar.MaterialToolbar;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
@@ -40,6 +41,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     configurePaletteAnimator();
     configurePaletteManager();
     configureBlockPane();
+    configureToolbar(binding.toolbar);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
     blocks = new Blocks(paletteBlocksManager);
   }
@@ -47,7 +49,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   @Override
   public void onPostCreate(@Nullable final Bundle bundle) {
     super.onPostCreate(bundle);
-    blocks.createRoot(editorState.className);
+    blocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
   }
 
@@ -75,6 +77,13 @@ public class LogicEditorActivity extends BaseAppCompatActivity
       case 6 -> blocks.createViewBlocksPalette(color);
     }
   }
+  
+  @Override
+  protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
+    super.configureToolbar(toolbar);
+    toolbar.setSubtitle(editorState.getClassName());
+  }
+  
 
   /** Get and define all needed variables */
   private final void configureData(@Nullable final Bundle savedInstanceState) {
@@ -87,7 +96,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   /** Configures editor BlockPane */
   private final void configureBlockPane() {
-    binding.editor.getBlockPane().setScId(editorState.scId);
+    binding.editor.getBlockPane().setScId(editorState.getScId());
   }
 
   private final void configurePaletteAnimator() {
