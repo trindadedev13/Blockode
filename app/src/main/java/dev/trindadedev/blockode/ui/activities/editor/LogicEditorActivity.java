@@ -47,8 +47,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   @Override
   public void onPostCreate(@Nullable final Bundle bundle) {
     super.onPostCreate(bundle);
-    paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
     blocks.createRoot(editorState.className);
+    paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
   }
 
   @Override

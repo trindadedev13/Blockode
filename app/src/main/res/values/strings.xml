@@ -3,6 +3,8 @@
   <string name="app_name">Blockode</string>
 
   <!-- Common -->
+  <string name="common_word_save">Save</string>
+  <string name="common_word_cancel">Cancel</string>
   <string name="common_word_delete">Delete</string>
   <string name="common_word_duplicate">Duplicate</string>
   <string name="common_word_collection">Collection</string>

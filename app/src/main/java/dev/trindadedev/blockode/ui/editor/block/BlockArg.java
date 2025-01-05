@@ -6,8 +6,10 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Rect;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -17,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
+import dev.trindadedev.blockode.ui.components.dialog.EditValueDialog;
+import dev.trindadedev.blockode.ui.components.dialog.PropertyInputDialog;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 import java.util.ArrayList;
@@ -255,59 +259,35 @@ public class BlockArg extends BlockBase {
     this.isEditable = var1;
   }
 
-  public void showEditPopup(final boolean var1) {
-    View var2 = LayoutUtil.inflate(this.getContext(), R.layout.property_popup_input_text);
-    Builder var3 = new Builder(this.getContext());
-    var3.setView(var2);
-    if (var1) {
-      var3.setTitle(this.getResources().getString(R.string.title_popup_input_int_value));
+  private void showEditPopup(final boolean isInteger) {
+    var dialog = new EditValueDialog(getContext());
+    if (isInteger) {
+      dialog.setPropertyType(PropertyInputDialog.PROPERTY_TYPE_INTEGER);
+      dialog.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+      dialog.getEditText().setImeOptions(EditorInfo.IME_ACTION_DONE);
+      dialog.getEditText().setMaxLines(1);
     } else {
-      var3.setTitle(this.getResources().getString(R.string.title_popup_input_str_value));
+      dialog.setPropertyType(PropertyInputDialog.PROPERTY_TYPE_STRING);
+      dialog.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+      dialog.getEditText().setImeOptions(EditorInfo.IME_ACTION_NONE);
     }
-
-    final EditText var6 = (EditText) var2.findViewById(R.id.ed_input);
-    if (var1) {
-      var6.setInputType(4098);
-      var6.setImeOptions(6);
-      var6.setMaxLines(1);
-    } else {
-      var6.setInputType(131073);
-      var6.setImeOptions(1);
-    }
-
-    var6.setText(this.mTextView.getText());
-    var3.setNegativeButton(
-        R.string.btn_cancel,
-        new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface var1, int var2) {
-            mDlg.dismiss();
+    dialog.setText(mTextView.getText().toString()); // get text from param in block
+    dialog.setOnSave(
+        value -> {
+          var valueToSave = "";
+          if (isInteger) {
+            valueToSave = Integer.valueOf(value).toString();
+          } else if (value.length() > 0 && value.charAt(0) == 64) {
+            valueToSave = " " + value;
+          } else {
+            valueToSave = value;
           }
+          setArgValue(valueToSave);
+          parentBlock.recalcWidthToParent();
+          parentBlock.topBlock().fixLayout();
+          parentBlock.pane.calculateWidthHeight();
         });
-    var3.setPositiveButton(
-        R.string.btn_accept,
-        new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface var11, int var2) {
-
-            String var3 = var6.getText().toString();
-            String var4;
-            if (var1) {
-              var4 = Integer.valueOf(var3).toString();
-            } else if (var3.length() > 0 && var3.charAt(0) == 64) {
-              var4 = " " + var3;
-            } else {
-              var4 = var3;
-            }
-
-            setArgValue(var4);
-            parentBlock.recalcWidthToParent();
-            parentBlock.topBlock().fixLayout();
-            parentBlock.pane.calculateWidthHeight();
-
-            mDlg.dismiss();
-          }
-        });
-    this.mDlg = var3.create();
-    this.mDlg.show();
+    dialog.show();
   }
 
   public void showPopup() {

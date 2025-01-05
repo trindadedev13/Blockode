@@ -192,12 +192,12 @@ public class PaletteAnimator extends Contextualizable {
       adjustLayout4();
     }
     if (isPaletteOpen != isPaletteOpen) {
-      adjustLayout5();
+      adjustLayout6();
       (isPaletteOpen ? blockPaneOpenAnimator : blockPaneCloseAnimator).start();
     }
   }
 
-  public void adjustLayout5() {
+  public void adjustLayout6() {
     if (blockPaneOpenAnimator.isRunning()) {
       blockPaneOpenAnimator.cancel();
     }
