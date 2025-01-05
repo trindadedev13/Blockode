@@ -21,7 +21,7 @@ public class PaletteBlocksManager {
     button.setSoundEffectsEnabled(true);
     /* TODO  button.setOnClickListener(this); */
   }
-  
+
   public void removeAll() {
     paletteBlock.removeAllBlocks();
   }
