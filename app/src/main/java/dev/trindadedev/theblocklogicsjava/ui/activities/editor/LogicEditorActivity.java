@@ -92,7 +92,7 @@ public class LogicEditorActivity extends AppCompatActivity
   private final void configureBlockPane() {
     binding.editor.getBlockPane().setScId(scId);
   }
-  
+
   private final void configurePaletteManager() {
     paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
     var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
@@ -134,8 +134,7 @@ public class LogicEditorActivity extends AppCompatActivity
   public void adjustLayout(int orientation) {
     LinearLayout.LayoutParams layoutParams;
     int layoutHeight;
-    int layoutWidth =
-        ViewGroup.LayoutParams.MATCH_PARENT;
+    int layoutWidth = ViewGroup.LayoutParams.MATCH_PARENT;
 
     if (isPaletteOpen) {
       int screenWidth = getResources().getDisplayMetrics().widthPixels;
