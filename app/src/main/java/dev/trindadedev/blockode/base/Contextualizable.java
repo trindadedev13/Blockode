@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.base;
+package dev.trindadedev.blockode.base;
 import android.content.Context;
 
 public class Contextualizable {

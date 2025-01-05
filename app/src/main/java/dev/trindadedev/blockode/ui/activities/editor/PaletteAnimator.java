@@ -3,17 +3,17 @@ package dev.trindadedev.blockode.ui.activities.editor;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import dev.trindadedev.blockode.R;
+import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.ui.activities.editor.components.ViewLogicEditor;
-import dev.trindadedev.blockode.ui.base.Contextualizable;
 import dev.trindadedev.blockode.utils.LayoutUtil;
-import android.view.Gravity;
-import android.widget.RelativeLayout;
-import android.widget.LinearLayout;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 
 public class PaletteAnimator extends Contextualizable {
   private ObjectAnimator paletteOpenAnimator;

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import dev.trindadedev.blockode.databinding.LayoutPaletteSelectorItemBinding;
-import dev.trindadedev.blockode.ui.base.Selectable;
+import dev.trindadedev.blockode.base.Selectable;
 import dev.trindadedev.blockode.utils.ThemeUtil;
 
 public class PaletteSelectorItem extends RelativeLayout implements Selectable {
