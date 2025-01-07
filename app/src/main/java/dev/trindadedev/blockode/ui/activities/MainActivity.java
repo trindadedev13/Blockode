@@ -6,15 +6,18 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
-import dev.trindadedev.blockode.ui.activities.project.ProjectViewModel;
+import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
+import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 
 public class MainActivity extends BaseAppCompatActivity {
   private ActivityMainBinding binding;
-  private ProjectViewModel projectViewModel;
+  private ProjectsViewModel projectsViewModel;
+  private ProjectsAdapter projectsAdapter;
 
   @Override
   @NonNull
@@ -25,9 +28,11 @@ public class MainActivity extends BaseAppCompatActivity {
 
   @Override
   protected void onBindLayout(@Nullable final Bundle bundle) {
-    projectViewModel = new ViewModelProvider(this).get(ProjectViewModel.class);
-    projectViewModel.fetch();
-    openTestProject();
+    projectsViewModel = new ViewModelProvider(this).get(ProjectsViewModel.class);
+    projectsAdapter = new ProjectsAdapter();
+    projectsViewModel.fetch();
+    projectsViewModel.getProjects().observe(this, projectsAdapter::submitList);
+    binding.list.setAdapter(projectsAdapter);
   }
 
   private void openTestProject() {
