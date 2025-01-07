@@ -12,9 +12,10 @@ public class PaletteBlocksManager {
   private PaletteButtonClickListener paletteButtonClickListener;
   private PaletteBlockTouchListener paletteBlockTouchListener;
   private BlockPane blockPane;
+  private String scId;
 
   public PaletteBlocksManager(final Context context, final PaletteBlock paletteBlock) {
-    paletteButtonClickListener = new PaletteButtonClickListener();
+    paletteButtonClickListener = new PaletteButtonClickListener(context, scId);
     paletteBlockTouchListener = new PaletteBlockTouchListener(context);
     setPaletteBlock(paletteBlock);
     setContext(context);
@@ -82,5 +83,14 @@ public class PaletteBlocksManager {
 
   public void setBlockPane(@NonNull final BlockPane blockPane) {
     this.blockPane = blockPane;
+  }
+
+  public String getScId() {
+    return this.scId;
+  }
+
+  public void setScId(String scId) {
+    this.scId = scId;
+    paletteButtonClickListener.setScId(scId);
   }
 }
