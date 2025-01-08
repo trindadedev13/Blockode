@@ -11,6 +11,7 @@ import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.databinding.LayoutProjectBinding;
 import dev.trindadedev.blockode.project.ProjectManager;
+import dev.trindadedev.blockode.utils.DesignUtil;
 import dev.trindadedev.blockode.utils.PrintUtil;
 import java.util.function.Consumer;
 
@@ -30,6 +31,7 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
   @Override
   @NonNull
   public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int position) {
+    holder.binding.getRoot().setBackgroundResource(DesignUtil.getShapedBackgroundForList(getCurrentList(), position));
     var item = getItem(position); // project folder
     // try load project data based in folder name.
     var project = ProjectManager.getProjectByScId(item.getName());

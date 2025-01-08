@@ -11,8 +11,9 @@
     <item name="windowNoTitle">true</item>
     <item name="android:navigationBarColor">@android:color/transparent</item>
     <item name="android:statusBarColor">@android:color/transparent</item>
-    <item name="textInputStyle">@style/Widget.Blockode.TextInputLayout</item>
     <item name="fontFamily">@font/gilroy</item>
     <item name="android:fontFamily">@font/gilroy</item>
+    <item name="textInputStyle">@style/Widget.Blockode.TextInputLayout</item>
+    <item name="materialCardViewFilledStyle">@style/Widget.Blockode.MaterialCardView.Filled</item>
   </style>
 </resources>

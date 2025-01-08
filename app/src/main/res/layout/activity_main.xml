@@ -27,10 +27,11 @@
       android:id="@+id/list"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:clipToPadding="false"
       android:paddingTop="8dp"
       android:paddingBottom="120dp"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+      android:transitionGroup="true"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"  />
   </LinearLayout>
 
   <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -38,7 +39,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="right|bottom"
-    android:layout_marginBottom="20dp"
+    android:layout_margin="16dp"
     android:text="@string/common_word_create_new"
     app:icon="@drawable/ic_mtrl_add" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,8 +6,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
@@ -34,7 +32,6 @@ public class MainActivity extends BaseAppCompatActivity {
     projectsAdapter.setOnProjectClick(project -> openProject(project.scId, project.basicInfo.mainClassPackage));
     projectsViewModel.fetch();
     projectsViewModel.getProjects().observe(this, projectsAdapter::submitList);
-    binding.list.setLayoutManager(new LinearLayoutManager(this));
     binding.list.setAdapter(projectsAdapter);
   }
 

@@ -22,4 +22,10 @@
     <item name="cornerFamily">rounded</item>
     <item name="cornerSize">14dp</item>
   </style>
+
+  <style
+    name="Widget.Blockode.MaterialCardView.Filled"
+    parent="Widget.Material3.CardView.Filled">
+    <item name="cardCornerRadius">16dp</item>
+  </style>
 </resources>
