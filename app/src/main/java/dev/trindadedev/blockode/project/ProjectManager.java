@@ -28,16 +28,23 @@ public class ProjectManager extends Contextualizable {
     this.scId = scId;
   }
 
+  @Nullable
   public final ProjectBean getProjectByScId() {
+    return getProjectByScId(scId);
+  }
+
+  @Nullable
+  public static final ProjectBean getProjectByScId(final String scId) {
     var basicInfoFileJsonType = new TypeToken<ProjectBasicInfoBean>() {}.getType();
-    var basicInfoJsonContent = FileUtil.readFile(getBasicInfoFile(scId).getAbsolutePath());
+    var basicInfoJsonContent = FileUtil.readFile(getBasicInfoFile(scId).getAbsolutePath(), false);
     var basicInfo = GsonUtil.getGson().fromJson(basicInfoJsonContent, basicInfoFileJsonType);
     var variablesFileJsonType = new TypeToken<List<VariableBean>>() {}.getType();
-    var variablesFileJsonContent = FileUtil.readFile(getVariablesFile(scId).getAbsolutePath());
+    var variablesFileJsonContent = FileUtil.readFile(getVariablesFile(scId).getAbsolutePath(), false);
     var variables = GsonUtil.getGson().fromJson(variablesFileJsonContent, variablesFileJsonType);
     var toReturnProject = new ProjectBean();
+    toReturnProject.scId = scId;
     toReturnProject.basicInfo = (ProjectBasicInfoBean) basicInfo;
-    toReturnProject.variables = new ArrayList((List) variables);
+    toReturnProject.variables = (ArrayList<VariableBean>) variables;
     return toReturnProject;
   }
 

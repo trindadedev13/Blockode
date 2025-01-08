@@ -35,9 +35,8 @@ public class FileUtil {
     }
   }
 
-  public static String readFile(String path) {
-    createNewFileIfNotPresent(path);
-
+  public static String readFile(String path, boolean createIfNotExists) {
+    if (createIfNotExists) createNewFileIfNotPresent(path);
     StringBuilder sb = new StringBuilder();
     try (FileReader fr = new FileReader(path)) {
       char[] buff = new char[1024];

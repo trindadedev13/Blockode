@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import dev.trindadedev.blockode.utils.PrintUtil;
+import com.google.gson.annotations.SerializedName;
 
 public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
   public static final Creator<ProjectBasicInfoBean> CREATOR =
@@ -17,19 +18,27 @@ public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
         }
       };
 
+  @SerializedName("project_name")
   public String name;
+
+  @SerializedName("package_name")
   public String packageName;
+
+  @SerializedName("main_class_package")
+  public String mainClassPackage;
 
   public ProjectBasicInfoBean() {}
 
   public ProjectBasicInfoBean(final Parcel parcel) {
     this.name = parcel.readString();
     this.packageName = parcel.readString();
+    this.mainClassPackage = parcel.readString();
   }
 
   public void copy(final ProjectBasicInfoBean other) {
     this.name = other.name;
     this.packageName = other.packageName;
+    this.mainClassPackage = other.mainClassPackage;
   }
 
   public int describeContents() {
@@ -40,10 +49,12 @@ public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
   public void print() {
     PrintUtil.print(this.name);
     PrintUtil.print(this.packageName);
+    PrintUtil.print(this.mainClassPackage);
   }
 
   public void writeToParcel(final Parcel parcel, final int flags) {
     parcel.writeString(this.name);
     parcel.writeString(this.packageName);
+    parcel.writeString(this.mainClassPackage);
   }
 }
