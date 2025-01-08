@@ -1,19 +1,42 @@
 package dev.trindadedev.blockode.ui.base;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import dev.trindadedev.blockode.utils.EdgeToEdge;
+import dev.trindadedev.blockode.os.PermissionManager;
 import java.io.Serializable;
+import java.util.List;
 
 @SuppressWarnings("DEPRECATION")
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
   @NonNull private View rootView;
+  protected PermissionManager.Storage storagePermissionManager;
+
+  private final ActivityResultLauncher<Intent> allFilesPermissionLauncher =
+      registerForActivityResult(
+          new ActivityResultContracts.StartActivityForResult(),
+          result -> {
+            onReceive(PermissionType.STORAGE, storagePermissionManager.check());
+          });
+
+  private final ActivityResultLauncher<String[]> readWritePermissionLauncher =
+      registerForActivityResult(
+          new ActivityResultContracts.RequestMultiplePermissions(),
+          permissions -> {
+            onReceive(PermissionType.STORAGE, storagePermissionManager.check());
+          });
 
   @Override
   protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -22,7 +45,15 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     setContentView(rootView);
     onBindLayout(savedInstanceState);
     EdgeToEdge.enable(this);
+    storagePermissionManager = new PermissionManager.Storage(this, allFilesPermissionLauncher, readWritePermissionLauncher);
+    onPostBind(savedInstanceState);
   }
+
+  protected void onPostBind(@Nullable final Bundle savedInstanceState) {
+    if (!storagePermissionManager.check()) storagePermissionManager.request();
+  }
+
+  protected void onReceive(final PermissionType type, final boolean status) {}
 
   @NonNull
   protected abstract View bindLayout();
@@ -36,6 +67,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
   protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
     toolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
   }
+
+  protected void onReceive() {}
 
   @Nullable
   protected <T extends Serializable> T getSerializable(final String key, final Class<T> clazz) {
@@ -61,5 +94,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     } else {
       return clazz.cast(bundle.getSerializable(key));
     }
+  }
+
+  public enum PermissionType {
+    STORAGE;
   }
 }
