@@ -24,7 +24,7 @@
         app:title="Activity"
         app:subtitle="onCreate"
         app:subtitleTextColor="?colorSecondary"
-        app:navigationIcon="?attr/homeAsUpIndicator" />
+        app:navigationIcon="?homeAsUpIndicator" />
 
       <dev.trindadedev.blockode.ui.activities.editor.components.ViewLogicEditor
         android:id="@+id/editor"

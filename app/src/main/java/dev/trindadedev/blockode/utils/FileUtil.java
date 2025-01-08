@@ -1,6 +1,6 @@
 package dev.trindadedev.blockode.utils;
 
-import java.io.File;
+import dev.trindadedev.blockode.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;

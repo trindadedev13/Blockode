@@ -1,27 +1,25 @@
 <resources>
-    <style
-        name="Widget.Blockode.Toolbar.SmallText"
-        parent="Widget.Material3.Toolbar">
-        <item name="titleTextAppearance">?attr/textAppearanceBodyLarge</item>
-        <item name="subtitleTextAppearance">?attr/textAppearanceBodyMedium</item>
-    </style>
-    <style
-        name="Widget.Blockode.TextInputLayout"
-        parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="hintEnabled">true</item>
-        <item name="shapeAppearanceOverlay">
-            @style/ShapeAppearanceOverlay.Blockode.TextInputLayout
-</item>
-        <item name="android:bottomLeftRadius">14dp</item>
-        <item name="android:bottomRightRadius">14dp</item>
-        <item name="android:topLeftRadius">14dp</item>
-        <item name="android:topRightRadius">14dp</item>
-    </style>
+  <style
+    name="Widget.Blockode.Toolbar.SmallText"
+    parent="Widget.Material3.Toolbar">
+    <item name="titleTextAppearance">?attr/textAppearanceBodyLarge</item>
+    <item name="subtitleTextAppearance">?attr/textAppearanceBodyMedium</item>
+  </style>
+  <style
+    name="Widget.Blockode.TextInputLayout"
+    parent="Widget.Material3.TextInputLayout.OutlinedBox">
+    <item name="hintEnabled">true</item>
+    <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Blockode.TextInputLayout</item>
+    <item name="android:bottomLeftRadius">14dp</item>
+    <item name="android:bottomRightRadius">14dp</item>
+    <item name="android:topLeftRadius">14dp</item>
+    <item name="android:topRightRadius">14dp</item>
+  </style>
 
-    <style
-        name="ShapeAppearanceOverlay.Blockode.TextInputLayout"
-        parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">14dp</item>
-    </style>
+  <style
+    name="ShapeAppearanceOverlay.Blockode.TextInputLayout"
+    parent="">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">14dp</item>
+  </style>
 </resources>

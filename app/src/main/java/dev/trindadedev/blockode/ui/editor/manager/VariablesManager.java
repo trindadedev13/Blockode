@@ -1,21 +1,30 @@
 package dev.trindadedev.blockode.ui.editor.manager;
 
+import android.content.Context;
+import androidx.annotation.NonNull;
 import static dev.trindadedev.blockode.Blockode.getPublicFolderFile;
 
 import com.google.gson.reflect.TypeToken;
+import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.beans.VariableBean;
+import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.FileUtil;
 import dev.trindadedev.blockode.utils.GsonUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VariablesManager {
+public class VariablesManager extends Contextualizable {
 
   private String scId;
   private List<VariableBean> variables;
+  
+  public VariablesManager(@NonNull final Context context) {
+    this(context, null);
+  }
 
-  public VariablesManager(final String scId) {
+  public VariablesManager(@NonNull final Context context, final String scId) {
+    super(context);
     variables = new ArrayList<>();
     this.scId = scId;
     readVariables();
@@ -54,9 +63,8 @@ public class VariablesManager {
    * @ see getVariablesFile()
    */
   private List<VariableBean> readVariables() {
-    var listType = new TypeToken<List<VariableBean>>() {}.getType();
-    var json = FileUtil.readFile(getVariablesFile().getAbsolutePath());
-    return GsonUtil.getGson().fromJson(json, listType);
+    var variables = new ProjectManager(context, scId).getProjectByScId().variables;
+    return variables;
   }
 
   /**
@@ -66,16 +74,12 @@ public class VariablesManager {
    */
   private void saveVariables() {
     var json = GsonUtil.getGson().toJson(variables);
-    FileUtil.writeText(getVariablesFile().getAbsolutePath(), json);
-  }
-
-  /** The file where variables are stored */
-  private File getVariablesFile() {
-    return new File(getPublicFolderFile(), "projects/" + scId + "/data/variables.json");
+    FileUtil.writeText(ProjectManager.getVariablesFile(scId).getAbsolutePath(), json);
   }
 
   public void setScId(final String scId) {
     this.scId = scId;
+    readVariables(); // read variables again if scId changes
   }
 
   public String getScId() {

@@ -9,6 +9,7 @@
   <string name="common_word_duplicate">Duplicate</string>
   <string name="common_word_collection">Collection</string>
   <string name="common_word_detail">Detail</string>
+  <string name="common_word_create_new">Create new</string>
 
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>
@@ -244,7 +245,7 @@
   <string name="logic_btn_add_list">Add list</string>
   <string name="logic_btn_remove_list">Remove list</string>
   <string name="logic_btn_make_block">Make block</string>
-  
+
   <!-- root -->
   <string name="root_spec_define">Define</string>
 </resources>

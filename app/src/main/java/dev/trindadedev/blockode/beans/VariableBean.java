@@ -3,6 +3,7 @@ package dev.trindadedev.blockode.beans;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import dev.trindadedev.blockode.utils.PrintUtil;
 
 public class VariableBean extends BaseBean implements Parcelable {
   public static final Creator<VariableBean> CREATOR =
@@ -33,6 +34,12 @@ public class VariableBean extends BaseBean implements Parcelable {
 
   public int describeContents() {
     return 0;
+  }
+
+  @Override
+  public void print() {
+    PrintUtil.print(this.type);
+    PrintUtil.print(this.name);
   }
 
   public void writeToParcel(Parcel parcel, int flags) {

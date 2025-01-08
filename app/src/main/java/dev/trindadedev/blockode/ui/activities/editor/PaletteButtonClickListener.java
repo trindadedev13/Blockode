@@ -21,7 +21,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
 
   public PaletteButtonClickListener(@NonNull final Context context, @Nullable final String scId) {
     super(context);
-    variableManager = new VariablesManager(scId);
+    variableManager = new VariablesManager(context, scId);
     this.scId = scId;
   }
 
@@ -61,5 +61,6 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
 
   public void setScId(final String scid) {
     this.scId = scId;
+    variableManager.setScId(scId);
   }
 }

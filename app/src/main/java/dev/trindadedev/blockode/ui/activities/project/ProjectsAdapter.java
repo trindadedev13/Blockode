@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.databinding.LayoutProjectBinding;
-import java.io.File;
 
 public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsAdapterViewHolder> {
 
@@ -23,7 +23,10 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
 
   @Override
   @NonNull
-  public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int positiob) {}
+  public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int position) {
+    var item = getItem(position);
+    holder.binding.name.setText(item.getName());
+  }
 
   public static class ProjectsAdapterViewHolder extends RecyclerView.ViewHolder {
     private LayoutProjectBinding binding;

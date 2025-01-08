@@ -3,7 +3,7 @@ package dev.trindadedev.blockode.beans;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-public class BaseBean {
+public abstract class BaseBean {
   public String toString(BaseBean var1) {
     StringBuffer var2 = new StringBuffer();
     var2.append("[");
@@ -24,4 +24,6 @@ public class BaseBean {
     var2.append("]");
     return var2.toString();
   }
+  
+  public abstract void print();
 }

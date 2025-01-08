@@ -27,7 +27,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
   @NonNull
   protected abstract View bindLayout();
 
-  protected abstract void onBindLayout(@Nullable final Bundle bundle);
+  protected abstract void onBindLayout(@Nullable final Bundle savedInstanceState);
 
   public View getRootView() {
     return rootView;

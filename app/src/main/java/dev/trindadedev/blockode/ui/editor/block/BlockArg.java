@@ -46,11 +46,12 @@ public class BlockArg extends BlockBase {
     this.mContext = var1;
     this.mMenuName = var4;
     this.init(var1);
+    variablesManager = new VariablesManager(mContext, scId);
   }
 
   public void setScId(final String scId) {
     this.scId = scId;
-    variablesManager = new VariablesManager(scId);
+    variablesManager.setScId(scId);
   }
 
   public String getScId() {

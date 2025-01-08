@@ -3,6 +3,7 @@ package dev.trindadedev.blockode.beans;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import dev.trindadedev.blockode.utils.PrintUtil;
 import java.util.ArrayList;
 
 public class BlockBean extends BaseBean implements Parcelable {
@@ -37,7 +38,7 @@ public class BlockBean extends BaseBean implements Parcelable {
     this.nextBlock = -1;
   }
 
-  public BlockBean(Parcel parcel) {
+  public BlockBean(final Parcel parcel) {
     this.color = parcel.readInt();
     this.nextBlock = parcel.readInt();
     this.subStack1 = parcel.readInt();
@@ -50,14 +51,14 @@ public class BlockBean extends BaseBean implements Parcelable {
     this.parametersTypes = (ArrayList) parcel.readSerializable();
   }
 
-  public BlockBean(String str, String str2, String str3, String str4) {
+  public BlockBean(final String id, final String spec, final String type, final String opCode) {
     this.nextBlock = -1;
     this.subStack1 = -1;
     this.subStack2 = -1;
-    this.id = str;
-    this.opCode = str4;
-    this.spec = str2;
-    this.type = str3;
+    this.id = id;
+    this.opCode = opCode;
+    this.spec = spec;
+    this.type = type;
     this.parameters = new ArrayList();
     this.parametersTypes = new ArrayList();
   }
@@ -66,7 +67,7 @@ public class BlockBean extends BaseBean implements Parcelable {
     return CREATOR;
   }
 
-  public void copy(BlockBean blockBean) {
+  public void copy(final BlockBean blockBean) {
     this.color = blockBean.color;
     this.nextBlock = blockBean.nextBlock;
     this.subStack1 = blockBean.subStack1;
@@ -83,7 +84,19 @@ public class BlockBean extends BaseBean implements Parcelable {
     return 0;
   }
 
-  public void print() {}
+  @Override
+  public void print() {
+    PrintUtil.print(this.color);
+    PrintUtil.print(this.nextBlock);
+    PrintUtil.print(this.subStack1);
+    PrintUtil.print(this.subStack2);
+    PrintUtil.print(this.id);
+    PrintUtil.print(this.opCode);
+    PrintUtil.print(this.spec);
+    PrintUtil.print(this.type);
+    PrintUtil.print(this.parameters);
+    PrintUtil.print(this.parametersTypes);
+  }
 
   public void writeToParcel(Parcel parcel, int i) {
     parcel.writeInt(this.color);
