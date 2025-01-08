@@ -50,6 +50,7 @@ public class MainActivity extends BaseAppCompatActivity {
           project.basicInfo = basicInfo;
           project.variables = new ArrayList<>();
           ProjectManager.createProjectByBean(project);
+          projectsViewModel.fetch();
         });
   }
 
