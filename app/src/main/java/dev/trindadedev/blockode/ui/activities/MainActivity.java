@@ -6,12 +6,16 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import dev.trindadedev.blockode.beans.ProjectBean;
+import dev.trindadedev.blockode.beans.ProjectBasicInfoBean;
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
+import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
+import java.util.ArrayList;
 
 public class MainActivity extends BaseAppCompatActivity {
   private ActivityMainBinding binding;
@@ -33,6 +37,18 @@ public class MainActivity extends BaseAppCompatActivity {
     projectsViewModel.fetch();
     projectsViewModel.getProjects().observe(this, projectsAdapter::submitList);
     binding.list.setAdapter(projectsAdapter);
+    binding.createNew.setOnClickListener(v -> {
+      // creates a example project
+      var project = new ProjectBean();
+      var basicInfo = new ProjectBasicInfoBean();
+      basicInfo.name = "Project 999";
+      basicInfo.packageName = "dev.trindadedev.project999";
+      basicInfo.mainClassPackage = basicInfo.packageName + ".Main";
+      project.scId = "999";
+      project.basicInfo = basicInfo;
+      project.variables = new ArrayList<>();
+      ProjectManager.createProjectByBean(project);
+    });
   }
 
   private void openProject(final String scId, final String className) {

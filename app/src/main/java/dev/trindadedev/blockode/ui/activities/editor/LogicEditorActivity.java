@@ -28,12 +28,12 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
     @Override
     public void handleOnBackPressed() {
-      paletteAnimator.showHidePalette(false);
       if (!paletteAnimator.isPaletteOpen) {
         setEnabled(false);
         getOnBackPressedDispatcher().onBackPressed();
         setEnabled(true);
       }
+      paletteAnimator.showHidePalette(false);
     }
   };
 

@@ -22,7 +22,7 @@ public final class Blockode extends Application {
   }
 
   public static final File getPublicFolderFile() {
-    return new File(Environment.getExternalStorageDirectory(), ".blockode/");
+    return new File(appContext.getExternalFilesDir(null), ".blockode/");
   }
 
   public static final Context getAppContext() {

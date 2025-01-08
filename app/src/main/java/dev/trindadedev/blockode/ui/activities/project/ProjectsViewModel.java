@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import dev.trindadedev.blockode.Blockode;
 import dev.trindadedev.blockode.io.File;
+import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.PrintUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ public class ProjectsViewModel extends ViewModel {
   private final MutableLiveData<List<File>> projects = new MutableLiveData<>();
 
   public final void fetch() {
-    var ogFiles = getFile().listFiles();
+    var ogFiles = ProjectManager.getProjectsFile().listFiles();
     PrintUtil.print(ogFiles);
     if (ogFiles == null) return;
     projects.setValue(toFiles(Arrays.asList(ogFiles)));
@@ -31,9 +32,5 @@ public class ProjectsViewModel extends ViewModel {
 
   public final LiveData<List<File>> getProjects() {
     return projects;
-  }
-
-  private final File getFile() {
-    return new File(Blockode.getPublicFolderFile(), "projects/");
   }
 }
