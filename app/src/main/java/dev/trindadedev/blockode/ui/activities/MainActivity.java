@@ -6,8 +6,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.beans.ProjectBasicInfoBean;
+import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
@@ -33,22 +33,24 @@ public class MainActivity extends BaseAppCompatActivity {
   protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
     projectsViewModel = new ViewModelProvider(this).get(ProjectsViewModel.class);
     projectsAdapter = new ProjectsAdapter();
-    projectsAdapter.setOnProjectClick(project -> openProject(project.scId, project.basicInfo.mainClassPackage));
+    projectsAdapter.setOnProjectClick(
+        project -> openProject(project.scId, project.basicInfo.mainClassPackage));
     projectsViewModel.fetch();
     projectsViewModel.getProjects().observe(this, projectsAdapter::submitList);
     binding.list.setAdapter(projectsAdapter);
-    binding.createNew.setOnClickListener(v -> {
-      // creates a example project
-      var project = new ProjectBean();
-      var basicInfo = new ProjectBasicInfoBean();
-      basicInfo.name = "Project 999";
-      basicInfo.packageName = "dev.trindadedev.project999";
-      basicInfo.mainClassPackage = basicInfo.packageName + ".Main";
-      project.scId = "999";
-      project.basicInfo = basicInfo;
-      project.variables = new ArrayList<>();
-      ProjectManager.createProjectByBean(project);
-    });
+    binding.createNew.setOnClickListener(
+        v -> {
+          // creates a example project
+          var project = new ProjectBean();
+          var basicInfo = new ProjectBasicInfoBean();
+          basicInfo.name = "Project 999";
+          basicInfo.packageName = "dev.trindadedev.project999";
+          basicInfo.mainClassPackage = basicInfo.packageName + ".Main";
+          project.scId = "999";
+          project.basicInfo = basicInfo;
+          project.variables = new ArrayList<>();
+          ProjectManager.createProjectByBean(project);
+        });
   }
 
   private void openProject(final String scId, final String className) {

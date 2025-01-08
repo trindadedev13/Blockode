@@ -2,15 +2,11 @@ package dev.trindadedev.blockode.ui.editor.manager;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
-import static dev.trindadedev.blockode.Blockode.getPublicFolderFile;
-
-import com.google.gson.reflect.TypeToken;
 import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.beans.VariableBean;
 import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.FileUtil;
 import dev.trindadedev.blockode.utils.GsonUtil;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +14,7 @@ public class VariablesManager extends Contextualizable {
 
   private String scId;
   private List<VariableBean> variables;
-  
+
   public VariablesManager(@NonNull final Context context) {
     this(context, null);
   }

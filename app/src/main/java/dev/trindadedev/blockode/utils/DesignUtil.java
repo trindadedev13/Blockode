@@ -1,8 +1,8 @@
 package dev.trindadedev.blockode.utils;
 
+import androidx.annotation.DrawableRes;
 import dev.trindadedev.blockode.R;
 import java.util.List;
-import androidx.annotation.DrawableRes;
 
 public class DesignUtil {
   DesignUtil() {}

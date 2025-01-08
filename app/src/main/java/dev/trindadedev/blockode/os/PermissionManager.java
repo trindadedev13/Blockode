@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.provider.Settings;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.core.content.ContextCompat;
-import java.util.List;
 
 public class PermissionManager {
   PermissionManager() {}

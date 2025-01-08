@@ -3,8 +3,8 @@ package dev.trindadedev.blockode.beans;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dev.trindadedev.blockode.utils.PrintUtil;
 import com.google.gson.annotations.SerializedName;
+import dev.trindadedev.blockode.utils.PrintUtil;
 
 public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
   public static final Creator<ProjectBasicInfoBean> CREATOR =

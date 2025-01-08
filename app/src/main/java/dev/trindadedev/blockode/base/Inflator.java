@@ -12,7 +12,7 @@ public class Inflator extends Contextualizable {
     super(context);
     layoutInflater = LayoutInflater.from(context);
   }
-  
+
   @NonNull
   protected LayoutInflater getLayoutInflater() {
     return layoutInflater;

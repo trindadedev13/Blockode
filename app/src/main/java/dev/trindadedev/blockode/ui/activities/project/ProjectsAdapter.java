@@ -1,18 +1,16 @@
 package dev.trindadedev.blockode.ui.activities.project;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import dev.trindadedev.blockode.beans.ProjectBean;
-import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.databinding.LayoutProjectBinding;
+import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.DesignUtil;
-import dev.trindadedev.blockode.utils.PrintUtil;
 import java.util.function.Consumer;
 
 public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsAdapterViewHolder> {
@@ -31,7 +29,10 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
   @Override
   @NonNull
   public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int position) {
-    holder.binding.getRoot().setBackgroundResource(DesignUtil.getShapedBackgroundForList(getCurrentList(), position));
+    holder
+        .binding
+        .getRoot()
+        .setBackgroundResource(DesignUtil.getShapedBackgroundForList(getCurrentList(), position));
     var item = getItem(position); // project folder
     // try load project data based in folder name.
     var project = ProjectManager.getProjectByScId(item.getName());

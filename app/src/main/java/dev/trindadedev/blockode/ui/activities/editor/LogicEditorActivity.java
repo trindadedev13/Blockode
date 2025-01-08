@@ -1,41 +1,33 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
-import android.animation.ObjectAnimator;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.appbar.MaterialToolbar;
-import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
-import dev.trindadedev.blockode.utils.LayoutUtil;
-import dev.trindadedev.blockode.utils.ThemeUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
 
   private ActivityLogicEditorBinding binding;
-  
-  private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
-    @Override
-    public void handleOnBackPressed() {
-      if (!paletteAnimator.isPaletteOpen) {
-        setEnabled(false);
-        getOnBackPressedDispatcher().onBackPressed();
-        setEnabled(true);
-      }
-      paletteAnimator.showHidePalette(false);
-    }
-  };
+
+  private OnBackPressedCallback onBackPressedCallback =
+      new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+          if (!paletteAnimator.isPaletteOpen) {
+            setEnabled(false);
+            getOnBackPressedDispatcher().onBackPressed();
+            setEnabled(true);
+          }
+          paletteAnimator.showHidePalette(false);
+        }
+      };
 
   @Nullable private EditorState editorState;
   private PaletteBlocksManager paletteBlocksManager;
@@ -92,13 +84,13 @@ public class LogicEditorActivity extends BaseAppCompatActivity
       case 6 -> blocks.createViewBlocksPalette(color);
     }
   }
-  
+
   @Override
   protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
     super.configureToolbar(toolbar);
     toolbar.setSubtitle(editorState.getClassName());
   }
-  
+
   /** Get and define all needed variables */
   private final void configureData(@Nullable final Bundle savedInstanceState) {
     if (savedInstanceState == null) {

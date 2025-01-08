@@ -19,20 +19,20 @@ public class EditValueDialog extends PropertyInputDialog {
   @Override
   public void show() {
     switch (type) {
-      case PropertyInputDialog.PROPERTY_TYPE_INTEGER -> setTitle(
-          StringUtil.getString(R.string.title_popup_input_int_value));
-      case PropertyInputDialog.PROPERTY_TYPE_STRING -> setTitle(
-          StringUtil.getString(R.string.title_popup_input_str_value));
+      case PropertyInputDialog.PROPERTY_TYPE_INTEGER ->
+          setTitle(StringUtil.getString(R.string.title_popup_input_int_value));
+      case PropertyInputDialog.PROPERTY_TYPE_STRING ->
+          setTitle(StringUtil.getString(R.string.title_popup_input_str_value));
     }
     ;
     super.show();
   }
-  
+
   @NonNull
   public EditText getEditText() {
     return binding.edInput;
   }
-  
+
   @NonNull
   public TextInputLayout getTextInputLayout() {
     return binding.tiInput;

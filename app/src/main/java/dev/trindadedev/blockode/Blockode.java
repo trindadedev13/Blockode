@@ -2,7 +2,6 @@ package dev.trindadedev.blockode;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Environment;
 import com.google.android.material.color.DynamicColors;
 import dev.trindadedev.blockode.io.File;
 

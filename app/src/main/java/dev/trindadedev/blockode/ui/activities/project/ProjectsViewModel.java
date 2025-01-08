@@ -3,7 +3,6 @@ package dev.trindadedev.blockode.ui.activities.project;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import dev.trindadedev.blockode.Blockode;
 import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.PrintUtil;

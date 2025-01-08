@@ -102,12 +102,12 @@ public abstract class PropertyInputDialog extends Inflator {
   public void setText(@NonNull final String value) {
     binding.edInput.setText(value);
   }
-  
+
   /**
-  * Sets the property type 
-  *
-  * @param type Constant that represent property type
-  */
+   * Sets the property type
+   *
+   * @param type Constant that represent property type
+   */
   public void setPropertyType(@NonNull int type) {
     this.type = type;
   }

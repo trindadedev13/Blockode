@@ -1,22 +1,18 @@
 package dev.trindadedev.blockode.ui.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
-import dev.trindadedev.blockode.utils.EdgeToEdge;
 import dev.trindadedev.blockode.os.PermissionManager;
+import dev.trindadedev.blockode.utils.EdgeToEdge;
 import java.io.Serializable;
-import java.util.List;
 
 @SuppressWarnings("DEPRECATION")
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
@@ -45,7 +41,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     setContentView(rootView);
     onBindLayout(savedInstanceState);
     EdgeToEdge.enable(this);
-    storagePermissionManager = new PermissionManager.Storage(this, allFilesPermissionLauncher, readWritePermissionLauncher);
+    storagePermissionManager =
+        new PermissionManager.Storage(
+            this, allFilesPermissionLauncher, readWritePermissionLauncher);
     onPostBind(savedInstanceState);
   }
 

@@ -24,6 +24,6 @@ public abstract class BaseBean {
     var2.append("]");
     return var2.toString();
   }
-  
+
   public abstract void print();
 }
