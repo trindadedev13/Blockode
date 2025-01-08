@@ -25,10 +25,15 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   private ActivityLogicEditorBinding binding;
   
-  private OnBackPressedCallback onBackPressedCalback = new OnBackPressedCallback(true) {
+  private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
     @Override
     public void handleOnBackPressed() {
       paletteAnimator.showHidePalette(false);
+      if (!paletteAnimator.isPaletteOpen) {
+        setEnabled(false);
+        getOnBackPressedDispatcher().onBackPressed();
+        setEnabled(true);
+      }
     }
   };
 
@@ -51,7 +56,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     configurePaletteManager();
     configureBlockPane();
     configureToolbar(binding.toolbar);
-    getOnBackPressedDispatcher().addCallback(onBackPressedCalback);
+    getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
     blocks = new Blocks(paletteBlocksManager);
   }
