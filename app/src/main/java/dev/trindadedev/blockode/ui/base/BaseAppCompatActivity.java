@@ -63,6 +63,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
   }
 
   protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
+    setSupportActionBar(toolbar);
     toolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
   }
 

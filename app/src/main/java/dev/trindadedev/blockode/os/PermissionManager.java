@@ -14,12 +14,6 @@ import androidx.core.content.ContextCompat;
 public class PermissionManager {
   PermissionManager() {}
 
-  public interface Permission {
-    void request();
-
-    boolean check();
-  }
-
   public static final class Storage implements Permission {
     private final Activity activity;
     private final ActivityResultLauncher<Intent> storageAllLauncher;

@@ -2,14 +2,19 @@ package dev.trindadedev.blockode.ui.activities.editor;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
+import dev.trindadedev.blockode.ui.editor.gen.JavaGen;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
@@ -54,7 +59,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   @Override
-  public void onPostCreate(@Nullable final Bundle bundle) {
+  public void onPostBind(@Nullable final Bundle bundle) {
     super.onPostCreate(bundle);
     blocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
@@ -64,6 +69,43 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   public void onConfigurationChanged(@NonNull final Configuration configuration) {
     super.onConfigurationChanged(configuration);
     paletteAnimator.adjustLayout2(configuration.orientation);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    var runButton = menu.add(Menu.NONE, 0, Menu.NONE, getString(R.string.common_word_run));
+    runButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    runButton.setIcon(R.drawable.ic_mtrl_run);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem menuItem) {
+    if (menuItem.getItemId() == 0) {
+      runCode();
+      return true;
+    }
+    return super.onOptionsItemSelected(menuItem);
+  }
+
+  private void runCode() {
+    new Thread(
+        () -> {
+          var blocks = binding.editor.getBlockPane().getBlocks();
+          var code = JavaGen.gen(blocks);
+          runOnUiThread(
+              () -> {
+                new MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.common_word_code))
+                    .setMessage(code)
+                    .setPositiveButton(
+                        getString(R.string.common_word_ok),
+                        (d, w) -> {
+                          d.dismiss();
+                        })
+                    .show();
+              });
+        }).start();
   }
 
   @Override

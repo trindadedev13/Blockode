@@ -10,7 +10,10 @@
   <string name="common_word_collection">Collection</string>
   <string name="common_word_detail">Detail</string>
   <string name="common_word_create_new">Create new</string>
-
+  <string name="common_word_run">Run</string>
+  <string name="common_word_code">Code</string>
+  <string name="common_word_ok">Ok</string>
+  
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>
   <string name="block_category_control">Control</string>
