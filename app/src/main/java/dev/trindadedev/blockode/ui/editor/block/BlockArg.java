@@ -21,6 +21,7 @@ import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.ui.components.dialog.EditValueDialog;
 import dev.trindadedev.blockode.ui.components.dialog.PropertyInputDialog;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -340,13 +341,13 @@ public class BlockArg extends BlockBase {
     List var4 = new ArrayList();
     if (this.mMenuName.equals("varInt")) {
       var2.setTitle(this.getResources().getString(R.string.title_popup_select_int_var));
-      var4 = variablesManager.getVariablesByType(1);
+      var4 = variablesManager.getVariablesByType(BlockUtil.VAR_TYPE_INTEGER);
     } else if (this.mMenuName.equals("varBool")) {
       var2.setTitle(this.getResources().getString(R.string.title_popup_select_bool_var));
-      var4 = variablesManager.getVariablesByType(0);
+      var4 = variablesManager.getVariablesByType(BlockUtil.VAR_TYPE_BOOLEAN);
     } else if (this.mMenuName.equals("varStr")) {
       var2.setTitle(this.getResources().getString(R.string.title_popup_select_str_var));
-      var4 = variablesManager.getVariablesByType(2);
+      var4 = variablesManager.getVariablesByType(BlockUtil.VAR_TYPE_STRING);
     } else if (this.mMenuName.equals("listInt")) {
       var2.setTitle(this.getResources().getString(R.string.title_popup_select_int_list));
       var4 = /* DesignDataManager.getListsByType(LogicEditorActivity.filename, 1); */ null;

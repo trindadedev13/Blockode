@@ -242,6 +242,9 @@ public class BlockUtil {
   public static final String BLOCK_TYPE_INTEGER = "d";
   public static final String BLOCK_TYPE_LOOP = "c";
   public static final String BLOCK_TYPE_STRING = "s";
+  public static final int VAR_TYPE_BOOLEAN = 0;
+  public static final int VAR_TYPE_INTEGER = 1;
+  public static final int VAR_TYPE_STRING = 2;
 
   public static int getBlockColor(String opCode, String type) {
     int color;

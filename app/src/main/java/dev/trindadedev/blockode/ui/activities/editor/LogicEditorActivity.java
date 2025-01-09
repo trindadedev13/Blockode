@@ -26,6 +26,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
         @Override
         public void handleOnBackPressed() {
           if (!paletteAnimator.isPaletteOpen) {
+            save();
             setEnabled(false);
             getOnBackPressedDispatcher().onBackPressed();
             setEnabled(true);
@@ -48,21 +49,23 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Override
   protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
+    paletteAnimator = new PaletteAnimator(this);
+    paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    blocks = new Blocks(paletteBlocksManager);
+  }
+
+  @Override
+  public void onPostBind(@Nullable final Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
     configureData(savedInstanceState);
     configurePaletteAnimator();
     configurePaletteManager();
     configureBlockPane();
     configureToolbar(binding.toolbar);
     getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
-    binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
-    blocks = new Blocks(paletteBlocksManager);
-  }
-
-  @Override
-  public void onPostBind(@Nullable final Bundle bundle) {
-    super.onPostCreate(bundle);
     blocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
+    binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
   }
 
   @Override
@@ -86,26 +89,6 @@ public class LogicEditorActivity extends BaseAppCompatActivity
       return true;
     }
     return super.onOptionsItemSelected(menuItem);
-  }
-
-  private void runCode() {
-    new Thread(
-        () -> {
-          var blocks = binding.editor.getBlockPane().getBlocks();
-          var code = JavaGen.gen(blocks);
-          runOnUiThread(
-              () -> {
-                new MaterialAlertDialogBuilder(this)
-                    .setTitle(getString(R.string.common_word_code))
-                    .setMessage(code)
-                    .setPositiveButton(
-                        getString(R.string.common_word_ok),
-                        (d, w) -> {
-                          d.dismiss();
-                        })
-                    .show();
-              });
-        }).start();
   }
 
   @Override
@@ -148,7 +131,6 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void configurePaletteAnimator() {
-    paletteAnimator = new PaletteAnimator(this);
     paletteAnimator.fabTogglePalette = binding.fabTogglePalette;
     paletteAnimator.editor = binding.editor;
     paletteAnimator.layoutPalette = binding.layoutPalette;
@@ -161,12 +143,37 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void configurePaletteManager() {
-    paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    paletteBlocksManager.setScId(editorState.getScId());
     paletteBlocksManager.setBlockPane(binding.editor.getBlockPane());
     var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
     paletteBlockTouchListener.dummy = binding.dummy;
     paletteBlockTouchListener.editor = binding.editor;
     paletteBlockTouchListener.paletteBlock = binding.paletteBlock;
     paletteBlockTouchListener.pane = binding.editor.getBlockPane();
+  }
+
+  private final void save() {
+    paletteBlocksManager.getPaletteButtonClickListener().getVariablesManager().saveVariables();
+  }
+
+  private final void runCode() {
+    new Thread(
+            () -> {
+              var blocks = binding.editor.getBlockPane().getBlocks();
+              var code = JavaGen.gen(blocks);
+              runOnUiThread(
+                  () -> {
+                    new MaterialAlertDialogBuilder(this)
+                        .setTitle(getString(R.string.common_word_code))
+                        .setMessage(code)
+                        .setPositiveButton(
+                            getString(R.string.common_word_ok),
+                            (d, w) -> {
+                              d.dismiss();
+                            })
+                        .show();
+                  });
+            })
+        .start();
   }
 }

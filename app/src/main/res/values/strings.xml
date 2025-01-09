@@ -13,6 +13,10 @@
   <string name="common_word_run">Run</string>
   <string name="common_word_code">Code</string>
   <string name="common_word_ok">Ok</string>
+  <string name="common_word_string">String</string>
+  <string name="common_word_integer">Integer</string>
+  <string name="common_word_boolean">Boolean</string>
+  <string name="common_word_create">Create</string>
   
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>
