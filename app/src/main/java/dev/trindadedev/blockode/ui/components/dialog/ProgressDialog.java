@@ -23,6 +23,7 @@ public class ProgressDialog extends Dialog {
 
     var window = getWindow();
     if (window != null) {
+      window.setBackgroundDrawableResource(android.R.color.transparent);
       window.setStatusBarColor(0);
       WindowCompat.setDecorFitsSystemWindows(window, false);
     }
