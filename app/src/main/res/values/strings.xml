@@ -17,6 +17,9 @@
   <string name="common_word_integer">Integer</string>
   <string name="common_word_boolean">Boolean</string>
   <string name="common_word_create">Create</string>
+  <string name="common_word_loading">Loading</string>
+  
+  <string name="message_generating_code">Generating Code</string>
   
   <!-- Palette Selector Categories -->
   <string name="block_category_component_func">Component</string>

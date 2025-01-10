@@ -6,11 +6,11 @@ import androidx.annotation.NonNull;
 import com.google.android.material.textfield.TextInputLayout;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.utils.StringUtil;
-import java.util.function.Consumer;
+import dev.trindadedev.blockode.utils.function.Listener;
 
 public class EditValueDialog extends PropertyInputDialog {
 
-  protected Consumer<String> onSaveConsumer;
+  protected Listener<String> onSaveListener;
 
   public EditValueDialog(@NonNull final Context context) {
     super(context);
@@ -40,10 +40,10 @@ public class EditValueDialog extends PropertyInputDialog {
 
   @Override
   protected void onSaveValue(@NonNull String value) {
-    onSaveConsumer.accept(value);
+    onSaveListener.call(value);
   }
 
-  public void setOnSave(@NonNull Consumer<String> onSaveConsumer) {
-    this.onSaveConsumer = onSaveConsumer;
+  public void setOnSave(@NonNull Listener<String> onSaveListener) {
+    this.onSaveListener = onSaveListener;
   }
 }

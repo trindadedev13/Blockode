@@ -15,6 +15,7 @@ import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
 import dev.trindadedev.blockode.ui.editor.gen.JavaGen;
+import dev.trindadedev.blockode.utils.StringUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
@@ -76,7 +77,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    var runButton = menu.add(Menu.NONE, 0, Menu.NONE, getString(R.string.common_word_run));
+    var runButton =
+        menu.add(Menu.NONE, 0, Menu.NONE, StringUtil.getString(R.string.common_word_run));
     runButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     runButton.setIcon(R.drawable.ic_mtrl_run);
     return super.onCreateOptionsMenu(menu);
@@ -157,6 +159,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void runCode() {
+    showProgress(StringUtil.getString(R.string.message_generating_code));
     new Thread(
             () -> {
               var blocks = binding.editor.getBlockPane().getBlocks();
@@ -164,14 +167,15 @@ public class LogicEditorActivity extends BaseAppCompatActivity
               runOnUiThread(
                   () -> {
                     new MaterialAlertDialogBuilder(this)
-                        .setTitle(getString(R.string.common_word_code))
+                        .setTitle(StringUtil.getString(R.string.common_word_code))
                         .setMessage(code)
                         .setPositiveButton(
-                            getString(R.string.common_word_ok),
+                            StringUtil.getString(R.string.common_word_ok),
                             (d, w) -> {
                               d.dismiss();
                             })
                         .show();
+                    dismissProgress();
                   });
             })
         .start();
