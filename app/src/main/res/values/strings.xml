@@ -248,6 +248,9 @@
 
   <!-- Hints -->
   <string name="hint_enter_value">Enter value</string>
+  <string name="project_name">Project name</string>
+  <string name="main_class_package">Main class package</string>
+  <string name="package_name">Package name</string>
 
   <!-- Logic -->
   <string name="logic_btn_add_variable">Add variable</string>
@@ -258,4 +261,11 @@
 
   <!-- root -->
   <string name="root_spec_define">Define</string>
+
+
+
+  <string name="create_new_project">Create new project</string>
+  <string name="create_from_template">Create from template</string>
+  <string name="fill_all_fields">Please fill in all fields</string>
+
 </resources>

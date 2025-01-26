@@ -32,7 +32,8 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
     var item = getItem(position); // project folder
     // try load project data based in folder name.
     var project = ProjectManager.getProjectByScId(item.getName());
-    holder.binding.name.setText(project.basicInfo.name);
+      assert project != null;
+      holder.binding.name.setText(project.basicInfo.name);
     holder
         .binding
         .getRoot()
