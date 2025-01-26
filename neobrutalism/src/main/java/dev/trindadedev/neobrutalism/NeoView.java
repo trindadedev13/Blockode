@@ -51,7 +51,7 @@ public class NeoView extends RelativeLayout {
                 public void onGlobalLayout() {
                   child.setBackground(foregroundGradientDrawable);
                   final LayoutParams params = new LayoutParams(child.getWidth(), child.getHeight());
-                  params.setMargins(state.backgroundMarginStart, state.backgroundMarginTop, 0, 0);
+                  params.setMargins(state.backgroundMarginStart, state.backgroundMarginTop, 0, 10);
                   backgroundView.setLayoutParams(params);
                   child.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 }
@@ -59,25 +59,36 @@ public class NeoView extends RelativeLayout {
       child.setOnTouchListener(
           (view, event) -> {
             final int action = event.getAction();
-            if (action == MotionEvent.ACTION_DOWN) {
-              if (state.pressable) {
-                child
-                    .animate()
-                    .translationX(state.backgroundMarginStart)
-                    .translationY(state.backgroundMarginTop)
-                    .setDuration(state.animationDuration)
-                    .start();
-              }
-            } else if (action == MotionEvent.ACTION_UP) {
-              if (state.pressable) {
-                child
-                    .animate()
-                    .translationX(0)
-                    .translationY(0)
-                    .setDuration(state.animationDuration)
-                    .start();
-              }
-              onClickListener.onClick(child);
+            switch (action) {
+                            case (MotionEvent.ACTION_DOWN):
+                                if (state.pressable) {
+                                    child.animate()
+                                            .translationX(state.backgroundMarginStart)
+                                            .translationY(state.backgroundMarginTop)
+                                            .setDuration(state.animationDuration)
+                                            .start();
+                                }
+                                break;
+                            case (MotionEvent.ACTION_UP):
+                                if (state.pressable) {
+                                    child.animate()
+                                            .translationX(0)
+                                            .translationY(0)
+                                            .setDuration(state.animationDuration)
+                                            .start();
+                                }
+                                onClickListener.onClick(child);
+                                break;
+
+                            case (MotionEvent.ACTION_MOVE):
+                                if (state.pressable) {
+                                    child.animate()
+                                            .translationX(0)
+                                            .translationY(0)
+                                            .setDuration(state.animationDuration)
+                                            .start();
+                                }
+                                break;
             }
             return true;
           });
