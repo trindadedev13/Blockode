@@ -124,8 +124,8 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
             selectedType.set(BlockUtil.VAR_TYPE_BOOLEAN);
           }
         });
-    new MaterialAlertDialogBuilder(view.getContext())
-        .setTitle("Create variable")
+    new MaterialAlertDialogBuilder(context)
+        .setTitle(context.getString(R.string.title_popup_create_variable))
         .setView(binding.getRoot())
         .setPositiveButton(
             view.getContext().getString(R.string.common_word_create),

@@ -45,7 +45,7 @@
     <string name="title_popup_select_int_list">Select Integer List</string>
     <string name="title_popup_select_str_list">Select String List</string>
     <string name="title_popup_select_list">Select List</string>
-
+    <string name="title_popup_create_variable">Create variable</string>
     <!-- Block labels -->
     <string
         name="block_add_list_int"
