@@ -248,6 +248,7 @@
 
     <!-- Hints -->
     <string name="hint_enter_value">Enter value</string>
+    <string name="hint_enter_variable_name">Enter variable name</string>
 
     <!-- Logic -->
     <string name="logic_btn_add_variable">Add variable</string>

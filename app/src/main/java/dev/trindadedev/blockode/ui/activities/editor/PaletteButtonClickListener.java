@@ -105,7 +105,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
   void showCreateVariableDialog() {
     var binding = DialogAddVariableBinding.inflate(getLayoutInflater());
     binding.varTypeString.setChecked(true);
-    var selectedType = new Atomic<Integer>(0);
+    var selectedType = new Atomic<Integer>(BlockUtil.VAR_TYPE_STRING);
     var keywords = List.of("int", "String", "boolean", "lomg");
     var variablesExisting = new ArrayList<String>();
     variablesManager
