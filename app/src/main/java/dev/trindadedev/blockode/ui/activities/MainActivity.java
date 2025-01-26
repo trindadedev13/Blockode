@@ -15,6 +15,8 @@ import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
+import dev.trindadedev.blockode.ui.dialogs.createProjectDialog;
+
 import java.util.ArrayList;
 
 public class MainActivity extends BaseAppCompatActivity {
