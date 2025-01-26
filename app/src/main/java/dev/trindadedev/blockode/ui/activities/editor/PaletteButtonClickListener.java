@@ -9,15 +9,71 @@ import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.base.Inflator;
 import dev.trindadedev.blockode.beans.VariableBean;
 import dev.trindadedev.blockode.databinding.DialogAddVariableBinding;
+import dev.trindadedev.blockode.ui.editor.manager.VariableNameValidator;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.BlockUtil;
-import java.util.concurrent.atomic.AtomicInteger;
+import dev.trindadedev.blockode.utils.variable.Atomic;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaletteButtonClickListener extends Inflator implements View.OnClickListener {
 
   private VariablesManager variablesManager;
   private View view;
   private String scId;
+  private static final String[] RESERVED_WORD =
+      new String[] {
+        "abstract",
+        "boolean",
+        "break",
+        "byte",
+        "case",
+        "catch",
+        "char",
+        "class",
+        "const",
+        "continue",
+        "default",
+        "do",
+        "double",
+        "else",
+        "extends",
+        "final",
+        "finally",
+        "float",
+        "for",
+        "goto",
+        "if",
+        "implements",
+        "import",
+        "instanceof",
+        "int",
+        "interface",
+        "long",
+        "native",
+        "new",
+        "null",
+        "package",
+        "private",
+        "protected",
+        "public",
+        "return",
+        "short",
+        "static",
+        "super",
+        "switch",
+        "synchronized",
+        "this",
+        "throw",
+        "throws",
+        "transient",
+        "try",
+        "void",
+        "volatile",
+        "while",
+        "ArrayList",
+        "String"
+      };
 
   public PaletteButtonClickListener(@NonNull final Context context) {
     this(context, null);
@@ -48,7 +104,16 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
   /** display a dialog to create new variable in project */
   void showCreateVariableDialog() {
     var binding = DialogAddVariableBinding.inflate(getLayoutInflater());
-    var selectedType = new AtomicInteger(0);
+    binding.varTypeString.setChecked(true);
+    var selectedType = new Atomic<Integer>(0);
+    var keywords = List.of("int", "String", "boolean", "lomg");
+    var variablesExisting = new ArrayList<String>();
+    variablesManager
+        .getVariables()
+        .forEach(variableBean -> variablesExisting.add(variableBean.name));
+    var variableNameValidator =
+        new VariableNameValidator(
+            context, binding.tilName, RESERVED_WORD, new String[] {}, variablesExisting);
     binding.varTypeGroup.setOnCheckedChangeListener(
         (rg, checkedId) -> {
           if (checkedId == binding.varTypeString.getId()) {
@@ -66,7 +131,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
             view.getContext().getString(R.string.common_word_create),
             (d, w) -> {
               var variable = new VariableBean();
-              variable.name = binding.tieName.getText().toString();
+              variable.name = binding.tieName.getText().toString().replaceAll(" ", "_");
               variable.type = selectedType.get();
               variablesManager.addVariable(variable);
               d.dismiss();
@@ -87,7 +152,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
     return this.variablesManager;
   }
 
-  public void setVariablesManager(VariablesManager variablesManager) {
+  public void setVariablesManager(final VariablesManager variablesManager) {
     this.variablesManager = variablesManager;
   }
 }
