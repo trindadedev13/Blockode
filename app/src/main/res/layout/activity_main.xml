@@ -27,6 +27,8 @@
       android:id="@+id/list"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:paddingStart="15dp"
+      android:paddingEnd="8dp"
       android:paddingTop="8dp"
       android:paddingBottom="120dp"
       android:transitionGroup="true"
@@ -34,12 +36,12 @@
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"  />
   </LinearLayout>
 
-  <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+  <dev.trindadedev.neobrutalism.NeoExtendedFloatingActionButton
     android:id="@+id/create_new"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="right|bottom"
-    android:layout_margin="16dp"
-    android:text="@string/common_word_create_new"
-    app:icon="@drawable/ic_mtrl_add" />
+    android:layout_margin="10dp"
+    app:fabText="@string/common_word_create_new"
+    app:fabIcon="@drawable/ic_mtrl_add" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,16 +1,24 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
+import android.util.Pair;
+import dev.trindadedev.blockode.beans.VariableBean;
+import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
 
 import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.utils.SpecUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class Blocks {
   private PaletteBlocksManager paletteBlocksManager;
+  private VariablesManager variablesManager;
 
   public Blocks(final PaletteBlocksManager paletteBlockManager) {
     this.paletteBlocksManager = paletteBlockManager;
+    this.variablesManager =
+        paletteBlockManager.getPaletteButtonClickListener().getVariablesManager();
   }
 
   @Nullable
@@ -23,6 +31,46 @@ public class Blocks {
         getString(R.string.logic_btn_add_variable), ButtonsTag.BUTTON_ADD_VARIABLE);
     paletteBlocksManager.addButtonToPalette(
         getString(R.string.logic_btn_remove_variable), ButtonsTag.BUTTON_REMOVE_VARIABLE);
+    addVariablesFromVariablesManager();
+  }
+
+  private void addVariablesFromVariablesManager() {
+    variablesManager.setScId(paletteBlocksManager.getScId());
+    List<VariableBean> variables = variablesManager.getVariables();
+    int i = 0;
+    int i2 = 0;
+    int i3 = 0;
+
+    for (VariableBean variable : variables) {
+      int type = variable.type;
+      String variableName = variable.name;
+
+      if (type == 0) {
+        paletteBlocksManager.addBlockToPalette(
+            variableName, "b", "getVar", -1147626, new Object[0]);
+        i3++;
+      } else if (type == 1) {
+        paletteBlocksManager.addBlockToPalette(
+            variableName, "d", "getVar", -1147626, new Object[0]);
+        i2++;
+      } else {
+        paletteBlocksManager.addBlockToPalette(
+            variableName, "s", "getVar", -1147626, new Object[0]);
+        i++;
+      }
+    }
+
+    if (i3 > 0) {
+      paletteBlocksManager.addBlockToPalette("", " ", "setVarBoolean", -1147626, new Object[0]);
+    }
+    if (i2 > 0) {
+      paletteBlocksManager.addBlockToPalette("", " ", "setVarInt", -1147626, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", " ", "increaseInt", -1147626, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", " ", "decreaseInt", -1147626, new Object[0]);
+    }
+    if (i > 0) {
+      paletteBlocksManager.addBlockToPalette("", " ", "setVarString", -1147626, new Object[0]);
+    }
   }
 
   public void createListBlocksPalette() {

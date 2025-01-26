@@ -11,10 +11,10 @@ import dev.trindadedev.blockode.databinding.LayoutProjectBinding;
 import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.utils.DesignUtil;
-import java.util.function.Consumer;
+import dev.trindadedev.blockode.utils.function.Listener;
 
 public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsAdapterViewHolder> {
-  private Consumer<ProjectBean> onProjectClickConsumer;
+  private Listener<ProjectBean> onProjectClickListener;
 
   public ProjectsAdapter() {
     super(new ProjectsAdapterDiffUtil());
@@ -29,10 +29,6 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
   @Override
   @NonNull
   public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int position) {
-    holder
-        .binding
-        .getRoot()
-        .setBackgroundResource(DesignUtil.getShapedBackgroundForList(getCurrentList(), position));
     var item = getItem(position); // project folder
     // try load project data based in folder name.
     var project = ProjectManager.getProjectByScId(item.getName());
@@ -42,12 +38,12 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
         .getRoot()
         .setOnClickListener(
             v -> {
-              if (onProjectClickConsumer != null) onProjectClickConsumer.accept(project);
+              if (onProjectClickListener != null) onProjectClickListener.call(project);
             });
   }
 
-  public void setOnProjectClick(final Consumer<ProjectBean> onProjectClickConsumer) {
-    this.onProjectClickConsumer = onProjectClickConsumer;
+  public void setOnProjectClick(final Listener<ProjectBean> onProjectClickListener) {
+    this.onProjectClickListener = onProjectClickListener;
   }
 
   public static class ProjectsAdapterViewHolder extends RecyclerView.ViewHolder {

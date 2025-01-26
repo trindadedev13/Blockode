@@ -2,14 +2,20 @@ package dev.trindadedev.blockode.ui.activities.editor;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
+import dev.trindadedev.blockode.ui.editor.gen.JavaGen;
+import dev.trindadedev.blockode.utils.StringUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
     implements OnBlockCategorySelectListener {
@@ -21,6 +27,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
         @Override
         public void handleOnBackPressed() {
           if (!paletteAnimator.isPaletteOpen) {
+            save();
             setEnabled(false);
             getOnBackPressedDispatcher().onBackPressed();
             setEnabled(true);
@@ -43,27 +50,47 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Override
   protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
+    paletteAnimator = new PaletteAnimator(this);
+    paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    blocks = new Blocks(paletteBlocksManager);
+  }
+
+  @Override
+  public void onPostBind(@Nullable final Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
     configureData(savedInstanceState);
     configurePaletteAnimator();
     configurePaletteManager();
     configureBlockPane();
     configureToolbar(binding.toolbar);
     getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
-    binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
-    blocks = new Blocks(paletteBlocksManager);
-  }
-
-  @Override
-  public void onPostCreate(@Nullable final Bundle bundle) {
-    super.onPostCreate(bundle);
     blocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
+    binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
   }
 
   @Override
   public void onConfigurationChanged(@NonNull final Configuration configuration) {
     super.onConfigurationChanged(configuration);
     paletteAnimator.adjustLayout2(configuration.orientation);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    var runButton =
+        menu.add(Menu.NONE, 0, Menu.NONE, StringUtil.getString(R.string.common_word_run));
+    runButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    runButton.setIcon(R.drawable.ic_mtrl_run);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem menuItem) {
+    if (menuItem.getItemId() == 0) {
+      runCode();
+      return true;
+    }
+    return super.onOptionsItemSelected(menuItem);
   }
 
   @Override
@@ -106,7 +133,6 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void configurePaletteAnimator() {
-    paletteAnimator = new PaletteAnimator(this);
     paletteAnimator.fabTogglePalette = binding.fabTogglePalette;
     paletteAnimator.editor = binding.editor;
     paletteAnimator.layoutPalette = binding.layoutPalette;
@@ -119,12 +145,39 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void configurePaletteManager() {
-    paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
+    paletteBlocksManager.setScId(editorState.getScId());
     paletteBlocksManager.setBlockPane(binding.editor.getBlockPane());
     var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
     paletteBlockTouchListener.dummy = binding.dummy;
     paletteBlockTouchListener.editor = binding.editor;
     paletteBlockTouchListener.paletteBlock = binding.paletteBlock;
     paletteBlockTouchListener.pane = binding.editor.getBlockPane();
+  }
+
+  private final void save() {
+    paletteBlocksManager.getPaletteButtonClickListener().getVariablesManager().saveVariables();
+  }
+
+  private final void runCode() {
+    showProgress(StringUtil.getString(R.string.message_generating_code));
+    new Thread(
+            () -> {
+              var blocks = binding.editor.getBlockPane().getBlocks();
+              var code = JavaGen.gen(blocks);
+              runOnUiThread(
+                  () -> {
+                    new MaterialAlertDialogBuilder(this)
+                        .setTitle(StringUtil.getString(R.string.common_word_code))
+                        .setMessage(code)
+                        .setPositiveButton(
+                            StringUtil.getString(R.string.common_word_ok),
+                            (d, w) -> {
+                              d.dismiss();
+                            })
+                        .show();
+                    dismissProgress();
+                  });
+            })
+        .start();
   }
 }

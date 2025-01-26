@@ -11,13 +11,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import dev.trindadedev.blockode.os.PermissionManager;
+import dev.trindadedev.blockode.ui.components.dialog.ProgressDialog;
 import dev.trindadedev.blockode.utils.EdgeToEdge;
+import dev.trindadedev.blockode.utils.PrintUtil;
 import java.io.Serializable;
 
 @SuppressWarnings("DEPRECATION")
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
   @NonNull private View rootView;
+  @NonNull private ProgressDialog progressDialog;
   protected PermissionManager.Storage storagePermissionManager;
 
   private final ActivityResultLauncher<Intent> allFilesPermissionLauncher =
@@ -40,29 +43,53 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     rootView = bindLayout();
     setContentView(rootView);
     onBindLayout(savedInstanceState);
-    EdgeToEdge.enable(this);
     storagePermissionManager =
         new PermissionManager.Storage(
             this, allFilesPermissionLauncher, readWritePermissionLauncher);
+    progressDialog = new ProgressDialog(this);
     onPostBind(savedInstanceState);
   }
-
-  protected void onPostBind(@Nullable final Bundle savedInstanceState) {
-    if (!storagePermissionManager.check()) storagePermissionManager.request();
-  }
-
-  protected void onReceive(final PermissionType type, final boolean status) {}
 
   @NonNull
   protected abstract View bindLayout();
 
   protected abstract void onBindLayout(@Nullable final Bundle savedInstanceState);
 
+  protected void onPostBind(@Nullable final Bundle savedInstanceState) {
+    if (!storagePermissionManager.check()) storagePermissionManager.request();
+    EdgeToEdge.enable(this);
+  }
+
+  protected void showProgress() {
+    if (progressDialog != null && !progressDialog.isShowing() && !isFinishing())
+      progressDialog.show();
+  }
+
+  protected void showProgress(@NonNull final String text) {
+    if (progressDialog != null && !progressDialog.isShowing() && !isFinishing()) {
+      progressDialog.setTitle(text);
+      progressDialog.show();
+    }
+  }
+
+  protected void dismissProgress() {
+    try {
+      if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+    } catch (final Exception e) {
+      progressDialog = null;
+      progressDialog = new ProgressDialog(this);
+      PrintUtil.print(e);
+    }
+  }
+
+  protected void onReceive(final PermissionType type, final boolean status) {}
+
   public View getRootView() {
     return rootView;
   }
 
   protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
+    setSupportActionBar(toolbar);
     toolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
   }
 

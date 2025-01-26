@@ -58,7 +58,7 @@ public class VariablesManager extends Contextualizable {
    *
    * @ see getVariablesFile()
    */
-  private List<VariableBean> readVariables() {
+  public List<VariableBean> readVariables() {
     var variables = new ProjectManager(context, scId).getProjectByScId().variables;
     return variables;
   }
@@ -68,7 +68,7 @@ public class VariablesManager extends Contextualizable {
    *
    * @see getVariablesFile()
    */
-  private void saveVariables() {
+  public void saveVariables() {
     var json = GsonUtil.getGson().toJson(variables);
     FileUtil.writeText(ProjectManager.getVariablesFile(scId).getAbsolutePath(), json);
   }
@@ -80,5 +80,14 @@ public class VariablesManager extends Contextualizable {
 
   public String getScId() {
     return scId;
+  }
+
+  public List<VariableBean> getVariables() {
+    readVariables();
+    return this.variables;
+  }
+
+  public void setVariables(List<VariableBean> variables) {
+    this.variables = variables;
   }
 }
