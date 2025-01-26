@@ -40,17 +40,11 @@ public class MainActivity extends BaseAppCompatActivity {
     binding.list.setAdapter(projectsAdapter);
     binding.createNew.setOnClickListener(
         v -> {
-          // creates a example project
-          var project = new ProjectBean();
-          var basicInfo = new ProjectBasicInfoBean();
-          basicInfo.name = "Project 999";
-          basicInfo.packageName = "dev.trindadedev.project999";
-          basicInfo.mainClassPackage = basicInfo.packageName + ".Main";
-          project.scId = "999";
-          project.basicInfo = basicInfo;
-          project.variables = new ArrayList<>();
-          ProjectManager.createProjectByBean(project);
-          projectsViewModel.fetch();
+           createProjectDialog d = new createProjectDialog(this);
+                    d.show();
+                    d.setOnDismissListener(dialog -> {
+                        projectsViewModel.fetch();
+                    });
         });
   }
 
