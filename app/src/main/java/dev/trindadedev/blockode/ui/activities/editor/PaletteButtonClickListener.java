@@ -130,11 +130,13 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
         .setPositiveButton(
             view.getContext().getString(R.string.common_word_create),
             (d, w) -> {
-              var variable = new VariableBean();
-              variable.name = binding.tieName.getText().toString().replaceAll(" ", "_");
-              variable.type = selectedType.get();
-              variablesManager.addVariable(variable);
-              d.dismiss();
+              if (variableNameValidator.isValid()) {
+                var variable = new VariableBean();
+                variable.name = binding.tieName.getText().toString().replaceAll(" ", "_");
+                variable.type = selectedType.get();
+                variablesManager.addVariable(variable);
+                d.dismiss();
+              }
             })
         .show();
   }
