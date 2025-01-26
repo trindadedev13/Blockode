@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.ui.activities.editor.components.ViewLogicEditor;
+import dev.trindadedev.neobrutalism.NeoFloatingActionButton;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 
 public class PaletteAnimator extends Contextualizable {
@@ -20,7 +20,7 @@ public class PaletteAnimator extends Contextualizable {
   private ObjectAnimator paletteCloseAnimator;
   private ObjectAnimator blockPaneOpenAnimator;
   private ObjectAnimator blockPaneCloseAnimator;
-  public FloatingActionButton fabTogglePalette;
+  public NeoFloatingActionButton fabTogglePalette;
   public ViewLogicEditor editor;
   public LinearLayout layoutPalette;
   public LinearLayout areaPalette;

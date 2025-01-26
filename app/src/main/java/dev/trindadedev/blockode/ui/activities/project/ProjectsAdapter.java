@@ -29,10 +29,6 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
   @Override
   @NonNull
   public void onBindViewHolder(@NonNull ProjectsAdapterViewHolder holder, int position) {
-    holder
-        .binding
-        .getRoot()
-        .setBackgroundResource(DesignUtil.getShapedBackgroundForList(getCurrentList(), position));
     var item = getItem(position); // project folder
     // try load project data based in folder name.
     var project = ProjectManager.getProjectByScId(item.getName());

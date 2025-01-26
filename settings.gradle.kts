@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "Blockode"
 
 include(":app")
+include(":neobrutalism")

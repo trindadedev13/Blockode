@@ -1,16 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:padding="20dp"
-  android:layout_marginRight="12dp"
-  android:layout_marginLeft="12dp"
-  android:layout_marginBottom="5dp"
-  android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8"?>
+<dev.trindadedev.neobrutalism.NeoView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     app:foregroundStrokeWidth="@dimen/neo_stroke_width"
+     android:gravity="center"
+     app:foregroundColor="?colorSurfaceContainer"
+     android:elevation="5dp"
+     app:backgroundMarginTop="6dp"
+     android:layout_margin="10dp"
+     app:backgroundMarginStart="6dp"
+     app:backgroundShadowColor="?colorPrimary"
+     app:foregroundStrokeColor="?colorOutline"
+     app:backgroundRadius="15dp">
 
-  <TextView
-    android:id="@+id/name"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textSize="16sp" />
+    <TextView
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:layout_marginEnd="10dp"
+         android:gravity="center"
+         android:textAlignment="center"
+         android:padding="20dp"
+         android:fontFamily="@font/neubrutalism_font_1_regular"
+         android:textSize="18sp"
+         android:id="@+id/name"
+         android:text="Hello" />
 
-</LinearLayout>
+</dev.trindadedev.neobrutalism.NeoView>
