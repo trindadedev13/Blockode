@@ -1,9 +1,12 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
 import android.content.Context;
+import android.text.Editable;
 import android.view.View;
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.base.Inflator;
@@ -124,21 +127,32 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
             selectedType.set(BlockUtil.VAR_TYPE_BOOLEAN);
           }
         });
-    new MaterialAlertDialogBuilder(context)
+    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+    builder
         .setTitle(context.getString(R.string.title_popup_create_variable))
         .setView(binding.getRoot())
         .setPositiveButton(
             view.getContext().getString(R.string.common_word_create),
             (d, w) -> {
-              if (variableNameValidator.isValid()) {
-                var variable = new VariableBean();
-                variable.name = binding.tieName.getText().toString().replaceAll(" ", "_");
-                variable.type = selectedType.get();
-                variablesManager.addVariable(variable);
-                d.dismiss();
-              }
-            })
-        .show();
+              var variable = new VariableBean();
+              variable.name = binding.tieName.getText().toString().replaceAll(" ", "_");
+              variable.type = selectedType.get();
+              variablesManager.addVariable(variable);
+              d.dismiss();
+            });
+
+    final AlertDialog dialog = builder.create();
+    dialog.setOnShowListener(
+        d -> {
+          final Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+          positiveButton.setEnabled(variableNameValidator.isValid());
+          variableNameValidator.setOnTextChanged(
+              () -> {
+                positiveButton.setEnabled(variableNameValidator.isValid());
+              });
+        });
+
+    dialog.show();
   }
 
   public String getScId() {
