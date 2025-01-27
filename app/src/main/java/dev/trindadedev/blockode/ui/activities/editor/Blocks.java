@@ -118,15 +118,4 @@ public class Blocks {
   public void createMathBlocksPalette(final int color) {}
 
   public void createFileBlocksPalette(final int color) {}
-
-  public void createViewBlocksPalette(final int color) {
-    paletteBlocksManager.addBlockToPalette("", " ", "setEnable", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "getEnable", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "setVisible", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "setText", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "getText", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "setBgColor", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "setTextColor", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "doToast", -13851166, new Object[0]);
-  }
 }

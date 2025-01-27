@@ -40,7 +40,6 @@ public class PaletteSelector extends LinearLayout implements View.OnClickListene
     addCategoryItem(3, getStr(R.string.block_category_operator), 0xff5cb722);
     addCategoryItem(4, getStr(R.string.block_category_math), 0xff23b9a9);
     addCategoryItem(5, getStr(R.string.block_category_file), 0xffa1887f);
-    addCategoryItem(6, getStr(R.string.block_category_view_func), 0xff4a6cd4);
   }
 
   private final String getStr(final int resId) {
