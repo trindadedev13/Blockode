@@ -1,19 +1,17 @@
 package dev.trindadedev.neobrutalism;
 
-import android.widget.RelativeLayout;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.Color;
-import android.view.View.OnClickListener;
-import android.content.res.ColorStateList;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.view.MotionEvent;
-import android.content.res.TypedArray;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 
 public class NeoView extends RelativeLayout {
@@ -103,8 +101,7 @@ public class NeoView extends RelativeLayout {
         attributes.getDimensionPixelSize(R.styleable.NeoView_foregroundStrokeWidth, 3);
     state.backgroundShadowColor =
         attributes.getColor(R.styleable.NeoView_backgroundShadowColor, Color.BLACK);
-    state.foregroundColor =
-        attributes.getColor(R.styleable.NeoView_foregroundColor, Color.WHITE);
+    state.foregroundColor = attributes.getColor(R.styleable.NeoView_foregroundColor, Color.WHITE);
     state.foregroundStrokeColor =
         attributes.getColor(R.styleable.NeoView_foregroundStrokeColor, Color.BLACK);
     state.pressable = attributes.getBoolean(R.styleable.NeoView_pressable, true);

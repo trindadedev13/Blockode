@@ -2,10 +2,7 @@ package dev.trindadedev.neobrutalism.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.RelativeLayout;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public abstract class BaseNeoRelativeLayout extends RelativeLayout implements IBaseNeo {
   protected static final int INT_NULL = -1;

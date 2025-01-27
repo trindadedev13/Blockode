@@ -3,7 +3,6 @@ package dev.trindadedev.blockode.ui.activities.editor;
 import static dev.trindadedev.blockode.exc.todo.TODO.TODO;
 
 import android.content.Context;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import androidx.annotation.NonNull;
@@ -19,7 +18,6 @@ import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.variable.Atomic;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PaletteButtonClickListener extends Inflator implements View.OnClickListener {
 

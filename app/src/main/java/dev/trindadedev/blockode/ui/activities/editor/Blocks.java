@@ -1,14 +1,12 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
-import android.util.Pair;
-import dev.trindadedev.blockode.beans.VariableBean;
-import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
 
 import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
+import dev.trindadedev.blockode.beans.VariableBean;
+import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.SpecUtil;
-import java.util.Iterator;
 import java.util.List;
 
 public class Blocks {
