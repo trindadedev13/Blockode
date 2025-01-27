@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import dev.trindadedev.neobrutalism.databinding.NeoExtendedFloatingActionButtonBinding;
 
 public class NeoExtendedFloatingActionButton extends BaseNeoRelativeLayout {
@@ -14,29 +16,30 @@ public class NeoExtendedFloatingActionButton extends BaseNeoRelativeLayout {
 
   public NeoExtendedFloatingActionButton(final Context context) {
     super(context);
-    init(null);
   }
 
   public NeoExtendedFloatingActionButton(final Context context, final AttributeSet attrs) {
     super(context, attrs);
-    init(attrs);
   }
 
   public NeoExtendedFloatingActionButton(
       final Context context, final AttributeSet attrs, final int defStyleRes) {
     super(context, attrs, defStyleRes);
-    init(attrs);
   }
 
-  private void init(final AttributeSet attrs) {
+  @Override
+  protected void init(
+      @NonNull final Context context,
+      @Nullable final AttributeSet attrs,
+      @Nullable final int defStyleRes) {
     binding =
         NeoExtendedFloatingActionButtonBinding.inflate(
-            LayoutInflater.from(getContext()), this, true);
+            LayoutInflater.from(context), this, true);
 
     final var attributes =
-        getContext().obtainStyledAttributes(attrs, R.styleable.NeoFloatingActionButton, 0, 0);
+        context.obtainStyledAttributes(attrs, R.styleable.NeoFloatingActionButton, 0, 0);
     final var attributesExtended =
-        getContext()
+        context
             .obtainStyledAttributes(attrs, R.styleable.NeoExtendedFloatingActionButton, 0, 0);
     final var icon = attributes.getDrawable(R.styleable.NeoFloatingActionButton_fabIcon);
     final var text =

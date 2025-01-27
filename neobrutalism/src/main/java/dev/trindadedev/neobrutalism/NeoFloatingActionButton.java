@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import dev.trindadedev.neobrutalism.databinding.NeoFloatingActionButtonBinding;
 
 public class NeoFloatingActionButton extends BaseNeoRelativeLayout {
@@ -15,25 +17,26 @@ public class NeoFloatingActionButton extends BaseNeoRelativeLayout {
 
   public NeoFloatingActionButton(final Context context) {
     super(context);
-    init(null);
   }
 
   public NeoFloatingActionButton(final Context context, final AttributeSet attrs) {
     super(context, attrs);
-    init(attrs);
   }
 
   public NeoFloatingActionButton(
       final Context context, final AttributeSet attrs, final int defStyleRes) {
     super(context, attrs, defStyleRes);
-    init(attrs);
   }
 
-  private void init(final AttributeSet attrs) {
+  @Override
+  protected void init(
+      @NonNull final Context context,
+      @Nullable final AttributeSet attrs,
+      @Nullable final int defStyleRes) {
     binding = NeoFloatingActionButtonBinding.inflate(LayoutInflater.from(getContext()), this, true);
 
     final var attributes =
-        getContext().obtainStyledAttributes(attrs, R.styleable.NeoFloatingActionButton, 0, 0);
+        context.obtainStyledAttributes(attrs, R.styleable.NeoFloatingActionButton, 0, 0);
     final var icon = attributes.getDrawable(R.styleable.NeoFloatingActionButton_fabIcon);
     setIcon(icon);
   }
