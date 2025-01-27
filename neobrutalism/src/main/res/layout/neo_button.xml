@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dev.trindadedev.neobrutalism.NeoView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     app:backgroundMarginStart="@dimen/neo_button_background_margin_start"
+     app:backgroundShadowColor="?colorPrimary"
+     app:backgroundRadius="@dimen/neo_background_radius"
+     app:foregroundStrokeWidth="@dimen/neo_stroke_width"
+     android:gravity="center"
+     app:foregroundColor="?colorSurfaceContainer"
+     app:backgroundMarginTop="@dimen/neo_button_background_margin_top"
+     app:foregroundStrokeColor="?colorOutline"
+     android:id="@+id/button_root">
+
+    <TextView
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:layout_marginEnd="@dimen/neo_button_text_margin_end"
+         android:gravity="center"
+         android:textAlignment="center"
+         android:padding="@dimen/neo_button_text_padding"
+         android:fontFamily="@font/neubrutalism_font_1_regular"
+         android:textSize="@dimen/neo_button_text_size"
+         android:id="@+id/button_text"
+         android:text="Text" />
+
+</dev.trindadedev.neobrutalism.NeoView>
