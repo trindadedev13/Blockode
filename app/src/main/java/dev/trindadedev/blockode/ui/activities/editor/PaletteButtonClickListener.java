@@ -164,7 +164,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
   }
 
   /** displays a dialog to create new list in the project List<String> etc */
-  void showCreateList() {
+  void showCreateListDialog() {
     TODO("showCreateList");
   }
 

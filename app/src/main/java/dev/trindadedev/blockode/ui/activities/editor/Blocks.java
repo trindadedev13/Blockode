@@ -1,5 +1,6 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
+import dev.trindadedev.blockode.utils.BlockUtil;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
 
 import androidx.annotation.Nullable;
@@ -45,29 +46,29 @@ public class Blocks {
 
       if (type == 0) {
         paletteBlocksManager.addBlockToPalette(
-            variableName, "b", "getVar", -1147626, new Object[0]);
+            variableName, BlockUtil.BLOCK_TYPE_BOOLEAN, BlockUtil.BLOCK_OPCODE_GET_VAR, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
         i3++;
       } else if (type == 1) {
         paletteBlocksManager.addBlockToPalette(
-            variableName, "d", "getVar", -1147626, new Object[0]);
+            variableName, BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_GET_VAR, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
         i2++;
       } else {
         paletteBlocksManager.addBlockToPalette(
-            variableName, "s", "getVar", -1147626, new Object[0]);
+            variableName, BlockUtil.BLOCK_TYPE_STRING, BlockUtil.BLOCK_OPCODE_GET_VAR, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
         i++;
       }
     }
 
     if (i3 > 0) {
-      paletteBlocksManager.addBlockToPalette("", " ", "setVarBoolean", -1147626, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, BlockUtil.BLOCK_OPCODE_SET_VAR_BOOL, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
     }
     if (i2 > 0) {
-      paletteBlocksManager.addBlockToPalette("", " ", "setVarInt", -1147626, new Object[0]);
-      paletteBlocksManager.addBlockToPalette("", " ", "increaseInt", -1147626, new Object[0]);
-      paletteBlocksManager.addBlockToPalette("", " ", "decreaseInt", -1147626, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, BlockUtil.BLOCK_OPCODE_SET_VAR_INT, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, "increaseInt", BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, "decreaseInt", BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
     }
     if (i > 0) {
-      paletteBlocksManager.addBlockToPalette("", " ", "setVarString", -1147626, new Object[0]);
+      paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, BlockUtil.BLOCK_OPCODE_SET_VAR_STR, BlockUtil.BLOCK_COLOR_VARIABLE, new Object[0]);
     }
   }
 
@@ -79,40 +80,40 @@ public class Blocks {
   }
 
   public void createControlBlocksPalette(final int color) {
-    paletteBlocksManager.addBlockToPalette("", "c", "repeat", color, Integer.valueOf(10));
-    paletteBlocksManager.addBlockToPalette("", "c", "forever", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "f", "break", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "c", "if", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "e", "ifElse", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_LOOP, "repeat", color, Integer.valueOf(10));
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_LOOP, "forever", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_FINAL, "break", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_LOOP, "if", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_IFELSE, "ifElse", color, new Object[0]);
   }
 
   public void createOperatorBlocksPalette(final int color) {
-    paletteBlocksManager.addBlockToPalette("", "b", "true", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "false", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "<", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "=", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", ">", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "&&", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "||", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "not", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "+", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "-", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "*", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "/", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "%", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "true", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "false", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "<", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "=", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, ">", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "&&", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "||", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "not", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "+", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "-", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "*", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "/", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "%", color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(
-        "", "d", "random", color, Integer.valueOf(1), Integer.valueOf(10));
-    paletteBlocksManager.addBlockToPalette("", "d", "stringLength", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "stringJoin", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "stringIndex", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "stringSub", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "b", "stringEquals", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "d", "toNumber", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "toString", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "trim", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "toUpperCase", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", "s", "toLowerCase", color, new Object[0]);
-    paletteBlocksManager.addBlockToPalette("", " ", "addSourceDirectly", color, new Object[0]);
+        "", BlockUtil.BLOCK_TYPE_INTEGER, "random", color, Integer.valueOf(1), Integer.valueOf(10));
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "stringLength", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "stringJoin", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "stringIndex", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "stringSub", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_BOOLEAN, "stringEquals", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_INTEGER, "toNumber", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "toString", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "trim", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "toUpperCase", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_STRING, "toLowerCase", color, new Object[0]);
+    paletteBlocksManager.addBlockToPalette("", BlockUtil.BLOCK_TYPE_COMMAND, "addSourceDirectly", color, new Object[0]);
   }
 
   public void createMathBlocksPalette(final int color) {}

@@ -1,6 +1,7 @@
 package dev.trindadedev.blockode.ui.editor.block;
 
 /** Decompiled from Sketchware 1.1.13 */
+
 import static dev.trindadedev.blockode.utils.LayoutUtil.getDip;
 
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import androidx.annotation.NonNull;
 import dev.trindadedev.blockode.base.Selectable;
 import dev.trindadedev.blockode.databinding.LayoutPaletteSelectorItemBinding;
 import dev.trindadedev.blockode.utils.ThemeUtil;
@@ -50,18 +52,22 @@ public class PaletteSelectorItem extends RelativeLayout implements Selectable {
   }
 
   @Override
+  @NonNull
   public boolean getSelected() {
     return selected;
   }
 
+  @NonNull
   public int getColor() {
     return color;
   }
 
+  @NonNull
   public int getId() {
     return id;
   }
 
+  @NonNull
   public String getName() {
     return name;
   }

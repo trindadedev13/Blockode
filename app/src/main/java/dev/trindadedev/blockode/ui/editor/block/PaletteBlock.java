@@ -10,14 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import dev.trindadedev.blockode.databinding.LayoutPaletteBlockBinding;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 
 public class PaletteBlock extends LinearLayout {
 
   private LayoutPaletteBlockBinding binding;
 
-  private float dip = 0.0f;
-  private Context mContext;
+  private int dip = 0;
 
   public PaletteBlock(Context context) {
     super(context);
@@ -31,47 +31,45 @@ public class PaletteBlock extends LinearLayout {
 
   private void init(Context context) {
     binding = LayoutPaletteBlockBinding.inflate(LayoutInflater.from(context), this, true);
-    this.mContext = context;
-    this.dip = LayoutUtil.getDip(this.mContext, 1.0f);
+    this.dip = (int) LayoutUtil.getDip(getContext(), 1.0f);
   }
 
-  public BlockBase addBlock(String str, String str2, String str3, int i, Object... objArr) {
-    var view = new View(this.mContext);
+  public BlockBase addBlock(final String str, final String type, final String name, final int color, Object... objArr) {
+    final var view = new View(getContext());
     view.setLayoutParams(new LinearLayout.LayoutParams(-1, (int) (8.0f * this.dip)));
     binding.blockBuilder.addView(view);
-    var block = new Block(this.mContext, -1, str, str2, str3, Integer.valueOf(i), objArr);
+    final var block = new Block(getContext(), -1, str, type, name, Integer.valueOf(color), objArr);
     block.setBlockType(1);
     binding.blockBuilder.addView(block);
     return block;
   }
 
-  public TextView addButton(final String title) {
-    var textView = new TextView(getContext());
+  public MaterialCardView addButton(final String title) {
+    final var textView = new TextView(getContext());
     textView.setText(title);
     textView.setTextSize(10.0F);
     textView.setGravity(Gravity.CENTER);
     textView.setPadding((int) (dip * 8.0F), 0, (int) (dip * 8.0F), 0);
 
-    var cardView = new MaterialCardView(getContext());
-    var params = getLayoutParams(30.0F);
+    final var cardView = new MaterialCardView(getContext());
+    final var params = getLayoutParams(30);
     params.setMargins(0, 0, 3, 3);
     cardView.setLayoutParams(params);
-
     cardView.setCardElevation(0f);
     cardView.setRadius(12.0f);
     cardView.setStrokeWidth(0);
     cardView.addView(textView);
     binding.actionsContainer.addView(cardView);
-    return textView;
+    return cardView;
   }
 
   public PaletteSelector getPaletteSelector() {
     return binding.paletteSelector;
   }
 
-  private LinearLayout.LayoutParams getLayoutParams(float heightMultiplier) {
+  private LinearLayout.LayoutParams getLayoutParams(final int heightMultiplier) {
     return new LinearLayout.LayoutParams(
-        LinearLayout.LayoutParams.MATCH_PARENT, (int) (dip * heightMultiplier));
+        LinearLayout.LayoutParams.MATCH_PARENT, (dip * heightMultiplier));
   }
 
   public void removeAllBlocks() {
@@ -79,7 +77,7 @@ public class PaletteBlock extends LinearLayout {
     binding.actionsContainer.removeAllViews();
   }
 
-  public void setDragEnabled(boolean dragEnabled) {
+  public void setDragEnabled(final boolean dragEnabled) {
     if (dragEnabled) {
       binding.scroll.setScrollEnabled();
       binding.scrollHorizontal.setScrollEnabled();
@@ -89,9 +87,9 @@ public class PaletteBlock extends LinearLayout {
     binding.scrollHorizontal.setScrollDisabled();
   }
 
-  public void setMinWidth(int i) {
-    binding.scroll.setMinimumWidth(i - ((int) (this.dip * 5.0f)));
-    binding.scrollHorizontal.setMinimumWidth(i - ((int) (this.dip * 5.0f)));
-    getLayoutParams().width = i;
+  public void setMinWidth(final int minWidth) {
+    binding.scroll.setMinimumWidth(minWidth - (dip * 5));
+    binding.scrollHorizontal.setMinimumWidth(minWidth - (dip * 5));
+    getLayoutParams().width = minWidth;
   }
 }
