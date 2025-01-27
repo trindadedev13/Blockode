@@ -1,5 +1,7 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
+import static dev.trindadedev.blockode.exc.todo.TODO.TODO;
+
 import android.content.Context;
 import android.text.Editable;
 import android.view.View;
@@ -101,15 +103,18 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
 
     switch (tag) {
       case ButtonsTag.BUTTON_ADD_VARIABLE -> showCreateVariableDialog();
+      case ButtonsTag.BUTTON_REMOVE_VARIABLE -> showRemoveVariableDialog();
+      case ButtonsTag.BUTTON_ADD_LIST -> showCreateListDialog();
+      case ButtonsTag.BUTTON_REMOVE_LIST -> showRemoveListDialog();
+      case ButtonsTag.BUTTON_ADD_BLOCK -> showCreateBlockDialog();
     }
   }
 
-  /** display a dialog to create new variable in project */
+  /** display a dialog to create new variable in project, string, boolean, int */
   void showCreateVariableDialog() {
     var binding = DialogAddVariableBinding.inflate(getLayoutInflater());
     binding.varTypeString.setChecked(true);
     var selectedType = new Atomic<Integer>(BlockUtil.VAR_TYPE_STRING);
-    var keywords = List.of("int", "String", "boolean", "lomg");
     var variablesExisting = new ArrayList<String>();
     variablesManager
         .getVariables()
@@ -127,7 +132,7 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
             selectedType.set(BlockUtil.VAR_TYPE_BOOLEAN);
           }
         });
-    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+    var builder = new MaterialAlertDialogBuilder(context);
     builder
         .setTitle(context.getString(R.string.title_popup_create_variable))
         .setView(binding.getRoot())
@@ -153,6 +158,26 @@ public class PaletteButtonClickListener extends Inflator implements View.OnClick
         });
 
     dialog.show();
+  }
+
+  /** displays a dialog to remove existing variables of project */
+  void showRemoveVariableDialog() {
+    TODO("showRemoveVariableDialog");
+  }
+
+  /** displays a dialog to create new list in the project List<String> etc */
+  void showCreateList() {
+    TODO("showCreateList");
+  }
+
+  /** displays a dialog to remove existing lists of project */
+  void showRemoveListDialog() {
+    TODO("showRemoveListDialog");
+  }
+
+  /** displays a dialog to create user own block */
+  void showCreateBlockDialog() {
+    TODO("showCreateBlockDialog");
   }
 
   public String getScId() {
