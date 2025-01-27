@@ -1,4 +1,4 @@
-package dev.trindadedev.neobrutalism;
+package dev.trindadedev.neobrutalism.floatingactionbutton;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import dev.trindadedev.neobrutalism.R;
+import dev.trindadedev.neobrutalism.base.BaseNeoRelativeLayout;
 import dev.trindadedev.neobrutalism.databinding.NeoExtendedFloatingActionButtonBinding;
 
 public class NeoExtendedFloatingActionButton extends BaseNeoRelativeLayout {
@@ -28,19 +30,17 @@ public class NeoExtendedFloatingActionButton extends BaseNeoRelativeLayout {
   }
 
   @Override
-  protected void init(
+  public void init(
       @NonNull final Context context,
       @Nullable final AttributeSet attrs,
       @Nullable final int defStyleRes) {
     binding =
-        NeoExtendedFloatingActionButtonBinding.inflate(
-            LayoutInflater.from(context), this, true);
+        NeoExtendedFloatingActionButtonBinding.inflate(LayoutInflater.from(context), this, true);
 
     final var attributes =
         context.obtainStyledAttributes(attrs, R.styleable.NeoFloatingActionButton, 0, 0);
     final var attributesExtended =
-        context
-            .obtainStyledAttributes(attrs, R.styleable.NeoExtendedFloatingActionButton, 0, 0);
+        context.obtainStyledAttributes(attrs, R.styleable.NeoExtendedFloatingActionButton, 0, 0);
     final var icon = attributes.getDrawable(R.styleable.NeoFloatingActionButton_fabIcon);
     final var text =
         attributesExtended.getString(R.styleable.NeoExtendedFloatingActionButton_fabText);
@@ -61,12 +61,17 @@ public class NeoExtendedFloatingActionButton extends BaseNeoRelativeLayout {
   }
 
   @Override
-  protected View getRoot() {
-    return binding.fabRoot;
+  public void setOnClickListener(OnClickListener onClickListener) {
+    binding.fabRoot.setOnClickListener(onClickListener);
   }
 
   @Override
-  public void setOnClickListener(OnClickListener onClickListener) {
-    binding.fabRoot.setOnClickListener(onClickListener);
+  public String getNeoName() {
+    return "NeoExtendedFloatingActionButton";
+  }
+
+  @Override
+  public View getNeoRoot() {
+    return binding.fabRoot;
   }
 }

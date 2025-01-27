@@ -1,4 +1,4 @@
-package dev.trindadedev.neobrutalism;
+package dev.trindadedev.neobrutalism.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public abstract class BaseNeoRelativeLayout extends RelativeLayout {
+public abstract class BaseNeoRelativeLayout extends RelativeLayout implements IBaseNeo {
   protected static final int INT_NULL = -1;
 
   public BaseNeoRelativeLayout(final Context context) {
@@ -26,16 +26,8 @@ public abstract class BaseNeoRelativeLayout extends RelativeLayout {
     init(context, attrs, defStyleRes);
   }
 
-  @NonNull
-  protected abstract View getRoot();
-
-  protected abstract void init(
-      @NonNull final Context context,
-      @Nullable final AttributeSet attrs,
-      @Nullable final int defStyleRes);
-
   @Override
   public void setOnClickListener(OnClickListener onClickListener) {
-    getRoot().setOnClickListener(onClickListener);
+    getNeoRoot().setOnClickListener(onClickListener);
   }
 }

@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.ui.activities.editor.components.ViewLogicEditor;
-import dev.trindadedev.neobrutalism.NeoFloatingActionButton;
+import dev.trindadedev.neobrutalism.floatingactionbutton.NeoFloatingActionButton;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 
 public class PaletteAnimator extends Contextualizable {

@@ -1,4 +1,4 @@
-package dev.trindadedev.neobrutalism;
+package dev.trindadedev.neobrutalism.floatingactionbutton;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import dev.trindadedev.neobrutalism.R;
+import dev.trindadedev.neobrutalism.base.BaseNeoRelativeLayout;
 import dev.trindadedev.neobrutalism.databinding.NeoFloatingActionButtonBinding;
 
 public class NeoFloatingActionButton extends BaseNeoRelativeLayout {
@@ -29,7 +31,7 @@ public class NeoFloatingActionButton extends BaseNeoRelativeLayout {
   }
 
   @Override
-  protected void init(
+  public void init(
       @NonNull final Context context,
       @Nullable final AttributeSet attrs,
       @Nullable final int defStyleRes) {
@@ -50,7 +52,12 @@ public class NeoFloatingActionButton extends BaseNeoRelativeLayout {
   }
 
   @Override
-  protected View getRoot() {
+  public String getNeoName() {
+    return "NeoFloatingActionButton";
+  }
+
+  @Override
+  public View getNeoRoot() {
     return binding.fabRoot;
   }
 }

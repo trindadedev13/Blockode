@@ -1,47 +1,57 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
-
-  <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/app_bar_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <com.google.android.material.appbar.MaterialToolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      app:navigationIcon="?homeAsUpIndicator"
-      app:title="@string/app_name" />
-  </com.google.android.material.appbar.AppBarLayout>
-
-  <LinearLayout
-    android:id="@+id/content"
-    android:layout_width="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_width="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/list"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:paddingStart="15dp"
-      android:paddingEnd="8dp"
-      android:paddingTop="8dp"
-      android:paddingBottom="120dp"
-      android:transitionGroup="true"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"  />
-  </LinearLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/app_bar_layout">
 
-  <dev.trindadedev.neobrutalism.NeoExtendedFloatingActionButton
-    android:id="@+id/create_new"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="right|bottom"
-    android:layout_margin="10dp"
-    app:fabText="@string/common_word_create_new"
-    app:fabIcon="@drawable/ic_mtrl_add" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            app:title="@string/app_name"
+            app:navigationIcon="?homeAsUpIndicator"
+            android:id="@+id/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical"
+        android:id="@+id/content">
+
+        <dev.trindadedev.neobrutalism.button.NeoButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Button test" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:paddingEnd="8dp"
+            android:transitionGroup="true"
+            android:paddingBottom="120dp"
+            android:paddingStart="15dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:id="@+id/list"
+            android:paddingTop="8dp" />
+
+    </LinearLayout>
+
+    <dev.trindadedev.neobrutalism.floatingactionbutton.NeoExtendedFloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:fabIcon="@drawable/ic_mtrl_add"
+        app:fabText="@string/common_word_create_new"
+        android:layout_margin="10dp"
+        android:id="@+id/create_new"
+        android:layout_gravity="right|bottom" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

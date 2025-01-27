@@ -39,7 +39,7 @@
       android:layout_height="wrap_content"
       android:orientation="vertical">
 
-      <dev.trindadedev.neobrutalism.NeoFloatingActionButton
+      <dev.trindadedev.neobrutalism.floatingactionbutton.NeoFloatingActionButton
         android:id="@+id/fab_toggle_palette"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
