@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="NeoView">
+    <attr
+      name="backgroundMarginTop"
+      format="dimension" />
+    <attr
+      name="backgroundMarginStart"
+      format="dimension" />
+    <attr
+      name="backgroundRadius"
+      format="dimension" />
+    <attr
+      name="foregroundStrokeWidth"
+      format="dimension" />
+    <attr
+      name="backgroundShadowColor"
+      format="color" />
+    <attr
+      name="foregroundStrokeColor"
+      format="color" />
+    <attr
+      name="foregroundColor"
+      format="color" />
+    <attr
+      name="pressable"
+      format="boolean" />
+  </declare-styleable>
+</resources>

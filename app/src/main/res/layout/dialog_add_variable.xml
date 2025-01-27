@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_height="wrap_content"
+  android:layout_width="match_parent"
+  android:gravity="center|start"
+  android:focusableInTouchMode="true"
+  android:orientation="vertical"
+  android:paddingHorizontal="20dp"
+  android:focusable="true"
+  android:paddingTop="20dp">
+
+  <RadioGroup
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:gravity="center|start"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    android:paddingHorizontal="20dp"
-    android:focusable="true"
-    android:paddingTop="20dp">
+    android:id="@+id/var_type_group">
 
-    <RadioGroup
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/var_type_group">
+    <RadioButton
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:id="@+id/var_type_string"
+      android:text="@string/common_word_string" />
 
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/var_type_string"
-            android:text="@string/common_word_string" />
+    <RadioButton
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:id="@+id/var_type_integer"
+      android:text="@string/common_word_integer" />
 
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/var_type_integer"
-            android:text="@string/common_word_integer" />
+    <RadioButton
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:id="@+id/var_type_boolean"
+      android:text="@string/common_word_boolean" />
 
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/var_type_boolean"
-            android:text="@string/common_word_boolean" />
+  </RadioGroup>
 
-    </RadioGroup>
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/tilName"
+    android:hint="@string/hint_enter_variable_name">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/tilName"
-        android:hint="@string/hint_enter_variable_name">
+    <com.google.android.material.textfield.TextInputEditText
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:importantForAutofill="no"
+      android:textSize="16sp"
+      android:inputType="textMultiLine|textNoSuggestions"
+      tools:ignore="LabelFor"
+      android:id="@+id/tieName" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:importantForAutofill="no"
-            android:textSize="16sp"
-            android:inputType="textMultiLine|textNoSuggestions"
-            tools:ignore="LabelFor"
-            android:id="@+id/tieName" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+  </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
