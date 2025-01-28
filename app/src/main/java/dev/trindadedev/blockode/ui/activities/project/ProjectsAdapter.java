@@ -10,7 +10,6 @@ import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.databinding.LayoutProjectBinding;
 import dev.trindadedev.blockode.io.File;
 import dev.trindadedev.blockode.project.ProjectManager;
-import dev.trindadedev.blockode.utils.DesignUtil;
 import dev.trindadedev.blockode.utils.function.Listener;
 
 public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsAdapterViewHolder> {

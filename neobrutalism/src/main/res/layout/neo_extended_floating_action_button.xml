@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dev.trindadedev.neobrutalism.NeoView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<dev.trindadedev.neobrutalism.NeoView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_height="wrap_content"
+  android:layout_width="wrap_content"
+  app:backgroundMarginStart="@dimen/neo_extended_fab_background_margin_start"
+  app:backgroundShadowColor="?colorPrimary"
+  android:paddingStart="@dimen/neo_extended_fab_padding_start"
+  app:backgroundRadius="@dimen/neo_background_radius"
+  app:foregroundStrokeWidth="@dimen/neo_stroke_width"
+  android:paddingEnd="@dimen/neo_extended_fab_padding_end"
+  app:foregroundColor="?colorSurfaceContainer"
+  android:gravity="center"
+  app:backgroundMarginTop="@dimen/neo_extended_fab_background_margin_start"
+  android:minHeight="@dimen/neo_extended_fab_min_height"
+  android:paddingBottom="@dimen/m3_alert_dialog_action_bottom_padding"
+  app:foregroundStrokeColor="?colorOutline"
+  android:paddingTop="@dimen/m3_alert_dialog_action_top_padding"
+  android:id="@+id/fab_root">
+
+  <LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    app:backgroundMarginStart="6dp"
-    app:backgroundShadowColor="?colorPrimary"
-    android:paddingStart="@dimen/neo_extended_fab_padding_start"
-    app:backgroundRadius="15dp"
-    app:foregroundStrokeWidth="@dimen/neo_stroke_width"
-    android:paddingEnd="@dimen/neo_extended_fab_padding_end"
-    app:foregroundColor="?colorSurfaceContainer"
     android:gravity="center"
-    app:backgroundMarginTop="6dp"
-    android:minHeight="@dimen/neo_extended_fab_min_height"
-    android:paddingBottom="@dimen/m3_alert_dialog_action_bottom_padding"
-    app:foregroundStrokeColor="?colorOutline"
-    android:paddingTop="@dimen/m3_alert_dialog_action_top_padding"
-    android:id="@+id/fab_root">
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <ImageView
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:padding="@dimen/neo_extended_fab_icon_padding"
+      android:id="@+id/fab_icon"
+      app:tint="?colorOnSurface" />
 
-        <ImageView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="@dimen/neo_extended_fab_icon_padding"
-            android:id="@+id/fab_icon"
-            app:tint="?colorOnSurface" />
+    <TextView
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:layout_marginEnd="20dp"
+      android:id="@+id/fab_text" />
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:id="@+id/fab_text" />
-
-    </LinearLayout>
+  </LinearLayout>
 
 </dev.trindadedev.neobrutalism.NeoView>

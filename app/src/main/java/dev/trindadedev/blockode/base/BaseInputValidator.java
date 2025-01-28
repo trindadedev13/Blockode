@@ -1,11 +1,11 @@
 package dev.trindadedev.blockode.base;
 
 import android.content.Context;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public abstract class BaseInputValidator implements TextWatcher, InputFilter {
   protected Context context;
