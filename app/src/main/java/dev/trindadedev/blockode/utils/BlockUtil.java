@@ -230,7 +230,7 @@ public class BlockUtil {
   public static final String BLOCK_OPCODE_TO_STRING = "toString";
   public static final String BLOCK_OPCODE_TRIM = "trim";
   public static final String BLOCK_OPCODE_TRUE = "true";
-  public static final String BLOCK_OPCODE_VIBRATOR_ACTION = "vibratorAction";
+  public static final String BLOCK_OPCODE_ADD_SOURCE_DIRECTLY = "addSourceDirectly";
   public static final String BLOCK_TYPE_BOOLEAN = "b";
   public static final String BLOCK_TYPE_COMMAND = " ";
   public static final String BLOCK_TYPE_DROPDOWN = "m";
