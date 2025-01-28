@@ -8,8 +8,8 @@ import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.beans.VariableBean;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.SpecUtil;
+import dev.trindadedev.blockode.utils.variable.Atomic;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Blocks {
   private PaletteBlocksManager paletteBlocksManager;
@@ -37,9 +37,9 @@ public class Blocks {
   private void addVariablesFromVariablesManager() {
     variablesManager.setScId(paletteBlocksManager.getScId());
     List<VariableBean> variables = variablesManager.getVariables();
-    AtomicInteger i = new AtomicInteger();
-    AtomicInteger i2 = new AtomicInteger();
-    AtomicInteger i3 = new AtomicInteger();
+    final Atomic<Integer> i = new Atomic<>(0);
+    final Atomic<Integer> i2 = new Atomic<>(0);
+    final Atomic<Integer> i3 = new Atomic<>(0);
 
     variables.forEach(
         variable -> {
@@ -53,7 +53,7 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i3.getAndIncrement();
+            i3.set(i3.get() + 1);
           } else if (type == 1) {
             paletteBlocksManager.addBlockToPalette(
                 variableName,
@@ -61,7 +61,7 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i2.getAndIncrement();
+            i2.set(i2.get() + 1);
           } else {
             paletteBlocksManager.addBlockToPalette(
                 variableName,
@@ -69,7 +69,7 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i.getAndIncrement();
+            i.set(i.get() + 1);
           }
         });
 

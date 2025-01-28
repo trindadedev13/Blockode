@@ -116,7 +116,6 @@ public class BlockUtil {
   public static final String BLOCK_HELPER_TO_STRING = "4O20";
   public static final String BLOCK_HELPER_TRIM = "4O22";
   public static final String BLOCK_HELPER_TRUE = "4O00";
-  public static final String BLOCK_HELPER_VIBRATOR = "5F060";
   public static final String BLOCK_OPCODE_ADD_LIST_INT = "addListInt";
   public static final String BLOCK_OPCODE_ADD_LIST_STR = "addListStr";
   public static final String BLOCK_OPCODE_AND = "&&";
@@ -522,12 +521,6 @@ public class BlockUtil {
       case -75125341:
         if (opCode.equals(BLOCK_OPCODE_GET_TEXT)) {
           c = ':';
-          break;
-        }
-        break;
-      case -60494417:
-        if (opCode.equals(BLOCK_OPCODE_VIBRATOR_ACTION)) {
-          c = ']';
           break;
         }
         break;
@@ -1284,12 +1277,6 @@ public class BlockUtil {
       case -75125341:
         if (opCode.equals(BLOCK_OPCODE_GET_TEXT)) {
           c = '8';
-          break;
-        }
-        break;
-      case -60494417:
-        if (opCode.equals(BLOCK_OPCODE_VIBRATOR_ACTION)) {
-          c = 'Z';
           break;
         }
         break;
