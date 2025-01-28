@@ -1,6 +1,5 @@
 package dev.trindadedev.blockode.ui.dialogs;
 
-import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -19,10 +18,10 @@ import dev.trindadedev.blockode.databinding.DialogCreateProjectBinding;
 import dev.trindadedev.blockode.project.ProjectManager;
 
 
-public class createProjectDialog extends BottomSheetDialog {
+public class CreateProjectDialog extends BottomSheetDialog {
     private final DialogCreateProjectBinding binding;
 
-    public createProjectDialog(@NonNull Context context) {
+    public CreateProjectDialog(@NonNull Context context) {
         super(context);
         binding = DialogCreateProjectBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -41,10 +40,10 @@ public class createProjectDialog extends BottomSheetDialog {
             project.basicInfo = basicInfo;
             project.variables = new ArrayList<>();
 
-            if (!basicInfo.packageName.isBlank() && !basicInfo.packageName.isBlank() && !basicInfo.mainClassPackage.isBlank()) {
+            if (!basicInfo.packageName.isBlank() || !basicInfo.packageName.isBlank() || !basicInfo.mainClassPackage.isBlank()) {
                 ProjectManager.createProjectByBean(project);
                 dismiss();
-            } else {
+            }else{
                 Toast.makeText(getContext(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             }
         });

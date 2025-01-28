@@ -6,18 +6,14 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-import dev.trindadedev.blockode.beans.ProjectBasicInfoBean;
-import dev.trindadedev.blockode.beans.ProjectBean;
+
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
-import dev.trindadedev.blockode.project.ProjectManager;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
-import dev.trindadedev.blockode.ui.dialogs.createProjectDialog;
-
-import java.util.ArrayList;
+import dev.trindadedev.blockode.ui.dialogs.CreateProjectDialog;
 
 public class MainActivity extends BaseAppCompatActivity {
   private ActivityMainBinding binding;
@@ -42,7 +38,7 @@ public class MainActivity extends BaseAppCompatActivity {
     binding.list.setAdapter(projectsAdapter);
     binding.createNew.setOnClickListener(
         v -> {
-           createProjectDialog d = new createProjectDialog(this);
+           CreateProjectDialog d = new CreateProjectDialog(this);
                     d.show();
                     d.setOnDismissListener(dialog -> {
                         projectsViewModel.fetch();
