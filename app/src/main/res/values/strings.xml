@@ -251,6 +251,7 @@
   <string name="hint_enter_value">Enter value</string>
   <string name="hint_enter_variable_name">Enter variable name</string>
   <string name="project_name">Project name</string>
+  <string name="project_class">Project class</string>
   <string name="main_class_package">Main class package</string>
 
   <!-- Logic -->
