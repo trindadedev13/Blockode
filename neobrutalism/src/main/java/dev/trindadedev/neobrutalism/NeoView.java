@@ -1,5 +1,6 @@
 package dev.trindadedev.neobrutalism;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -38,6 +39,7 @@ public class NeoView extends RelativeLayout {
     init(attrs);
   }
 
+  @SuppressLint("ClickableViewAccessibility")
   @Override
   public void addView(final View child, final int index, final ViewGroup.LayoutParams params) {
     if (child.getId() != R.id.root) {
@@ -57,25 +59,36 @@ public class NeoView extends RelativeLayout {
       child.setOnTouchListener(
           (view, event) -> {
             final int action = event.getAction();
-            if (action == MotionEvent.ACTION_DOWN) {
-              if (state.pressable) {
-                child
-                    .animate()
-                    .translationX(state.backgroundMarginStart)
-                    .translationY(state.backgroundMarginTop)
-                    .setDuration(state.animationDuration)
-                    .start();
-              }
-            } else if (action == MotionEvent.ACTION_UP) {
-              if (state.pressable) {
-                child
-                    .animate()
-                    .translationX(0)
-                    .translationY(0)
-                    .setDuration(state.animationDuration)
-                    .start();
-              }
-              onClickListener.onClick(child);
+            switch (action) {
+              case (MotionEvent.ACTION_DOWN):
+                if (state.pressable) {
+                  child.animate()
+                          .translationX(state.backgroundMarginStart)
+                          .translationY(state.backgroundMarginTop)
+                          .setDuration(state.animationDuration)
+                          .start();
+                }
+                break;
+              case (MotionEvent.ACTION_UP):
+                if (state.pressable) {
+                  child.animate()
+                          .translationX(0)
+                          .translationY(0)
+                          .setDuration(state.animationDuration)
+                          .start();
+                }
+                onClickListener.onClick(child);
+                break;
+
+              case (MotionEvent.ACTION_MOVE):
+                if (state.pressable) {
+                  child.animate()
+                          .translationX(0)
+                          .translationY(0)
+                          .setDuration(state.animationDuration)
+                          .start();
+                }
+                break;
             }
             return true;
           });

@@ -9,6 +9,7 @@ import dev.trindadedev.blockode.beans.VariableBean;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.SpecUtil;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Blocks {
   private PaletteBlocksManager paletteBlocksManager;
@@ -36,9 +37,9 @@ public class Blocks {
   private void addVariablesFromVariablesManager() {
     variablesManager.setScId(paletteBlocksManager.getScId());
     List<VariableBean> variables = variablesManager.getVariables();
-    int i = 0;
-    int i2 = 0;
-    int i3 = 0;
+    AtomicInteger i = new AtomicInteger();
+    AtomicInteger i2 = new AtomicInteger();
+    AtomicInteger i3 = new AtomicInteger();
 
     variables.forEach(
         variable -> {
@@ -52,7 +53,7 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i3++;
+            i3.getAndIncrement();
           } else if (type == 1) {
             paletteBlocksManager.addBlockToPalette(
                 variableName,
@@ -60,7 +61,7 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i2++;
+            i2.getAndIncrement();
           } else {
             paletteBlocksManager.addBlockToPalette(
                 variableName,
@@ -68,11 +69,11 @@ public class Blocks {
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
                 BlockUtil.BLOCK_COLOR_VARIABLE,
                 new Object[0]);
-            i++;
+            i.getAndIncrement();
           }
         });
 
-    if (i3 > 0) {
+    if (i3.get() > 0) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
@@ -80,7 +81,7 @@ public class Blocks {
           BlockUtil.BLOCK_COLOR_VARIABLE,
           new Object[0]);
     }
-    if (i2 > 0) {
+    if (i2.get() > 0) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
@@ -100,7 +101,7 @@ public class Blocks {
           BlockUtil.BLOCK_COLOR_VARIABLE,
           new Object[0]);
     }
-    if (i > 0) {
+    if (i.get() > 0) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
