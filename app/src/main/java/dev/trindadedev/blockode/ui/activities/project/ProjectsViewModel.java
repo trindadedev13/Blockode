@@ -1,5 +1,8 @@
 package dev.trindadedev.blockode.ui.activities.project;
 
+import android.os.Build;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -22,11 +25,13 @@ public class ProjectsViewModel extends ViewModel {
 
   private final List<File> toFiles(final List<java.io.File> ogFiles) {
     var toReturnList = new ArrayList<File>();
-    ogFiles.forEach(
-        ogFile -> {
-          toReturnList.add(new File(ogFile.getAbsolutePath()));
-        });
-    return toReturnList;
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+          ogFiles.forEach(
+              ogFile -> {
+                toReturnList.add(new File(ogFile.getAbsolutePath()));
+              });
+      }
+      return toReturnList;
   }
 
   public final LiveData<List<File>> getProjects() {

@@ -246,9 +246,13 @@
     name="block_vibrator_action"
     formatted="false">Vibrator %m.vibrator vibrate %d milliseconds</string>
 
+
   <!-- Hints -->
   <string name="hint_enter_value">Enter value</string>
   <string name="hint_enter_variable_name">Enter variable name</string>
+  <string name="project_name">Project name</string>
+  <string name="project_class">Project class</string>
+  <string name="main_class_package">Main class package</string>
 
   <!-- Logic -->
   <string name="logic_btn_add_variable">Add variable</string>
@@ -260,6 +264,7 @@
   <!-- root -->
   <string name="root_spec_define">Define</string>
 
+
   <!-- errors -->
   <string name="err_valid_already_used">Current name is unavailable</string>
   <string name="err_valid_app_name">"Special letters(&amp;, &lt;, >, \", ') are not allowed"</string>
@@ -270,4 +275,10 @@
   <string name="err_valid_only_eng_3">Only use letters(a-z), numbers and Special characters(_)</string>
   <string name="err_start_number">The variable name must start with a letter</string>
   <string name="err_use_rev_name">"Can't use reserved keywords"</string>
+  
+  <!-- idk -->
+  <string name="create_new_project">Create new project</string>
+  <string name="create_from_template">Create from template</string>
+  <string name="fill_all_fields">Please fill in all fields</string>
+
 </resources>
