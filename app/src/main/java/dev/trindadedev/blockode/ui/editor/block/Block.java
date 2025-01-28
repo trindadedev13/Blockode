@@ -44,11 +44,11 @@ public class Block extends BlockBase {
   public int subStack2 = -1;
   private String scId;
 
-  public Block(Context context, int i, String str, String str2, String str3, Object... objArr) {
+  public Block(Context context, int i, String spec, String str2, String opCode, Object... objArr) {
     super(context, str2, false);
     setTag(Integer.valueOf(i));
-    this.mSpec = str;
-    this.mOpCode = str3;
+    this.mSpec = spec;
+    this.mOpCode = opCode;
     this.mDefaultArgs = objArr;
     init(context);
   }

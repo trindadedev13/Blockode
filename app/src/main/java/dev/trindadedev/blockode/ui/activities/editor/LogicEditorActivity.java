@@ -12,9 +12,9 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
+import dev.trindadedev.blockode.editor.generator.JavaGenerator;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
-import dev.trindadedev.blockode.ui.editor.gen.JavaGen;
 import dev.trindadedev.blockode.utils.StringUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
@@ -162,7 +162,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     new Thread(
             () -> {
               var blocks = binding.editor.getBlockPane().getBlocks();
-              var code = JavaGen.gen(blocks);
+              var code = JavaGenerator.generate(blocks);
               runOnUiThread(
                   () -> {
                     new MaterialAlertDialogBuilder(this)
