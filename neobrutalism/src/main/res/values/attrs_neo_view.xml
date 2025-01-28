@@ -26,14 +26,4 @@
       name="pressable"
       format="boolean" />
   </declare-styleable>
-  <declare-styleable name="NeoFloatingActionButton">
-    <attr
-      name="fabIcon"
-      format="reference" />
-  </declare-styleable>
-  <declare-styleable name="NeoExtendedFloatingActionButton">
-    <attr
-      name="fabText"
-      format="string" />
-  </declare-styleable>
 </resources>

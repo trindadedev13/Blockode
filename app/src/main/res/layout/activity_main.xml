@@ -1,47 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:layout_width="match_parent">
 
   <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/app_bar_layout"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:id="@+id/app_bar_layout">
 
     <com.google.android.material.appbar.MaterialToolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
+      android:layout_width="match_parent"
+      app:title="@string/app_name"
       app:navigationIcon="?homeAsUpIndicator"
-      app:title="@string/app_name" />
+      android:id="@+id/toolbar" />
+
   </com.google.android.material.appbar.AppBarLayout>
 
   <LinearLayout
-    android:id="@+id/content"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:id="@+id/content">
 
     <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/list"
-      android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:paddingStart="15dp"
-      android:paddingEnd="8dp"
-      android:paddingTop="8dp"
-      android:paddingBottom="120dp"
-      android:transitionGroup="true"
+      android:layout_width="match_parent"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"  />
+      android:paddingEnd="8dp"
+      android:transitionGroup="true"
+      android:paddingBottom="120dp"
+      android:paddingStart="15dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      android:id="@+id/list"
+      android:paddingTop="8dp" />
+
   </LinearLayout>
 
-  <dev.trindadedev.neobrutalism.NeoExtendedFloatingActionButton
-    android:id="@+id/create_new"
-    android:layout_width="wrap_content"
+  <dev.trindadedev.neobrutalism.floatingactionbutton.NeoExtendedFloatingActionButton
     android:layout_height="wrap_content"
-    android:layout_gravity="right|bottom"
-    android:layout_margin="10dp"
+    android:layout_width="wrap_content"
+    app:fabIcon="@drawable/ic_mtrl_add"
     app:fabText="@string/common_word_create_new"
-    app:fabIcon="@drawable/ic_mtrl_add" />
+    android:layout_margin="10dp"
+    android:id="@+id/create_new"
+    android:layout_gravity="right|bottom" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

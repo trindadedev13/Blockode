@@ -108,7 +108,6 @@ public class LogicEditorActivity extends BaseAppCompatActivity
       case 3 -> blocks.createOperatorBlocksPalette(color);
       case 4 -> blocks.createMathBlocksPalette(color);
       case 5 -> blocks.createFileBlocksPalette(color);
-      case 6 -> blocks.createViewBlocksPalette(color);
     }
   }
 
