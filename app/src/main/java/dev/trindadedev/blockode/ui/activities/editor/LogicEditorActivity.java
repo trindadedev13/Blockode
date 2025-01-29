@@ -15,6 +15,7 @@ import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.editor.generator.JavaGenerator;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.StringUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
@@ -67,6 +68,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     blocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
+    binding.paletteBlock.getPaletteSelector().getItems().get(0).setSelected(true);
+    onBlockCategorySelect(0, BlockUtil.BLOCK_COLOR_VARIABLE);
   }
 
   @Override
