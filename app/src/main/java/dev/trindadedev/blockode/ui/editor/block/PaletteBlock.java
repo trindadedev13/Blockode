@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import dev.trindadedev.blockode.databinding.LayoutPaletteBlockBinding;
-import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 
 public class PaletteBlock extends LinearLayout {
@@ -34,11 +33,13 @@ public class PaletteBlock extends LinearLayout {
     this.dip = (int) LayoutUtil.getDip(getContext(), 1.0f);
   }
 
-  public BlockBase addBlock(final String str, final String type, final String opCode, final int color, Object... objArr) {
+  public BlockBase addBlock(
+      final String str, final String type, final String opCode, final int color, Object... objArr) {
     final var view = new View(getContext());
     view.setLayoutParams(new LinearLayout.LayoutParams(-1, (int) (8.0f * this.dip)));
     binding.blockBuilder.addView(view);
-    final var block = new Block(getContext(), -1, str, type, opCode, Integer.valueOf(color), objArr);
+    final var block =
+        new Block(getContext(), -1, str, type, opCode, Integer.valueOf(color), objArr);
     block.setBlockType(1);
     binding.blockBuilder.addView(block);
     return block;

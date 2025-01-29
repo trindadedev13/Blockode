@@ -1,7 +1,6 @@
 package dev.trindadedev.blockode.ui.editor.block;
 
 /** Decompiled from Sketchware 1.1.13 */
-
 import static dev.trindadedev.blockode.utils.LayoutUtil.getDip;
 
 import android.content.Context;

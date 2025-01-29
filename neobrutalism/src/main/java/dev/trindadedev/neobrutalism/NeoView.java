@@ -62,31 +62,34 @@ public class NeoView extends RelativeLayout {
             switch (action) {
               case (MotionEvent.ACTION_DOWN):
                 if (state.pressable) {
-                  child.animate()
-                          .translationX(state.backgroundMarginStart)
-                          .translationY(state.backgroundMarginTop)
-                          .setDuration(state.animationDuration)
-                          .start();
+                  child
+                      .animate()
+                      .translationX(state.backgroundMarginStart)
+                      .translationY(state.backgroundMarginTop)
+                      .setDuration(state.animationDuration)
+                      .start();
                 }
                 break;
               case (MotionEvent.ACTION_UP):
                 if (state.pressable) {
-                  child.animate()
-                          .translationX(0)
-                          .translationY(0)
-                          .setDuration(state.animationDuration)
-                          .start();
+                  child
+                      .animate()
+                      .translationX(0)
+                      .translationY(0)
+                      .setDuration(state.animationDuration)
+                      .start();
                 }
                 onClickListener.onClick(child);
                 break;
 
               case (MotionEvent.ACTION_MOVE):
                 if (state.pressable) {
-                  child.animate()
-                          .translationX(0)
-                          .translationY(0)
-                          .setDuration(state.animationDuration)
-                          .start();
+                  child
+                      .animate()
+                      .translationX(0)
+                      .translationY(0)
+                      .setDuration(state.animationDuration)
+                      .start();
                 }
                 break;
             }

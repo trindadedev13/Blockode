@@ -22,7 +22,7 @@ public class BlockUtil {
   public static final int BLOCK_COLOR_VARIABLE_FLOAT = -10457717;
   public static final int BLOCK_COLOR_VARIABLE_INT = -16738680;
   public static final int BLOCK_COLOR_VARIABLE_STR = -8825528;
-  
+
   public static final String BLOCK_OPCODE_AND = "&&";
   public static final String BLOCK_OPCODE_BREAK = "break";
   public static final String BLOCK_OPCODE_DECREASE_INT = "decreaseInt";
@@ -70,7 +70,7 @@ public class BlockUtil {
   public static final String BLOCK_OPCODE_TRIM = "trim";
   public static final String BLOCK_OPCODE_TRUE = "true";
   public static final String BLOCK_OPCODE_ADD_SOURCE_DIRECTLY = "addSourceDirectly";
-  
+
   public static final String BLOCK_TYPE_BOOLEAN = "b";
   public static final String BLOCK_TYPE_COMMAND = " ";
   public static final String BLOCK_TYPE_DROPDOWN = "m";
@@ -82,44 +82,46 @@ public class BlockUtil {
   public static final String BLOCK_TYPE_INTEGER = "d";
   public static final String BLOCK_TYPE_LOOP = "c";
   public static final String BLOCK_TYPE_STRING = "s";
-  
+
   public static final int VAR_TYPE_BOOLEAN = 0;
   public static final int VAR_TYPE_INTEGER = 1;
   public static final int VAR_TYPE_STRING = 2;
-  
+
   public static int getBlockColor(final String opCode, final String type) {
     if (type.equals(BLOCK_TYPE_HAT)) return BLOCK_COLOR_HAT;
     return switch (opCode) {
       case BLOCK_OPCODE_REPEAT,
-          BLOCK_OPCODE_FOREVER,
-          BLOCK_OPCODE_BREAK,
-          BLOCK_OPCODE_IF,
-          BLOCK_OPCODE_IFELSE -> BLOCK_COLOR_CONTROL;
+              BLOCK_OPCODE_FOREVER,
+              BLOCK_OPCODE_BREAK,
+              BLOCK_OPCODE_IF,
+              BLOCK_OPCODE_IFELSE ->
+          BLOCK_COLOR_CONTROL;
       case BLOCK_OPCODE_TRUE,
-          BLOCK_OPCODE_FALSE,
-          BLOCK_OPCODE_MATH_EQUAL,
-          BLOCK_OPCODE_MATH_GREAT,
-          BLOCK_OPCODE_MATH_LESS,
-          BLOCK_OPCODE_AND,
-          BLOCK_OPCODE_OR,
-          BLOCK_OPCODE_NOT,
-          BLOCK_OPCODE_PLUS,
-          BLOCK_OPCODE_MINUS,
-          BLOCK_OPCODE_MULTIPLY,
-          BLOCK_OPCODE_DIVIDE,
-          BLOCK_OPCODE_DIVIDE_REST,
-          BLOCK_OPCODE_RANDOM,
-          BLOCK_OPCODE_STR_LENGTH,
-          BLOCK_OPCODE_STR_SUB,
-          BLOCK_OPCODE_STR_JOIN,
-          BLOCK_OPCODE_STR_INDEX,
-          BLOCK_OPCODE_STR_EQUAL,
-          BLOCK_OPCODE_TO_NUMBER,
-          BLOCK_OPCODE_TO_STRING,
-          BLOCK_OPCODE_TRIM,
-          BLOCK_OPCODE_TOUPPERCASE,
-          BLOCK_OPCODE_TOLOWERCASE,
-          BLOCK_OPCODE_ADD_SOURCE_DIRECTLY -> BLOCK_COLOR_OPERATORS;
+              BLOCK_OPCODE_FALSE,
+              BLOCK_OPCODE_MATH_EQUAL,
+              BLOCK_OPCODE_MATH_GREAT,
+              BLOCK_OPCODE_MATH_LESS,
+              BLOCK_OPCODE_AND,
+              BLOCK_OPCODE_OR,
+              BLOCK_OPCODE_NOT,
+              BLOCK_OPCODE_PLUS,
+              BLOCK_OPCODE_MINUS,
+              BLOCK_OPCODE_MULTIPLY,
+              BLOCK_OPCODE_DIVIDE,
+              BLOCK_OPCODE_DIVIDE_REST,
+              BLOCK_OPCODE_RANDOM,
+              BLOCK_OPCODE_STR_LENGTH,
+              BLOCK_OPCODE_STR_SUB,
+              BLOCK_OPCODE_STR_JOIN,
+              BLOCK_OPCODE_STR_INDEX,
+              BLOCK_OPCODE_STR_EQUAL,
+              BLOCK_OPCODE_TO_NUMBER,
+              BLOCK_OPCODE_TO_STRING,
+              BLOCK_OPCODE_TRIM,
+              BLOCK_OPCODE_TOUPPERCASE,
+              BLOCK_OPCODE_TOLOWERCASE,
+              BLOCK_OPCODE_ADD_SOURCE_DIRECTLY ->
+          BLOCK_COLOR_OPERATORS;
       default -> BLOCK_COLOR_MOREBLOCKS;
     };
   }
@@ -128,7 +130,7 @@ public class BlockUtil {
     return switch (opCode) {
       case BLOCK_OPCODE_SET_VAR_BOOL -> "set_var_bool";
       case BLOCK_OPCODE_SET_VAR_INT -> "set_var_int";
-      case BLOCK_OPCODE_SET_VAR_STR-> "set_var_str";
+      case BLOCK_OPCODE_SET_VAR_STR -> "set_var_str";
       case BLOCK_OPCODE_INCREASE_INT -> "increase_int";
       case BLOCK_OPCODE_DECREASE_INT -> "decrease_int";
       case BLOCK_OPCODE_REPEAT -> "repeat";

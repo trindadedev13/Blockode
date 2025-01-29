@@ -1,12 +1,12 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
-import dev.trindadedev.blockode.utils.BlockUtil;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
 
 import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.beans.VariableBean;
 import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.SpecUtil;
 import dev.trindadedev.blockode.utils.variable.Atomic;
 import java.util.List;
@@ -159,7 +159,12 @@ public class Blocks {
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_DIVIDE_REST, color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(
-        "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_RANDOM, color, Integer.valueOf(1), Integer.valueOf(10));
+        "",
+        BlockUtil.BLOCK_TYPE_INTEGER,
+        BlockUtil.BLOCK_OPCODE_RANDOM,
+        color,
+        Integer.valueOf(1),
+        Integer.valueOf(10));
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_STR_LENGTH, color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(

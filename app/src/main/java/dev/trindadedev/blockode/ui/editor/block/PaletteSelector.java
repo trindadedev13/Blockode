@@ -31,13 +31,19 @@ public class PaletteSelector extends LinearLayout implements View.OnClickListene
     final var dip2 = (int) LayoutUtil.getDip(getContext(), 4.0f);
     setPadding(dip, dip2, dip, dip2);
 
-    addCategoryItem(0, getContext().getResources().getString(R.string.block_category_var), 0xffee7d16);
-    addCategoryItem(1, getContext().getResources().getString(R.string.block_category_list), 0xffcc5b22);
-    addCategoryItem(2, getContext().getResources().getString(R.string.block_category_control), 0xffe1a92a);
-    addCategoryItem(3, getContext().getResources().getString(R.string.block_category_operator), 0xff5cb722);
-    addCategoryItem(4, getContext().getResources().getString(R.string.block_category_math), 0xff23b9a9);
-    addCategoryItem(5, getContext().getResources().getString(R.string.block_category_file), 0xffa1887f);
-    
+    addCategoryItem(
+        0, getContext().getResources().getString(R.string.block_category_var), 0xffee7d16);
+    addCategoryItem(
+        1, getContext().getResources().getString(R.string.block_category_list), 0xffcc5b22);
+    addCategoryItem(
+        2, getContext().getResources().getString(R.string.block_category_control), 0xffe1a92a);
+    addCategoryItem(
+        3, getContext().getResources().getString(R.string.block_category_operator), 0xff5cb722);
+    addCategoryItem(
+        4, getContext().getResources().getString(R.string.block_category_math), 0xff23b9a9);
+    addCategoryItem(
+        5, getContext().getResources().getString(R.string.block_category_file), 0xffa1887f);
+
     removeAllViews();
     render();
   }

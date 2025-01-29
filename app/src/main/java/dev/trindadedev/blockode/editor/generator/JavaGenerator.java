@@ -25,9 +25,9 @@ public class JavaGenerator {
           case BlockUtil.BLOCK_OPCODE_DEFINED_FUNC -> null;
           case BlockUtil.BLOCK_OPCODE_GET_VAR -> bean.spec;
           case BlockUtil.BLOCK_OPCODE_SET_VAR_BOOL,
-              BlockUtil.BLOCK_OPCODE_SET_VAR_STR,
-              BlockUtil.BLOCK_OPCODE_SET_VAR_INT -> format(
-              "%s = %s;", params.get(0), params.get(1));
+                  BlockUtil.BLOCK_OPCODE_SET_VAR_STR,
+                  BlockUtil.BLOCK_OPCODE_SET_VAR_INT ->
+              format("%s = %s;", params.get(0), params.get(1));
           case BlockUtil.BLOCK_OPCODE_DO_PRINT -> format("System.out.printLn(%s);", params.get(0));
           case BlockUtil.BLOCK_OPCODE_ADD_SOURCE_DIRECTLY -> params.get(0);
           default -> "Not possible to generate";

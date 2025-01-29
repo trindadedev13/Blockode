@@ -21,7 +21,8 @@ public class PaletteBlocksManager {
     setContext(context);
   }
 
-  public void addBlockToPalette(final String str, final String type, final String opCode, final int color, Object... objArr) {
+  public void addBlockToPalette(
+      final String str, final String type, final String opCode, final int color, Object... objArr) {
     var block = paletteBlock.addBlock(str, type, opCode, color, objArr);
     block.setClickable(true);
     block.setOnTouchListener(paletteBlockTouchListener);
