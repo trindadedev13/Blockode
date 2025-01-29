@@ -107,8 +107,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   public void onBlockCategorySelect(final int id, final int color) {
     paletteBlocksManager.removeAll();
     switch (id) {
-      case 0 -> blocks.createVariableBlocksPalette();
-      case 1 -> blocks.createListBlocksPalette();
+      case 0 -> blocks.createVariableBlocksPalette(color);
+      case 1 -> blocks.createListBlocksPalette(color);
       case 2 -> blocks.createControlBlocksPalette(color);
       case 3 -> blocks.createOperatorBlocksPalette(color);
       case 4 -> blocks.createMathBlocksPalette(color);

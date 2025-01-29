@@ -1,5 +1,6 @@
 package dev.trindadedev.blockode.ui.activities.editor;
 
+import androidx.annotation.ColorInt;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
 
 import androidx.annotation.Nullable;
@@ -26,15 +27,15 @@ public class Blocks {
     paletteBlocksManager.getBlockPane().addRoot(SpecUtil.getSpecForFileName(className), className);
   }
 
-  public void createVariableBlocksPalette() {
+  public void createVariableBlocksPalette(@ColorInt final int color) {
     paletteBlocksManager.addButtonToPalette(
         getString(R.string.logic_btn_add_variable), ButtonsTag.BUTTON_ADD_VARIABLE);
     paletteBlocksManager.addButtonToPalette(
         getString(R.string.logic_btn_remove_variable), ButtonsTag.BUTTON_REMOVE_VARIABLE);
-    addVariablesFromVariablesManager();
+    addVariablesFromVariablesManager(color);
   }
 
-  private void addVariablesFromVariablesManager() {
+  private void addVariablesFromVariablesManager(@ColorInt final int color) {
     variablesManager.setScId(paletteBlocksManager.getScId());
     List<VariableBean> variables = variablesManager.getVariables();
     final Atomic<Integer> i = new Atomic<>(0);
@@ -51,7 +52,7 @@ public class Blocks {
                 variableName,
                 BlockUtil.BLOCK_TYPE_BOOLEAN,
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
-                BlockUtil.BLOCK_COLOR_VARIABLE,
+                color,
                 new Object[0]);
             i3.set(i3.get() + 1);
           } else if (type == 1) {
@@ -59,7 +60,7 @@ public class Blocks {
                 variableName,
                 BlockUtil.BLOCK_TYPE_INTEGER,
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
-                BlockUtil.BLOCK_COLOR_VARIABLE,
+                color,
                 new Object[0]);
             i2.set(i2.get() + 1);
           } else {
@@ -67,7 +68,7 @@ public class Blocks {
                 variableName,
                 BlockUtil.BLOCK_TYPE_STRING,
                 BlockUtil.BLOCK_OPCODE_GET_VAR,
-                BlockUtil.BLOCK_COLOR_VARIABLE,
+                color,
                 new Object[0]);
             i.set(i.get() + 1);
           }
@@ -78,7 +79,7 @@ public class Blocks {
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
           BlockUtil.BLOCK_OPCODE_SET_VAR_BOOL,
-          BlockUtil.BLOCK_COLOR_VARIABLE,
+          color,
           new Object[0]);
     }
     if (i2.get() > 0) {
@@ -86,19 +87,19 @@ public class Blocks {
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
           BlockUtil.BLOCK_OPCODE_SET_VAR_INT,
-          BlockUtil.BLOCK_COLOR_VARIABLE,
+          color,
           new Object[0]);
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
-          "increaseInt",
-          BlockUtil.BLOCK_COLOR_VARIABLE,
+          BlockUtil.BLOCK_OPCODE_INCREASE_INT,
+          color,
           new Object[0]);
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
-          "decreaseInt",
-          BlockUtil.BLOCK_COLOR_VARIABLE,
+          BlockUtil.BLOCK_OPCODE_DECREASE_INT,
+          color,
           new Object[0]);
     }
     if (i.get() > 0) {
@@ -106,19 +107,19 @@ public class Blocks {
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
           BlockUtil.BLOCK_OPCODE_SET_VAR_STR,
-          BlockUtil.BLOCK_COLOR_VARIABLE,
+          color,
           new Object[0]);
     }
   }
 
-  public void createListBlocksPalette() {
+  public void createListBlocksPalette(@ColorInt final int color) {
     paletteBlocksManager.addButtonToPalette(
         getString(R.string.logic_btn_add_list), ButtonsTag.BUTTON_ADD_LIST);
     paletteBlocksManager.addButtonToPalette(
         getString(R.string.logic_btn_remove_list), ButtonsTag.BUTTON_REMOVE_VARIABLE);
   }
 
-  public void createControlBlocksPalette(final int color) {
+  public void createControlBlocksPalette(@ColorInt final int color) {
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_LOOP, BlockUtil.BLOCK_OPCODE_REPEAT, color, Integer.valueOf(10));
     paletteBlocksManager.addBlockToPalette(
@@ -131,7 +132,7 @@ public class Blocks {
         "", BlockUtil.BLOCK_TYPE_IFELSE, BlockUtil.BLOCK_OPCODE_IFELSE, color, new Object[0]);
   }
 
-  public void createOperatorBlocksPalette(final int color) {
+  public void createOperatorBlocksPalette(@ColorInt final int color) {
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_BOOLEAN, BlockUtil.BLOCK_OPCODE_TRUE, color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(
@@ -193,7 +194,7 @@ public class Blocks {
         new Object[0]);
   }
 
-  public void createMathBlocksPalette(final int color) {}
+  public void createMathBlocksPalette(@ColorInt final int color) {}
 
-  public void createFileBlocksPalette(final int color) {}
+  public void createFileBlocksPalette(@ColorInt final int color) {}
 }
