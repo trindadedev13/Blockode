@@ -159,7 +159,7 @@ public class Blocks {
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_DIVIDE_REST, color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(
-        "", BlockUtil.BLOCK_TYPE_INTEGER, "random", color, Integer.valueOf(1), Integer.valueOf(10));
+        "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_RANDOM, color, Integer.valueOf(1), Integer.valueOf(10));
     paletteBlocksManager.addBlockToPalette(
         "", BlockUtil.BLOCK_TYPE_INTEGER, BlockUtil.BLOCK_OPCODE_STR_LENGTH, color, new Object[0]);
     paletteBlocksManager.addBlockToPalette(
