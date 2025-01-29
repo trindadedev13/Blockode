@@ -1,6 +1,7 @@
 package dev.trindadedev.blockode.utils;
 
-/** Decompiled from Sketchware 1.1.13 */
+import dev.trindadedev.blockode.R;
+
 public class BlockUtil {
   public static final int BLOCK_COLOR_ALL = -16740914;
   public static final int BLOCK_COLOR_ARG_BOOL = 1342177280;
@@ -92,85 +93,84 @@ public class BlockUtil {
   public static int getBlockColor(final String opCode, final String type) {
     if (type.equals(BLOCK_TYPE_HAT)) return BLOCK_COLOR_HAT;
     return switch (opCode) {
+      case BLOCK_OPCODE_SET_VAR_INT,
+          BLOCK_OPCODE_SET_VAR_STR,
+          BLOCK_OPCODE_SET_VAR_BOOL,
+          BLOCK_OPCODE_GET_ARG,
+          BLOCK_OPCODE_GET_VAR -> BLOCK_COLOR_VARIABLE;
       case BLOCK_OPCODE_REPEAT,
-              BLOCK_OPCODE_FOREVER,
-              BLOCK_OPCODE_BREAK,
-              BLOCK_OPCODE_IF,
-              BLOCK_OPCODE_IFELSE ->
-          BLOCK_COLOR_CONTROL;
+          BLOCK_OPCODE_FOREVER,
+          BLOCK_OPCODE_BREAK,
+          BLOCK_OPCODE_IF,
+          BLOCK_OPCODE_IFELSE -> BLOCK_COLOR_CONTROL;
       case BLOCK_OPCODE_TRUE,
-              BLOCK_OPCODE_FALSE,
-              BLOCK_OPCODE_MATH_EQUAL,
-              BLOCK_OPCODE_MATH_GREAT,
-              BLOCK_OPCODE_MATH_LESS,
-              BLOCK_OPCODE_AND,
-              BLOCK_OPCODE_OR,
-              BLOCK_OPCODE_NOT,
-              BLOCK_OPCODE_PLUS,
-              BLOCK_OPCODE_MINUS,
-              BLOCK_OPCODE_MULTIPLY,
-              BLOCK_OPCODE_DIVIDE,
-              BLOCK_OPCODE_DIVIDE_REST,
-              BLOCK_OPCODE_RANDOM,
-              BLOCK_OPCODE_STR_LENGTH,
-              BLOCK_OPCODE_STR_SUB,
-              BLOCK_OPCODE_STR_JOIN,
-              BLOCK_OPCODE_STR_INDEX,
-              BLOCK_OPCODE_STR_EQUAL,
-              BLOCK_OPCODE_TO_NUMBER,
-              BLOCK_OPCODE_TO_STRING,
-              BLOCK_OPCODE_TRIM,
-              BLOCK_OPCODE_TOUPPERCASE,
-              BLOCK_OPCODE_TOLOWERCASE,
-              BLOCK_OPCODE_ADD_SOURCE_DIRECTLY ->
-          BLOCK_COLOR_OPERATORS;
+          BLOCK_OPCODE_FALSE,
+          BLOCK_OPCODE_MATH_EQUAL,
+          BLOCK_OPCODE_MATH_GREAT,
+          BLOCK_OPCODE_MATH_LESS,
+          BLOCK_OPCODE_AND,
+          BLOCK_OPCODE_OR,
+          BLOCK_OPCODE_NOT,
+          BLOCK_OPCODE_PLUS,
+          BLOCK_OPCODE_MINUS,
+          BLOCK_OPCODE_MULTIPLY,
+          BLOCK_OPCODE_DIVIDE,
+          BLOCK_OPCODE_DIVIDE_REST,
+          BLOCK_OPCODE_RANDOM,
+          BLOCK_OPCODE_STR_LENGTH,
+          BLOCK_OPCODE_STR_SUB,
+          BLOCK_OPCODE_STR_JOIN,
+          BLOCK_OPCODE_STR_INDEX,
+          BLOCK_OPCODE_STR_EQUAL,
+          BLOCK_OPCODE_TO_NUMBER,
+          BLOCK_OPCODE_TO_STRING,
+          BLOCK_OPCODE_TRIM,
+          BLOCK_OPCODE_TOUPPERCASE,
+          BLOCK_OPCODE_TOLOWERCASE,
+          BLOCK_OPCODE_ADD_SOURCE_DIRECTLY -> BLOCK_COLOR_OPERATORS;
       default -> BLOCK_COLOR_MOREBLOCKS;
     };
   }
 
-  public static String getSpecStringId(String opCode, String type) {
-    return switch (opCode) {
-      case BLOCK_OPCODE_SET_VAR_BOOL -> "set_var_bool";
-      case BLOCK_OPCODE_SET_VAR_INT -> "set_var_int";
-      case BLOCK_OPCODE_SET_VAR_STR -> "set_var_str";
-      case BLOCK_OPCODE_INCREASE_INT -> "increase_int";
-      case BLOCK_OPCODE_DECREASE_INT -> "decrease_int";
-      case BLOCK_OPCODE_REPEAT -> "repeat";
-      case BLOCK_OPCODE_FOREVER -> "forever";
-      case BLOCK_OPCODE_BREAK -> "break";
-      case BLOCK_OPCODE_IF -> "if";
-      case BLOCK_OPCODE_IFELSE -> "if_else";
-      case BLOCK_OPCODE_TRUE -> "true";
-      case BLOCK_OPCODE_FALSE -> "false";
-      case BLOCK_OPCODE_MATH_LESS -> "smaller";
-      case BLOCK_OPCODE_MATH_EQUAL -> "equal";
-      case BLOCK_OPCODE_MATH_GREAT -> "bigger";
-      case BLOCK_OPCODE_AND -> "and";
-      case BLOCK_OPCODE_OR -> "or";
-      case BLOCK_OPCODE_NOT -> "not";
-      case BLOCK_OPCODE_PLUS -> "plus";
-      case BLOCK_OPCODE_MINUS -> "minus";
-      case BLOCK_OPCODE_MULTIPLY -> "times";
-      case BLOCK_OPCODE_DIVIDE -> "divide";
-      case BLOCK_OPCODE_DIVIDE_REST -> "rest";
-      case BLOCK_OPCODE_RANDOM -> "random";
-      case BLOCK_OPCODE_STR_LENGTH -> "string_length";
-      case BLOCK_OPCODE_STR_JOIN -> "string_join";
-      case BLOCK_OPCODE_STR_INDEX -> "string_index";
-      case BLOCK_OPCODE_STR_SUB -> "string_sub";
-      case BLOCK_OPCODE_STR_EQUAL -> "string_equals";
-      case BLOCK_OPCODE_STR_CONTAINS -> "string_contains";
-      case BLOCK_OPCODE_STR_REPLACE -> "string_replace";
-      case BLOCK_OPCODE_STR_REPLACE_FIRST -> "string_replace_first";
-      case BLOCK_OPCODE_STR_REPLACE_ALL -> "string_replace_all";
-      case BLOCK_OPCODE_TO_NUMBER -> "to_number";
-      case BLOCK_OPCODE_TO_STRING -> "to_string";
-      case BLOCK_OPCODE_TRIM -> "trim";
-      case BLOCK_OPCODE_TOUPPERCASE -> "to_upper_case";
-      case BLOCK_OPCODE_TOLOWERCASE -> "to_lower_case";
-      case BLOCK_OPCODE_DO_PRINT -> "do_print";
-      case BLOCK_OPCODE_ADD_SOURCE_DIRECTLY -> "add_source_directly";
-      default -> "invalid";
-    };
-  }
+  public static String getSpecString(final String opCode, final String type) {
+  return switch (opCode) {
+    case BLOCK_OPCODE_SET_VAR_BOOL -> StringUtil.getString(R.string.block_set_var_bool);
+    case BLOCK_OPCODE_SET_VAR_INT -> StringUtil.getString(R.string.block_set_var_int);
+    case BLOCK_OPCODE_SET_VAR_STR -> StringUtil.getString(R.string.block_set_var_str);
+    case BLOCK_OPCODE_INCREASE_INT -> StringUtil.getString(R.string.block_increase_int);
+    case BLOCK_OPCODE_DECREASE_INT -> StringUtil.getString(R.string.block_decrease_int);
+    case BLOCK_OPCODE_REPEAT -> StringUtil.getString(R.string.block_repeat);
+    case BLOCK_OPCODE_FOREVER -> StringUtil.getString(R.string.block_forever);
+    case BLOCK_OPCODE_BREAK -> StringUtil.getString(R.string.block_break);
+    case BLOCK_OPCODE_IF -> StringUtil.getString(R.string.block_if);
+    case BLOCK_OPCODE_IFELSE -> StringUtil.getString(R.string.block_if_else);
+    case BLOCK_OPCODE_TRUE -> StringUtil.getString(R.string.block_true);
+    case BLOCK_OPCODE_FALSE -> StringUtil.getString(R.string.block_false);
+    case BLOCK_OPCODE_MATH_LESS -> StringUtil.getString(R.string.block_smaller);
+    case BLOCK_OPCODE_MATH_EQUAL -> StringUtil.getString(R.string.block_equal);
+    case BLOCK_OPCODE_MATH_GREAT -> StringUtil.getString(R.string.block_bigger);
+    case BLOCK_OPCODE_AND -> StringUtil.getString(R.string.block_and);
+    case BLOCK_OPCODE_OR -> StringUtil.getString(R.string.block_or);
+    case BLOCK_OPCODE_NOT -> StringUtil.getString(R.string.block_not);
+    case BLOCK_OPCODE_PLUS -> StringUtil.getString(R.string.block_plus);
+    case BLOCK_OPCODE_MINUS -> StringUtil.getString(R.string.block_minus);
+    case BLOCK_OPCODE_MULTIPLY -> StringUtil.getString(R.string.block_times);
+    case BLOCK_OPCODE_DIVIDE -> StringUtil.getString(R.string.block_divide);
+    case BLOCK_OPCODE_DIVIDE_REST -> StringUtil.getString(R.string.block_rest);
+    case BLOCK_OPCODE_RANDOM -> StringUtil.getString(R.string.block_random);
+    case BLOCK_OPCODE_STR_LENGTH -> StringUtil.getString(R.string.block_string_length);
+    case BLOCK_OPCODE_STR_JOIN -> StringUtil.getString(R.string.block_string_join);
+    case BLOCK_OPCODE_STR_INDEX -> StringUtil.getString(R.string.block_string_index);
+    case BLOCK_OPCODE_STR_SUB -> StringUtil.getString(R.string.block_string_sub);
+    case BLOCK_OPCODE_STR_EQUAL -> StringUtil.getString(R.string.block_string_equals);
+    case BLOCK_OPCODE_TO_NUMBER -> StringUtil.getString(R.string.block_to_number);
+    case BLOCK_OPCODE_TO_STRING -> StringUtil.getString(R.string.block_to_string);
+    case BLOCK_OPCODE_TRIM -> StringUtil.getString(R.string.block_trim);
+    case BLOCK_OPCODE_TOUPPERCASE -> StringUtil.getString(R.string.block_to_upper_case);
+    case BLOCK_OPCODE_TOLOWERCASE -> StringUtil.getString(R.string.block_to_lower_case);
+    case BLOCK_OPCODE_DO_PRINT -> StringUtil.getString(R.string.block_do_print);
+    case BLOCK_OPCODE_ADD_SOURCE_DIRECTLY -> StringUtil.getString(R.string.block_add_source_directly);
+    default -> StringUtil.getString(R.string.block_invalid);
+  };
+}
 }

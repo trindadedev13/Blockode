@@ -37,44 +37,48 @@ public class Blocks {
 
   private void addVariablesFromVariablesManager(@ColorInt final int color) {
     variablesManager.setScId(paletteBlocksManager.getScId());
-    List<VariableBean> variables = variablesManager.getVariables();
-    final Atomic<Integer> i = new Atomic<>(0);
-    final Atomic<Integer> i2 = new Atomic<>(0);
-    final Atomic<Integer> i3 = new Atomic<>(0);
+    final var variables = variablesManager.getVariables();
+    final var hasBoolean = new Atomic<Boolean>(false);
+    final var hasInteger = new Atomic<Boolean>(false);
+    final var hasString = new Atomic<Boolean>(false);
 
     variables.forEach(
         variable -> {
-          int type = variable.type;
-          String variableName = variable.name;
+          final var type = variable.type;
+          final var variableName = variable.name;
 
-          if (type == 0) {
-            paletteBlocksManager.addBlockToPalette(
-                variableName,
-                BlockUtil.BLOCK_TYPE_BOOLEAN,
-                BlockUtil.BLOCK_OPCODE_GET_VAR,
-                color,
-                new Object[0]);
-            i3.set(i3.get() + 1);
-          } else if (type == 1) {
-            paletteBlocksManager.addBlockToPalette(
-                variableName,
-                BlockUtil.BLOCK_TYPE_INTEGER,
-                BlockUtil.BLOCK_OPCODE_GET_VAR,
-                color,
-                new Object[0]);
-            i2.set(i2.get() + 1);
-          } else {
-            paletteBlocksManager.addBlockToPalette(
-                variableName,
-                BlockUtil.BLOCK_TYPE_STRING,
-                BlockUtil.BLOCK_OPCODE_GET_VAR,
-                color,
-                new Object[0]);
-            i.set(i.get() + 1);
+          switch (type) {
+            case BlockUtil.VAR_TYPE_BOOLEAN -> {
+              paletteBlocksManager.addBlockToPalette(
+                  variableName,
+                  BlockUtil.BLOCK_TYPE_BOOLEAN,
+                  BlockUtil.BLOCK_OPCODE_GET_VAR,
+                  color,
+                  new Object[0]);
+              hasBoolean.set(true);
+            }
+            case BlockUtil.VAR_TYPE_INTEGER -> {
+              paletteBlocksManager.addBlockToPalette(
+                  variableName,
+                  BlockUtil.BLOCK_TYPE_INTEGER,
+                  BlockUtil.BLOCK_OPCODE_GET_VAR,
+                  color,
+                  new Object[0]);
+              hasInteger.set(true);
+            }
+            case BlockUtil.VAR_TYPE_STRING -> {
+              paletteBlocksManager.addBlockToPalette(
+                  variableName,
+                  BlockUtil.BLOCK_TYPE_STRING,
+                  BlockUtil.BLOCK_OPCODE_GET_VAR,
+                  color,
+                  new Object[0]);
+              hasString.set(true);
+            }
           }
         });
 
-    if (i3.get() > 0) {
+    if (hasBoolean.get()) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
@@ -82,7 +86,7 @@ public class Blocks {
           color,
           new Object[0]);
     }
-    if (i2.get() > 0) {
+    if (hasInteger.get()) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,
@@ -102,7 +106,7 @@ public class Blocks {
           color,
           new Object[0]);
     }
-    if (i.get() > 0) {
+    if (hasString.get()) {
       paletteBlocksManager.addBlockToPalette(
           "",
           BlockUtil.BLOCK_TYPE_COMMAND,

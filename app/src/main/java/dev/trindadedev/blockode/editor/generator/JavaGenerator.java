@@ -42,7 +42,45 @@ public class JavaGenerator {
     final var code = new StringBuilder();
 
     switch (bean.opCode) {
-      case BlockUtil.BLOCK_OPCODE_DEFINED_FUNC -> code.append(""); // Tratamento futuro
+      case BlockUtil.BLOCK_OPCODE_DEFINED_FUNC -> code.append("");
+      case BlockUtil.BLOCK_OPCODE_GET_ARG -> {
+        if (bean.parameters.size() <= 0) {
+          int specIndexOf = bean.spec.indexOf(" ");
+          if (specIndexOf < 0) {
+            code.append(bean.spec + "();");
+          } else {
+            code.append(bean.spec.substring(0, specIndexOf) + "();");
+          }
+        } else {
+          final var specIndexOf = bean.spec.indexOf(" ");
+          final var specSubStr = bean.spec.substring(0, specIndexOf);
+          var specSubStrP = specSubStr + "(";
+          boolean var203 = true;
+
+          for (int blockode = 0; blockode < params.size(); var203 = false) {
+            if (!var203) {
+              specSubStrP = specSubStrP + ", ";
+            }
+
+            var param = params.get(blockode);
+            var paramType = bean.parametersTypes.get(blockode);
+            if (param.length() <= 0) {
+              if (paramType.equals("b")) {
+                specSubStrP = specSubStrP + "true";
+              } else if (paramType.equals("d")) {
+                specSubStrP = specSubStrP + "0";
+              }
+            } else {
+              specSubStrP = specSubStrP + param;
+            }
+
+            ++blockode;
+          }
+
+          code.append(specSubStrP + ");");
+        }
+      }
+
       case BlockUtil.BLOCK_OPCODE_GET_VAR -> code.append(bean.spec);
       case BlockUtil.BLOCK_OPCODE_SET_VAR_BOOL,
           BlockUtil.BLOCK_OPCODE_SET_VAR_STR,

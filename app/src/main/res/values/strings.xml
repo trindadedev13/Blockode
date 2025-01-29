@@ -47,7 +47,10 @@
   <string name="title_popup_select_list">Select List</string>
   <string name="title_popup_create_variable">Create variable</string>
 
-  <!-- Block labels -->
+  <!-- Block specs -->
+  <string name="block_set_var_bool" formatted="false">set %m.varBool to %b</string>
+  <string name="block_set_var_int" formatted="false">set %m.varInt to %d</string>
+  <string name="block_set_var_str" formatted="false">set %m.varStr to %s</string>
   <string name="block_invalid">Invalid</string>
   <string name="block_and">%b and %b</string>
   <string name="block_bigger">%d > %d</string>
@@ -63,6 +66,7 @@
   <string name="block_if">if %b then</string>
   <string name="block_if_else">if %b then</string>
   <string name="block_increase_int">%m.varInt increase 1</string>
+  <string name="block_decrease_int">%m.varInt decrease 1</string>
   <string name="block_minus">%d - %d</string>
   <string name="block_not">not %b</string>
   <string name="block_or">%b or %b</string>

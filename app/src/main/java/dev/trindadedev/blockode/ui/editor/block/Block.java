@@ -234,12 +234,7 @@ public class Block extends BlockBase {
         && !this.mOpCode.equals("definedFunc")
         && !this.mOpCode.equals("getVar")
         && !this.mOpCode.equals("getArg")) {
-      String var4 = "block_" + BlockUtil.getSpecStringId(this.mOpCode, this.mType);
-      int var5 =
-          this.getResources().getIdentifier(var4, "string", this.getContext().getPackageName());
-      if (var5 > 0) {
-        this.mSpec = this.getResources().getString(var5);
-      }
+      this.mSpec = BlockUtil.getSpecString(this.mOpCode, this.mType);
     }
 
     this.setSpec(this.mSpec, this.mDefaultArgs);
