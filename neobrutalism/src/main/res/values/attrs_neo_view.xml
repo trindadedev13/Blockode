@@ -23,7 +23,10 @@
       name="foregroundColor"
       format="color" />
     <attr
-      name="pressable"
+      name="android:clickable"
+      format="boolean" />
+    <attr 
+      name="android:enabled"
       format="boolean" />
   </declare-styleable>
 </resources>

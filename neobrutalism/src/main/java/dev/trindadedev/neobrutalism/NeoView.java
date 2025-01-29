@@ -1,5 +1,6 @@
 package dev.trindadedev.neobrutalism;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -13,16 +14,18 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class NeoView extends RelativeLayout {
 
-  private final GradientDrawable foregroundGradientDrawable = new GradientDrawable();
-  private final GradientDrawable backgroundGradientDrawable = new GradientDrawable();
-  private final State state = new State();
-  private RelativeLayout root;
-  private View backgroundView;
-  private View.OnClickListener onClickListener;
+  protected static final int DISABLED_BACKGROUND_COLOR = Color.parseColor("#BDBDBD");
+  protected final GradientDrawable foregroundGradientDrawable = new GradientDrawable();
+  protected final GradientDrawable backgroundGradientDrawable = new GradientDrawable();
+  protected final State state = new State();
+  protected RelativeLayout root;
+  protected View backgroundView;
+  protected View.OnClickListener onClickListener;
 
   public NeoView(final Context context) {
     super(context);
@@ -39,7 +42,7 @@ public class NeoView extends RelativeLayout {
     init(attrs);
   }
 
-  @SuppressLint("ClickableViewAccessibility")
+  @SuppressLint("isClickableViewAccessibility")
   @Override
   public void addView(final View child, final int index, final ViewGroup.LayoutParams params) {
     if (child.getId() != R.id.root) {
@@ -58,10 +61,10 @@ public class NeoView extends RelativeLayout {
               });
       child.setOnTouchListener(
           (view, event) -> {
-            final int action = event.getAction();
+            final var action = event.getAction();
             switch (action) {
-              case (MotionEvent.ACTION_DOWN):
-                if (state.pressable) {
+              case MotionEvent.ACTION_DOWN:
+                if (state.isClickable && state.isEnabled) {
                   child
                       .animate()
                       .translationX(state.backgroundMarginStart)
@@ -70,26 +73,16 @@ public class NeoView extends RelativeLayout {
                       .start();
                 }
                 break;
-              case (MotionEvent.ACTION_UP):
-                if (state.pressable) {
+              case MotionEvent.ACTION_UP:
+              case MotionEvent.ACTION_CANCEL:
+                if (state.isClickable && state.isEnabled) {
                   child
                       .animate()
                       .translationX(0)
                       .translationY(0)
                       .setDuration(state.animationDuration)
                       .start();
-                }
-                onClickListener.onClick(child);
-                break;
-
-              case (MotionEvent.ACTION_MOVE):
-                if (state.pressable) {
-                  child
-                      .animate()
-                      .translationX(0)
-                      .translationY(0)
-                      .setDuration(state.animationDuration)
-                      .start();
+                  onClickListener.onClick(this);
                 }
                 break;
             }
@@ -104,7 +97,23 @@ public class NeoView extends RelativeLayout {
     this.onClickListener = onClickListener;
   }
 
+  @Override
+  public void setEnabled(final boolean isEnabled) {
+    if (isEnabled == state.isEnabled) return;
+    super.setEnabled(isEnabled);
+    state.isEnabled = isEnabled;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return state.isEnabled;
+  }
+
   private void init(@Nullable final AttributeSet attrs) {
+    state.setOnStateValueChange(() -> invalidate());
+    state.originalX = getX();
+    state.originalY = getY();
+
     final TypedArray attributes =
         getContext().obtainStyledAttributes(attrs, R.styleable.NeoView, 0, 0);
     state.backgroundMarginTop =
@@ -120,7 +129,8 @@ public class NeoView extends RelativeLayout {
     state.foregroundColor = attributes.getColor(R.styleable.NeoView_foregroundColor, Color.WHITE);
     state.foregroundStrokeColor =
         attributes.getColor(R.styleable.NeoView_foregroundStrokeColor, Color.BLACK);
-    state.pressable = attributes.getBoolean(R.styleable.NeoView_pressable, true);
+    state.isClickable = attributes.getBoolean(R.styleable.NeoView_android_clickable, true);
+    state.isEnabled = attributes.getBoolean(R.styleable.NeoView_android_enabled, true);
     attributes.recycle();
     initViews();
   }
@@ -150,7 +160,9 @@ public class NeoView extends RelativeLayout {
   private void applyBackground() {
     backgroundGradientDrawable.setShape(GradientDrawable.RECTANGLE);
     backgroundGradientDrawable.setCornerRadius(state.backgroundRadius);
-    backgroundGradientDrawable.setColor(ColorStateList.valueOf(state.backgroundShadowColor));
+    backgroundGradientDrawable.setColor(
+        ColorStateList.valueOf(
+            state.isEnabled ? state.backgroundShadowColor : DISABLED_BACKGROUND_COLOR));
     backgroundView.setBackground(backgroundGradientDrawable);
   }
 
@@ -169,10 +181,16 @@ public class NeoView extends RelativeLayout {
     backgroundView.setLayoutParams(params);
   }
 
+  @NonNull
   public State getState() {
     return state;
   }
 
+  /**
+   * data class with all values used in Neobrutalism View.
+   *
+   * <p>use NeoView#getState() to change values.
+   */
   public class State {
     private int backgroundMarginTop = 6;
     private int backgroundMarginStart = 6;
@@ -181,14 +199,18 @@ public class NeoView extends RelativeLayout {
     private int foregroundColor = Color.WHITE;
     private int foregroundStrokeColor = Color.BLACK;
     private int foregroundStrokeWidth = 3;
+    private float originalX = 0f;
+    private float originalY = 0f;
     private long animationDuration = 100;
-    private boolean pressable = false;
+    private boolean isClickable = false;
+    private boolean isEnabled = true;
+    private OnStateValueChange onStateValueChange;
 
     public int getBackgroundMarginTop() {
       return this.backgroundMarginTop;
     }
 
-    public void setBackgroundMarginTop(int backgroundMarginTop) {
+    public void setBackgroundMarginTop(final int backgroundMarginTop) {
       this.backgroundMarginTop = backgroundMarginTop;
     }
 
@@ -196,7 +218,7 @@ public class NeoView extends RelativeLayout {
       return this.backgroundMarginStart;
     }
 
-    public void setBackgroundMarginStart(int backgroundMarginStart) {
+    public void setBackgroundMarginStart(final int backgroundMarginStart) {
       this.backgroundMarginStart = backgroundMarginStart;
     }
 
@@ -204,7 +226,7 @@ public class NeoView extends RelativeLayout {
       return this.backgroundRadius;
     }
 
-    public void setBackgroundRadius(int backgroundRadius) {
+    public void setBackgroundRadius(final int backgroundRadius) {
       this.backgroundRadius = backgroundRadius;
     }
 
@@ -212,7 +234,7 @@ public class NeoView extends RelativeLayout {
       return this.backgroundShadowColor;
     }
 
-    public void setBackgroundShadowColor(int backgroundShadowColor) {
+    public void setBackgroundShadowColor(final int backgroundShadowColor) {
       this.backgroundShadowColor = backgroundShadowColor;
     }
 
@@ -220,7 +242,7 @@ public class NeoView extends RelativeLayout {
       return this.foregroundColor;
     }
 
-    public void setForegroundColor(int foregroundColor) {
+    public void setForegroundColor(final int foregroundColor) {
       this.foregroundColor = foregroundColor;
     }
 
@@ -228,7 +250,7 @@ public class NeoView extends RelativeLayout {
       return this.foregroundStrokeColor;
     }
 
-    public void setForegroundStrokeColor(int foregroundStrokeColor) {
+    public void setForegroundStrokeColor(final int foregroundStrokeColor) {
       this.foregroundStrokeColor = foregroundStrokeColor;
     }
 
@@ -236,7 +258,7 @@ public class NeoView extends RelativeLayout {
       return this.foregroundStrokeWidth;
     }
 
-    public void setForegroundStrokeWidth(int foregroundStrokeWidth) {
+    public void setForegroundStrokeWidth(final int foregroundStrokeWidth) {
       this.foregroundStrokeWidth = foregroundStrokeWidth;
     }
 
@@ -244,16 +266,53 @@ public class NeoView extends RelativeLayout {
       return this.animationDuration;
     }
 
-    public void setAnimationDuration(long animationDuration) {
+    public void setAnimationDuration(final long animationDuration) {
       this.animationDuration = animationDuration;
     }
 
-    public boolean getPressable() {
-      return this.pressable;
+    public boolean getIsClickable() {
+      return this.isClickable;
     }
 
-    public void setPressable(boolean pressable) {
-      this.pressable = pressable;
+    public void setIsClickable(final boolean isClickable) {
+      this.isClickable = isClickable;
     }
+
+    public boolean getisEnabled() {
+      return this.isEnabled;
+    }
+
+    public void setisEnabled(final boolean isEnabled) {
+      this.isEnabled = isEnabled;
+    }
+
+    public OnStateValueChange getOnStateValueChange() {
+      return this.onStateValueChange;
+    }
+
+    public void setOnStateValueChange(final OnStateValueChange onStateValueChange) {
+      this.onStateValueChange = onStateValueChange;
+    }
+
+    public float getOriginalX() {
+      return this.originalX;
+    }
+
+    public void setOriginalX(final float originalX) {
+      this.originalX = originalX;
+    }
+
+    public float getOriginalY() {
+      return this.originalY;
+    }
+
+    public void setOriginalY(final float originalY) {
+      this.originalY = originalY;
+    }
+  }
+
+  @FunctionalInterface
+  public interface OnStateValueChange {
+    void call();
   }
 }
