@@ -63,33 +63,40 @@ public class NeoView extends RelativeLayout {
           (view, event) -> {
             final var action = event.getAction();
             switch (action) {
-              case MotionEvent.ACTION_DOWN:
+              case MotionEvent.ACTION_DOWN -> {
                 if (state.isClickable && state.isEnabled) {
-                  child
-                      .animate()
-                      .translationX(state.backgroundMarginStart)
-                      .translationY(state.backgroundMarginTop)
-                      .setDuration(state.animationDuration)
-                      .start();
+                  onClickAnimation(child);
                 }
                 break;
-              case MotionEvent.ACTION_UP:
-              case MotionEvent.ACTION_CANCEL:
+              }
+              case MotionEvent.ACTION_UP -> {
+                onReleaseAnimation(child);
                 if (state.isClickable && state.isEnabled) {
-                  child
-                      .animate()
-                      .translationX(0)
-                      .translationY(0)
-                      .setDuration(state.animationDuration)
-                      .start();
                   onClickListener.onClick(this);
                 }
                 break;
+              }
+              case MotionEvent.ACTION_CANCEL -> {
+                onReleaseAnimation(child);
+                break;
+              }
             }
             return true;
           });
     }
     super.addView(child, index, params);
+  }
+
+  public void onClickAnimation(final View view) {
+    view.animate()
+        .translationX(state.backgroundMarginStart)
+        .translationY(state.backgroundMarginTop)
+        .setDuration(state.animationDuration)
+        .start();
+  }
+
+  public void onReleaseAnimation(final View view) {
+    view.animate().translationX(0).translationY(0).setDuration(state.animationDuration).start();
   }
 
   @Override
