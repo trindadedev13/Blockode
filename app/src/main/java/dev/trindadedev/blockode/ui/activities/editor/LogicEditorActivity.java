@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import dev.trindadedev.blockode.R;
@@ -165,18 +167,27 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     new Thread(
             () -> {
               var blocks = binding.editor.getBlockPane().getBlocks();
-              var code = JavaGenerator.generate(blocks);
+              var code = new JavaGenerator(blocks).generate();
               runOnUiThread(
                   () -> {
-                    new MaterialAlertDialogBuilder(this)
-                        .setTitle(StringUtil.getString(R.string.common_word_code))
-                        .setMessage(code)
-                        .setPositiveButton(
-                            StringUtil.getString(R.string.common_word_ok),
-                            (d, w) -> {
-                              d.dismiss();
-                            })
-                        .show();
+                    final var builder =
+                        new MaterialAlertDialogBuilder(this)
+                            .setTitle(StringUtil.getString(R.string.common_word_code))
+                            .setMessage(code)
+                            .setPositiveButton(
+                                StringUtil.getString(R.string.common_word_ok),
+                                (d, w) -> {
+                                  d.dismiss();
+                                });
+                    final AlertDialog dialog = builder.create();
+                    dialog.setOnShowListener(
+                        d -> {
+                          final var message = (TextView) dialog.findViewById(android.R.id.message);
+                          message.setTextIsSelectable(true);
+                        });
+
+                    dialog.show();
+
                     dismissProgress();
                   });
             })
