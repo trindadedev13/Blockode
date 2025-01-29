@@ -8,21 +8,23 @@ public class BlockUtil {
   public static final int BLOCK_COLOR_ARG_INT = -657931;
   public static final int BLOCK_COLOR_ARG_SELECTABLE = 805306368;
   public static final int BLOCK_COLOR_ARG_STR = -1;
-  public static final int BLOCK_COLOR_COMPONENT_FUNCTIONS = -13851166;
   public static final int BLOCK_COLOR_CONTROL = -1988310;
   public static final int BLOCK_COLOR_HAT = -3636432;
+  public static final int BLOCK_COLOR_VARIABLE = 0xffee7d16;
+  public static final int BLOCK_COLOR_VARIABLE_BOOL = -1499549;
+  public static final int BLOCK_COLOR_VARIABLE_FLOAT = -10457717;
+  public static final int BLOCK_COLOR_VARIABLE_INT = -16738680;
+  public static final int BLOCK_COLOR_VARIABLE_STR = -8825528;
+  public static final int BLOCK_COLOR_LIST = 0xffcc5b22;
+  public static final int BLOCK_COLOR_OPERATORS = -10701022;
+  public static final int BLOCK_COLOR_MATH = 0xff23b9a9;
+  public static final int BLOCK_COLOR_FILE = 0xffa1887f;
   public static final int BLOCK_COLOR_MOREBLOCKS = -7711273;
   public static final int BLOCK_COLOR_MOREBLOCK_BOOL = -4056997;
   public static final int BLOCK_COLOR_MOREBLOCK_FLOAT = -12232092;
   public static final int BLOCK_COLOR_MOREBLOCK_INT = -16746133;
   public static final int BLOCK_COLOR_MOREBLOCK_STR = -10665929;
-  public static final int BLOCK_COLOR_OPERATORS = -10701022;
-  public static final int BLOCK_COLOR_VARIABLE = -1147626;
-  public static final int BLOCK_COLOR_VARIABLE_BOOL = -1499549;
-  public static final int BLOCK_COLOR_VARIABLE_FLOAT = -10457717;
-  public static final int BLOCK_COLOR_VARIABLE_INT = -16738680;
-  public static final int BLOCK_COLOR_VARIABLE_STR = -8825528;
-
+  
   public static final String BLOCK_OPCODE_AND = "&&";
   public static final String BLOCK_OPCODE_BREAK = "break";
   public static final String BLOCK_OPCODE_DECREASE_INT = "decreaseInt";

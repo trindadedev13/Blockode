@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import dev.trindadedev.blockode.R;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +33,29 @@ public class PaletteSelector extends LinearLayout implements View.OnClickListene
     setPadding(dip, dip2, dip, dip2);
 
     addCategoryItem(
-        0, getContext().getResources().getString(R.string.block_category_var), 0xffee7d16);
+        0,
+        getContext().getResources().getString(R.string.block_category_var),
+        BlockUtil.BLOCK_COLOR_VARIABLE);
     addCategoryItem(
-        1, getContext().getResources().getString(R.string.block_category_list), 0xffcc5b22);
+        1,
+        getContext().getResources().getString(R.string.block_category_list),
+        BlockUtil.BLOCK_COLOR_LIST);
     addCategoryItem(
-        2, getContext().getResources().getString(R.string.block_category_control), 0xffe1a92a);
+        2,
+        getContext().getResources().getString(R.string.block_category_control),
+        BlockUtil.BLOCK_COLOR_CONTROL);
     addCategoryItem(
-        3, getContext().getResources().getString(R.string.block_category_operator), 0xff5cb722);
+        3,
+        getContext().getResources().getString(R.string.block_category_operator),
+        BlockUtil.BLOCK_COLOR_OPERATORS);
     addCategoryItem(
-        4, getContext().getResources().getString(R.string.block_category_math), 0xff23b9a9);
+        4,
+        getContext().getResources().getString(R.string.block_category_math),
+        BlockUtil.BLOCK_COLOR_MATH);
     addCategoryItem(
-        5, getContext().getResources().getString(R.string.block_category_file), 0xffa1887f);
+        5,
+        getContext().getResources().getString(R.string.block_category_file),
+        BlockUtil.BLOCK_COLOR_FILE);
 
     removeAllViews();
     render();
