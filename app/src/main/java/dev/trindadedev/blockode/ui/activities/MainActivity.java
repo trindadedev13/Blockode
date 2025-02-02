@@ -15,6 +15,8 @@ import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
+import dev.trindadedev.blockode.ui.dialogs.CreateProjectDialog;
+
 import java.util.ArrayList;
 
 public class MainActivity extends BaseAppCompatActivity {
@@ -40,17 +42,11 @@ public class MainActivity extends BaseAppCompatActivity {
     binding.list.setAdapter(projectsAdapter);
     binding.createNew.setOnClickListener(
         v -> {
-          // creates a example project
-          var project = new ProjectBean();
-          var basicInfo = new ProjectBasicInfoBean();
-          basicInfo.name = "Project 999";
-          basicInfo.packageName = "dev.trindadedev.project999";
-          basicInfo.mainClassPackage = basicInfo.packageName + ".Main";
-          project.scId = "999";
-          project.basicInfo = basicInfo;
-          project.variables = new ArrayList<>();
-          ProjectManager.createProjectByBean(project);
-          projectsViewModel.fetch();
+            CreateProjectDialog d = new CreateProjectDialog(this);
+            d.show();
+            d.setOnDismissListener(dialog -> {
+                projectsViewModel.fetch();
+            });
         });
   }
 

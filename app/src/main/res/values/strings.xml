@@ -92,6 +92,10 @@
   <!-- Hints -->
   <string name="hint_enter_value">Enter value</string>
   <string name="hint_enter_variable_name">Enter variable name</string>
+  <string name="project_name">Project name</string>
+  <string name="package_name">Package name</string>
+  <string name="project_class">Project class</string>
+  <string name="main_class_package">Main class package</string>
 
   <!-- Logic -->
   <string name="logic_btn_add_variable">Add variable</string>
@@ -113,4 +117,12 @@
   <string name="err_valid_only_eng_3">Only use letters(a-z), numbers and Special characters(_)</string>
   <string name="err_start_number">The variable name must start with a letter</string>
   <string name="err_use_rev_name">"Can't use reserved keywords"</string>
+
+  <!-- labels -->
+  <string name="create_new_project">Create new project</string>
+  <string name="create_from_template">Create from template</string>
+
+  <!-- Toast -->
+  <string name="fill_all_fields">Please fill in all fields</string>
+
 </resources>
