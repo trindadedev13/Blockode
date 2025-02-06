@@ -12,7 +12,6 @@ public final class Blockode extends Application {
 
   @Override
   public void onCreate() {
-    DynamicColors.applyToActivitiesIfAvailable(this);
     super.onCreate();
     appContext = this;
   }
