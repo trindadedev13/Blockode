@@ -4,11 +4,11 @@
   android:layout_height="wrap_content"
   android:layout_width="wrap_content"
   app:backgroundMarginStart="@dimen/neo_button_background_margin_start"
-  app:backgroundShadowColor="?colorPrimary"
+  app:backgroundShadowColor="#000"
   app:backgroundRadius="@dimen/neo_background_radius"
   app:foregroundStrokeWidth="@dimen/neo_stroke_width"
   android:gravity="center"
-  app:foregroundColor="?colorSurfaceContainer"
+  app:foregroundColor="?colorPrimary"
   app:backgroundMarginTop="@dimen/neo_button_background_margin_top"
   app:foregroundStrokeColor="?colorOutline"
   android:id="@+id/button_root">

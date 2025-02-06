@@ -1,51 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent">
-
-  <com.google.android.material.appbar.AppBarLayout
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/app_bar_layout">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-      android:layout_height="?attr/actionBarSize"
-      android:layout_width="match_parent"
-      app:title="@string/app_name"
-      app:navigationIcon="?homeAsUpIndicator"
-      android:id="@+id/toolbar" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="30dp"
+        android:fillViewport="true"
+        android:requiresFadingEdge="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-  </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:orientation="vertical">
 
-  <LinearLayout
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:orientation="vertical"
-    android:id="@+id/content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-      android:layout_height="match_parent"
-      android:layout_width="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      android:paddingEnd="8dp"
-      android:transitionGroup="true"
-      android:paddingBottom="120dp"
-      android:paddingStart="15dp"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      android:id="@+id/list"
-      android:paddingTop="8dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintBottom_toTopOf="@id/ab1" />
 
-  </LinearLayout>
+                <ImageView
+                    android:id="@+id/ab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:alpha=".5"
+                    android:src="@drawable/ic_abstract_shape0"
+                    app:layout_constraintBottom_toTopOf="@id/logo"
+                    app:layout_constraintEnd_toEndOf="@id/logo"
+                    tools:ignore="ContentDescription" />
 
-  <dev.trindadedev.neobrutalism.floatingactionbutton.NeoExtendedFloatingActionButton
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    app:fabIcon="@drawable/ic_mtrl_add"
-    app:fabText="@string/common_word_create_new"
-    android:layout_margin="10dp"
-    android:id="@+id/create_new"
-    android:layout_gravity="right|bottom" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:alpha=".5"
+                    android:src="@drawable/shape_abstract_polka_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/logo"
+                    tools:ignore="ContentDescription" />
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_neo_telegram"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_neo_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:src="@drawable/ic_neo_logo"
+                    app:layout_constraintBottom_toTopOf="@id/btn_create"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:ignore="ContentDescription" />
+
+
+                <dev.trindadedev.neobrutalism.button.NeoButton
+                    android:id="@+id/btn_create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/common_word_create_new"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_neo_code"
+                    app:layout_constraintRight_toRightOf="@id/btn_create"
+                    app:layout_constraintTop_toBottomOf="@id/logo"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="100dp"
+                    android:alpha=".5"
+                    android:src="@drawable/shape_abstract_polka_seq"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/list"
+                    android:layout_alignEnd="@id/list"
+                    android:layout_margin="40dp"
+                    android:alpha=".5"
+                    android:rotation="90"
+                    android:src="@drawable/shape_abstract_polka_vertical"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/neo_tertiary" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:nestedScrollingEnabled="false"
+                    android:padding="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/layout_project" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <dev.trindadedev.neobrutalism.floatingactionbutton.NeoExtendedFloatingActionButton
+        android:id="@+id/create_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        app:fabIcon="@drawable/ic_mtrl_add"
+        app:fabText="@string/common_word_create_new" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
