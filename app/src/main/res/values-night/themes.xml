@@ -1,7 +1,3 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-  <style
-    name="Base.Theme.Blockode"
-    parent="@style/Theme.Material3.DynamicColors.Dark">
-    <item name="android:windowLightStatusBar">false</item>
-  </style>
+
 </resources>
