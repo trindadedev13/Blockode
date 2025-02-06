@@ -40,7 +40,7 @@ public class CreateProjectDialog extends BottomSheetDialog {
             project.basicInfo = basicInfo;
             project.variables = new ArrayList<>();
 
-            if (!basicInfo.packageName.isBlank() || !basicInfo.packageName.isBlank() || !basicInfo.mainClassPackage.isBlank()) {
+            if (!((binding.projectName.getText()).toString().isEmpty() || (binding.projectPackage.getText()).toString().isEmpty())) {
                 ProjectManager.createProjectByBean(project);
                 dismiss();
             }else{
