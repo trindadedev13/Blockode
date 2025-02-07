@@ -1,114 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+  <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+    android:id="@+id/drag_handle"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-        android:id="@+id/drag_handle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_new_project"
-                android:textAppearance="?attr/textAppearanceTitleLarge"
-                android:layout_marginStart="24dp"/>
+    android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:hint="@string/project_name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/project_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:hint="@string/package_name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/project_package"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-
-                android:hint="@string/main_class_package">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/project_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="30dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_from_template"
-                android:textAppearance="?attr/textAppearanceCaption"
-                android:textColor="?colorSecondary"
-                android:layout_marginStart="24dp"/>
-        </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
 
     <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new_project"
+        android:textAppearance="?attr/textAppearanceTitleLarge"
+        android:layout_marginStart="24dp" />
+
+      <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginVertical="8dp">
+        android:layout_marginTop="24dp"
+        android:hint="@string/project_name">
 
-        <dev.trindadedev.neobrutalism.button.NeoButton
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:text="@string/common_word_cancel" />
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/project_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </com.google.android.material.textfield.TextInputLayout>
 
-        <dev.trindadedev.neobrutalism.button.NeoButton
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_word_save" />
+      <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/package_name">
 
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/project_package"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/main_class_package">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/project_class"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="30dp">
+
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/create_from_template"
+          android:textAppearance="?attr/textAppearanceCaption"
+          android:textColor="?colorSecondary"
+          android:layout_marginStart="24dp" />
+
+      </LinearLayout>
     </LinearLayout>
+  </ScrollView>
 
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_marginEnd="24dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginVertical="8dp">
 
+    <dev.trindadedev.neobrutalism.button.NeoButton
+      android:id="@+id/cancel"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="50dp"
+      android:text="@string/common_word_cancel" />
+
+    <dev.trindadedev.neobrutalism.button.NeoButton
+      android:id="@+id/save"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/common_word_save" />
+
+  </LinearLayout>
 </LinearLayout>
