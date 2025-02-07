@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
@@ -13,6 +14,8 @@ import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.dialogs.CreateProjectDialog;
+import dev.trindadedev.blockode.utils.StringUtil;
+import dev.trindadedev.blockode.utils.URLUtil;
 
 public class MainActivity extends BaseAppCompatActivity {
   private ActivityMainBinding binding;
@@ -49,20 +52,18 @@ public class MainActivity extends BaseAppCompatActivity {
 
     binding.btnCreate.setOnClickListener(
         v -> {
-          CreateProjectDialog d = new CreateProjectDialog(this);
-          d.show();
-          d.setOnDismissListener(
-              dialog -> {
-                projectsViewModel.fetch();
-              });
+          final var cpd = new CreateProjectDialog(this);
+          cpd.show();
+          cpd.setOnDismissListener(dialog -> projectsViewModel.fetch());
         });
+    binding.telegram.setOnClickListener(v -> URLUtil.openUrl(StringUtil.getString(R.string.link_telegram)));
   }
 
   private void openProject(final String scId, final String className) {
-    var editorState = new EditorState();
+    final var editorState = new EditorState();
     editorState.scId = scId;
     editorState.className = className;
-    var intent = new Intent(this, LogicEditorActivity.class);
+    final var intent = new Intent(this, LogicEditorActivity.class);
     intent.putExtra("editor_state", editorState);
     startActivity(intent);
   }

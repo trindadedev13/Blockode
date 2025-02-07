@@ -52,11 +52,11 @@
           app:layout_constraintTop_toBottomOf="@id/logo"
           tools:ignore="ContentDescription" />
 
-
         <ImageView
           android:layout_width="30dp"
           android:layout_height="30dp"
           android:layout_margin="15dp"
+          android:id="@+id/telegram"
           android:src="@drawable/ic_neo_telegram"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
@@ -66,6 +66,7 @@
           android:layout_width="30dp"
           android:layout_height="30dp"
           android:layout_margin="15dp"
+          android:id="@+id/settings"
           android:src="@drawable/ic_neo_settings"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toTopOf="parent"
@@ -81,7 +82,6 @@
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           tools:ignore="ContentDescription" />
-
 
         <dev.trindadedev.neobrutalism.button.NeoButton
           android:id="@+id/btn_create"
@@ -102,6 +102,7 @@
           tools:ignore="ContentDescription" />
 
       </androidx.constraintlayout.widget.ConstraintLayout>
+
       <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -145,7 +146,6 @@
     </LinearLayout>
 
   </androidx.core.widget.NestedScrollView>
-
 
   <dev.trindadedev.neobrutalism.floatingactionbutton.NeoExtendedFloatingActionButton
     android:id="@+id/create_new"
