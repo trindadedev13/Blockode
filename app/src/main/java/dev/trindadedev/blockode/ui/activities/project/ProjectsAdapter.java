@@ -38,7 +38,7 @@ public class ProjectsAdapter extends ListAdapter<File, ProjectsAdapter.ProjectsA
         holder.binding.dec.setText(project.basicInfo.mainClassPackage);
         holder
                 .binding
-                .getRoot()
+                .neoView
                 .setOnClickListener(
                         v -> {
                             if (onProjectClickListener != null)

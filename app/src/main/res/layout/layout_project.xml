@@ -15,6 +15,7 @@
     android:elevation="5dp"
     android:gravity="start"
     android:orientation="vertical"
+    android:id="@+id/neo_view"
     app:backgroundMarginStart="3dp"
     app:backgroundMarginTop="3dp"
     app:backgroundRadius="15dp"
