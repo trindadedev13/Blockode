@@ -56,7 +56,7 @@ public class MainActivity extends BaseAppCompatActivity {
           cpd.show();
           cpd.setOnDismissListener(dialog -> projectsViewModel.fetch());
         });
-    binding.telegram.setOnClickListener(v -> URLUtil.openUrl(StringUtil.getString(R.string.link_telegram)));
+    binding.telegram.setOnClickListener(v -> URLUtil.openUrl(this, StringUtil.getString(R.string.link_telegram)));
   }
 
   private void openProject(final String scId, final String className) {
