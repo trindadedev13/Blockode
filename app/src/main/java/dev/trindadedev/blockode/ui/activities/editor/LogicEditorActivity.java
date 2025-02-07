@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import dev.trindadedev.blockode.R;
+import dev.trindadedev.blockode.content.blocks.JavaBlocks;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.editor.generator.JavaGenerator;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
@@ -41,7 +42,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Nullable private EditorState editorState;
   private PaletteBlocksManager paletteBlocksManager;
-  private Blocks blocks;
+  private JavaBlocks javaBlocks;
   private PaletteAnimator paletteAnimator;
 
   @Override
@@ -55,7 +56,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
     paletteAnimator = new PaletteAnimator(this);
     paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
-    blocks = new Blocks(paletteBlocksManager);
+    javaBlocks = new JavaBlocks(paletteBlocksManager);
   }
 
   @Override
@@ -67,7 +68,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     configureBlockPane();
     configureToolbar(binding.toolbar);
     getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
-    blocks.createRoot(editorState.getClassName());
+    javaBlocks.createRoot(editorState.getClassName());
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
     binding.paletteBlock.getPaletteSelector().getItems().get(0).setSelected(true);
@@ -107,12 +108,12 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   public void onBlockCategorySelect(final int id, final int color) {
     paletteBlocksManager.removeAll();
     switch (id) {
-      case 0 -> blocks.createVariableBlocksPalette(color);
-      case 1 -> blocks.createListBlocksPalette(color);
-      case 2 -> blocks.createControlBlocksPalette(color);
-      case 3 -> blocks.createOperatorBlocksPalette(color);
-      case 4 -> blocks.createMathBlocksPalette(color);
-      case 5 -> blocks.createFileBlocksPalette(color);
+      case 0 -> javaBlocks.createVariableBlocksPalette(color);
+      case 1 -> javaBlocks.createListBlocksPalette(color);
+      case 2 -> javaBlocks.createControlBlocksPalette(color);
+      case 3 -> javaBlocks.createOperatorBlocksPalette(color);
+      case 4 -> javaBlocks.createMathBlocksPalette(color);
+      case 5 -> javaBlocks.createFileBlocksPalette(color);
     }
   }
 
@@ -166,8 +167,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
     showProgress(StringUtil.getString(R.string.message_generating_code));
     new Thread(
             () -> {
-              var blocks = binding.editor.getBlockPane().getBlocks();
-              var code = new JavaGenerator(blocks).generate();
+              var javaBlocks = binding.editor.getBlockPane().getBlocks();
+              var code = new JavaGenerator(javaBlocks).generate();
               runOnUiThread(
                   () -> {
                     final var builder =

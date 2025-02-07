@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.activities.editor;
+package dev.trindadedev.blockode.content.blocks;
 
 import androidx.annotation.ColorInt;
 import static dev.trindadedev.blockode.utils.StringUtil.getString;
@@ -12,11 +12,12 @@ import dev.trindadedev.blockode.utils.SpecUtil;
 import dev.trindadedev.blockode.utils.variable.Atomic;
 import java.util.List;
 
-public class Blocks {
-  private PaletteBlocksManager paletteBlocksManager;
-  private VariablesManager variablesManager;
+/** Store all java blocks of palette */
+public class JavaBlocks {
+  private final PaletteBlocksManager paletteBlocksManager;
+  private final VariablesManager variablesManager;
 
-  public Blocks(final PaletteBlocksManager paletteBlockManager) {
+  public JavaBlocks(final PaletteBlocksManager paletteBlockManager) {
     this.paletteBlocksManager = paletteBlockManager;
     this.variablesManager =
         paletteBlockManager.getPaletteButtonClickListener().getVariablesManager();
