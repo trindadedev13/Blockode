@@ -6,7 +6,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-
 import dev.trindadedev.blockode.databinding.ActivityMainBinding;
 import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
@@ -40,21 +39,23 @@ public class MainActivity extends BaseAppCompatActivity {
     binding.createNew.setVisibility(View.GONE);
     binding.createNew.setOnClickListener(
         v -> {
-            CreateProjectDialog d = new CreateProjectDialog(this);
-            d.show();
-            d.setOnDismissListener(dialog -> {
+          CreateProjectDialog d = new CreateProjectDialog(this);
+          d.show();
+          d.setOnDismissListener(
+              dialog -> {
                 projectsViewModel.fetch();
-            });
+              });
         });
 
     binding.btnCreate.setOnClickListener(
-            v -> {
-              CreateProjectDialog d = new CreateProjectDialog(this);
-              d.show();
-              d.setOnDismissListener(dialog -> {
+        v -> {
+          CreateProjectDialog d = new CreateProjectDialog(this);
+          d.show();
+          d.setOnDismissListener(
+              dialog -> {
                 projectsViewModel.fetch();
               });
-            });
+        });
   }
 
   private void openProject(final String scId, final String className) {

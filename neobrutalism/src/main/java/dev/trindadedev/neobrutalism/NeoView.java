@@ -1,6 +1,5 @@
 package dev.trindadedev.neobrutalism;
 
-import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
