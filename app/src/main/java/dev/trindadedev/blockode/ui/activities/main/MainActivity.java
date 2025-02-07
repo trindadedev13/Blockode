@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.activities;
+package dev.trindadedev.blockode.ui.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import dev.trindadedev.blockode.ui.activities.editor.EditorState;
 import dev.trindadedev.blockode.ui.activities.editor.LogicEditorActivity;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsAdapter;
 import dev.trindadedev.blockode.ui.activities.project.ProjectsViewModel;
+import dev.trindadedev.blockode.ui.activities.main.components.CreateProjectDialog;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
-import dev.trindadedev.blockode.ui.dialogs.CreateProjectDialog;
 import dev.trindadedev.blockode.utils.StringUtil;
 import dev.trindadedev.blockode.utils.URLUtil;
 

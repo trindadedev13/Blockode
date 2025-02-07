@@ -14,7 +14,7 @@
     android:theme="@style/Theme.Blockode"
     android:name="dev.trindadedev.blockode.Blockode">
     <activity
-      android:name="dev.trindadedev.blockode.ui.activities.MainActivity"
+      android:name="dev.trindadedev.blockode.ui.activities.main.MainActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

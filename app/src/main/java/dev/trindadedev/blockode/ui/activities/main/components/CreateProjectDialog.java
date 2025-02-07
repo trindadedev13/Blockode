@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.dialogs;
+package dev.trindadedev.blockode.ui.activities.main.components;
 
 import android.content.Context;
 import android.widget.Toast;
