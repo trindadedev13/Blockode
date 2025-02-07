@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.activities.editor;
+package dev.trindadedev.blockode.ui.activities.editor.palette;
 
 import static dev.trindadedev.blockode.exc.todo.TODO.TODO;
 

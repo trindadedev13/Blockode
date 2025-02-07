@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.activities.editor;
+package dev.trindadedev.blockode.ui.activities.editor.palette;
 
 public class ButtonsTag {
   public static final String BUTTON_ADD_VARIABLE = "variableAdd";

@@ -18,6 +18,8 @@ import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.editor.generator.JavaGenerator;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.editor.block.OnBlockCategorySelectListener;
+import dev.trindadedev.blockode.ui.activities.editor.palette.PaletteAnimator;
+import dev.trindadedev.blockode.ui.activities.editor.palette.PaletteBlocksManager;
 import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.StringUtil;
 
