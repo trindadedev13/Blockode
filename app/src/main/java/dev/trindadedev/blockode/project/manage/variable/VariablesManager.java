@@ -1,10 +1,10 @@
-package dev.trindadedev.blockode.ui.components.editor.manager;
+package dev.trindadedev.blockode.project.manage.variable;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
 import dev.trindadedev.blockode.base.Contextualizable;
 import dev.trindadedev.blockode.beans.VariableBean;
-import dev.trindadedev.blockode.project.ProjectManager;
+import dev.trindadedev.blockode.project.manage.ProjectManager;
 import dev.trindadedev.blockode.utils.FileUtil;
 import dev.trindadedev.blockode.utils.GsonUtil;
 import java.util.ArrayList;

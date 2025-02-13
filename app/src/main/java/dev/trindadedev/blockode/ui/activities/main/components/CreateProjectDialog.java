@@ -8,7 +8,7 @@ import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.beans.ProjectBasicInfoBean;
 import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.databinding.DialogCreateProjectBinding;
-import dev.trindadedev.blockode.project.ProjectManager;
+import dev.trindadedev.blockode.project.manage.ProjectManager;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;

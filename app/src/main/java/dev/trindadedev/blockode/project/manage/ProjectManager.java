@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.project;
+package dev.trindadedev.blockode.project.manage;
 
 import android.content.Context;
 import androidx.annotation.NonNull;

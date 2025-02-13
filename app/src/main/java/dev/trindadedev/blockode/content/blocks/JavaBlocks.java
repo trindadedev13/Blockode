@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.ui.activities.editor.palette.ButtonsTag;
 import dev.trindadedev.blockode.ui.activities.editor.palette.PaletteBlocksManager;
-import dev.trindadedev.blockode.ui.components.editor.manager.VariablesManager;
+import dev.trindadedev.blockode.project.manage.variable.VariablesManager;
 import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.SpecUtil;
 import dev.trindadedev.blockode.utils.variable.Atomic;
