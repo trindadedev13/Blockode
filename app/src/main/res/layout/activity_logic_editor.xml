@@ -53,7 +53,7 @@
         android:elevation="16dp"
         android:orientation="horizontal">
 
-        <dev.trindadedev.blockode.ui.components.editor.block.PaletteBlock
+        <dev.trindadedev.blockode.ui.components.editor.block.palette.PaletteBlock
           android:id="@+id/palette_block"
           android:layout_width="match_parent"
           android:layout_height="match_parent" />

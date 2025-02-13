@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.components.editor.block;
+package dev.trindadedev.blockode.ui.components.editor.block.palette;
 
 /** Decompiled from Sketchware 1.1.13 */
 import static dev.trindadedev.blockode.utils.LayoutUtil.getDip;

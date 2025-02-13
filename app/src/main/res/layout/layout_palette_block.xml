@@ -42,7 +42,7 @@
     android:layout_width="120dp"
     android:layout_height="match_parent">
 
-    <dev.trindadedev.blockode.ui.components.editor.block.PaletteSelector
+    <dev.trindadedev.blockode.ui.components.editor.block.palette.PaletteSelector
       android:id="@+id/palette_selector"
       android:layout_width="120dp"
       android:layout_height="wrap_content" />

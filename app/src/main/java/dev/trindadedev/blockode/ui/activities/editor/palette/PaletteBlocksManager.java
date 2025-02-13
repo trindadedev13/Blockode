@@ -3,7 +3,7 @@ package dev.trindadedev.blockode.ui.activities.editor.palette;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import dev.trindadedev.blockode.ui.components.editor.block.BlockPane;
-import dev.trindadedev.blockode.ui.components.editor.block.PaletteBlock;
+import dev.trindadedev.blockode.ui.components.editor.block.palette.PaletteBlock;
 
 public class PaletteBlocksManager {
 
