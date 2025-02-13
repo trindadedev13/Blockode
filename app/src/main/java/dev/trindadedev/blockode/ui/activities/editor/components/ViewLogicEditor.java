@@ -3,7 +3,7 @@ package dev.trindadedev.blockode.ui.activities.editor.components;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout.LayoutParams;
-import dev.trindadedev.blockode.ui.editor.block.BlockPane;
+import dev.trindadedev.blockode.ui.components.editor.block.BlockPane;
 
 public class ViewLogicEditor extends LogicEditorScrollView {
   private boolean isFirst;

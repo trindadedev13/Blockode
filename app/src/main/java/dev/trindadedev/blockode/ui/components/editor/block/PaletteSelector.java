@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.editor.block;
+package dev.trindadedev.blockode.ui.components.editor.block;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -2,8 +2,8 @@ package dev.trindadedev.blockode.ui.activities.editor.palette;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
-import dev.trindadedev.blockode.ui.editor.block.BlockPane;
-import dev.trindadedev.blockode.ui.editor.block.PaletteBlock;
+import dev.trindadedev.blockode.ui.components.editor.block.BlockPane;
+import dev.trindadedev.blockode.ui.components.editor.block.PaletteBlock;
 
 public class PaletteBlocksManager {
 

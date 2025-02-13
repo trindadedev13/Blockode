@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.editor.block;
+package dev.trindadedev.blockode.ui.components.editor.block;
 
 /** Decompiled from Sketchware 1.1.13 */
 import android.app.AlertDialog;
@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.ui.components.dialog.EditValueDialog;
 import dev.trindadedev.blockode.ui.components.dialog.PropertyInputDialog;
-import dev.trindadedev.blockode.ui.editor.manager.VariablesManager;
+import dev.trindadedev.blockode.ui.components.editor.manager.VariablesManager;
 import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 import java.util.ArrayList;

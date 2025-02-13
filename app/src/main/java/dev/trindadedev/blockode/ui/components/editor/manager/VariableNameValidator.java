@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.editor.manager;
+package dev.trindadedev.blockode.ui.components.editor.manager;
 
 import android.content.Context;
 import android.text.Spanned;

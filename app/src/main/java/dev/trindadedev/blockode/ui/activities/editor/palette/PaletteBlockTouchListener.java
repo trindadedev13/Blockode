@@ -7,11 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import dev.trindadedev.blockode.ui.activities.editor.components.ViewLogicEditor;
-import dev.trindadedev.blockode.ui.editor.block.Block;
-import dev.trindadedev.blockode.ui.editor.block.BlockBase;
-import dev.trindadedev.blockode.ui.editor.block.BlockPane;
-import dev.trindadedev.blockode.ui.editor.block.PaletteBlock;
-import dev.trindadedev.blockode.ui.editor.view.ViewDummy;
+import dev.trindadedev.blockode.ui.components.editor.block.Block;
+import dev.trindadedev.blockode.ui.components.editor.block.BlockBase;
+import dev.trindadedev.blockode.ui.components.editor.block.BlockPane;
+import dev.trindadedev.blockode.ui.components.editor.block.PaletteBlock;
+import dev.trindadedev.blockode.ui.components.editor.view.ViewDummy;
 
 public class PaletteBlockTouchListener implements View.OnTouchListener {
 

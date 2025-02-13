@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.editor.view;
+package dev.trindadedev.blockode.ui.components.editor.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import dev.trindadedev.blockode.R;
-import dev.trindadedev.blockode.ui.editor.block.Block;
+import dev.trindadedev.blockode.ui.components.editor.block.Block;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 
 public class ViewDummy extends RelativeLayout {

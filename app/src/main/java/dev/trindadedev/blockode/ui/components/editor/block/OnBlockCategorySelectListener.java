@@ -1,4 +1,4 @@
-package dev.trindadedev.blockode.ui.editor.block;
+package dev.trindadedev.blockode.ui.components.editor.block;
 
 /** Decompiled from Sketchware 1.1.13 */
 public interface OnBlockCategorySelectListener {
