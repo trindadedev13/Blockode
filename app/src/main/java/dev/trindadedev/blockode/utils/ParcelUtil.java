@@ -19,9 +19,9 @@ public class ParcelUtil {
   public static <T extends Parcelable> T readParcelable(final Parcel parcel, final Class<T> clazz) {
     if (parcel == null) return null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      return parcel.readParcelable(clazz.getClassLoader());
-    } else {
       return parcel.readParcelable(clazz.getClassLoader(), clazz);
+    } else {
+      return parcel.readParcelable(clazz.getClassLoader());
     }
   }
 

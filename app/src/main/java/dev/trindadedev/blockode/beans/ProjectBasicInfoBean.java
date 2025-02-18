@@ -41,6 +41,12 @@ public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
     this.mainClassPackage = other.mainClassPackage;
   }
 
+  @Override
+  public Creator getCreator() {
+    return CREATOR;
+  }
+
+  @Override
   public int describeContents() {
     return 0;
   }
@@ -52,6 +58,7 @@ public class ProjectBasicInfoBean extends BaseBean implements Parcelable {
     PrintUtil.print(this.mainClassPackage);
   }
 
+  @Override
   public void writeToParcel(final Parcel parcel, final int flags) {
     parcel.writeString(this.name);
     parcel.writeString(this.packageName);

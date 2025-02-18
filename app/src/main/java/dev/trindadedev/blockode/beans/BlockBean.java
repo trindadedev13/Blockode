@@ -63,10 +63,6 @@ public class BlockBean extends BaseBean implements Parcelable {
     this.parametersTypes = new ArrayList();
   }
 
-  public static Creator<BlockBean> getCreator() {
-    return CREATOR;
-  }
-
   public void copy(final BlockBean blockBean) {
     this.color = blockBean.color;
     this.nextBlock = blockBean.nextBlock;
@@ -80,6 +76,12 @@ public class BlockBean extends BaseBean implements Parcelable {
     this.parametersTypes = new ArrayList(blockBean.parametersTypes);
   }
 
+  @Override
+  public Creator getCreator() {
+    return CREATOR;
+  }
+
+  @Override
   public int describeContents() {
     return 0;
   }
@@ -98,6 +100,7 @@ public class BlockBean extends BaseBean implements Parcelable {
     PrintUtil.print(this.parametersTypes);
   }
 
+  @Override
   public void writeToParcel(Parcel parcel, int i) {
     parcel.writeInt(this.color);
     parcel.writeInt(this.nextBlock);

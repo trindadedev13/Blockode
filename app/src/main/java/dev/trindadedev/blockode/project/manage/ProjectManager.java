@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import com.google.gson.reflect.TypeToken;
 import dev.trindadedev.blockode.Blockode;
 import dev.trindadedev.blockode.base.Contextualizable;
+import dev.trindadedev.blockode.beans.BlockBean;
 import dev.trindadedev.blockode.beans.ProjectBasicInfoBean;
 import dev.trindadedev.blockode.beans.ProjectBean;
 import dev.trindadedev.blockode.beans.VariableBean;
@@ -28,7 +29,7 @@ public class ProjectManager extends Contextualizable {
   }
 
   @Nullable
-  public final ProjectBean getProjectByScId() {
+  public final ProjectBean getCurrentProject() {
     return getProjectByScId(scId);
   }
 
@@ -45,11 +46,15 @@ public class ProjectManager extends Contextualizable {
     var variablesFileJsonType = new TypeToken<List<VariableBean>>() {}.getType();
     var variablesFileJsonContent =
         FileUtil.readFile(getVariablesFile(scId).getAbsolutePath(), false);
+    var blocksFileJsonType = new TypeToken<List<BlockBean>>() {}.getType();
+    var blocksFileJsonContent = FileUtil.readFile(getBlocksFile(scId).getAbsolutePath(), false);
     var variables = GsonUtil.getGson().fromJson(variablesFileJsonContent, variablesFileJsonType);
+    var blocks = GsonUtil.getGson().fromJson(blocksFileJsonContent, blocksFileJsonType);
     var toReturnProject = new ProjectBean();
     toReturnProject.scId = scId;
     toReturnProject.basicInfo = (ProjectBasicInfoBean) basicInfo;
     toReturnProject.variables = (ArrayList<VariableBean>) variables;
+    toReturnProject.blocks = (ArrayList<BlockBean>) blocks;
     return toReturnProject;
   }
 
@@ -62,9 +67,11 @@ public class ProjectManager extends Contextualizable {
     var projectRootDir = new File(getProjectsFile(), project.scId).getAbsolutePath();
     var basicInfoFileJson = GsonUtil.getGson().toJson(project.basicInfo);
     var variablesFileJson = GsonUtil.getGson().toJson(project.variables);
+    var blocksFileJson = GsonUtil.getGson().toJson(project.blocks);
     FileUtil.makeDir(projectRootDir);
     FileUtil.writeText(getBasicInfoFile(project.scId).getAbsolutePath(), basicInfoFileJson);
     FileUtil.writeText(getVariablesFile(project.scId).getAbsolutePath(), variablesFileJson);
+    FileUtil.writeText(getBlocksFile(project.scId).getAbsolutePath(), blocksFileJson);
   }
 
   /** Folder where all projects are stored */
@@ -80,6 +87,11 @@ public class ProjectManager extends Contextualizable {
   /** The file where variables are stored */
   public static final File getVariablesFile(final String scId) {
     return new File(getProjectsFile(), scId + "/data/variables.json");
+  }
+
+  /** The file where blocks are stored */
+  public static final File getBlocksFile(final String scId) {
+    return new File(getProjectsFile(), scId + "/data/blocks.json");
   }
 
   @Nullable

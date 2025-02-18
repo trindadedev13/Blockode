@@ -37,6 +37,7 @@ public class CreateProjectDialog extends BottomSheetDialog {
           project.scId = String.valueOf(UUID.randomUUID()); // random scid for now
           project.basicInfo = basicInfo;
           project.variables = new ArrayList<>();
+          project.blocks = new ArrayList<>();
 
           if (!((binding.projectName.getText()).toString().isEmpty()
               || (binding.projectPackage.getText()).toString().isEmpty())) {

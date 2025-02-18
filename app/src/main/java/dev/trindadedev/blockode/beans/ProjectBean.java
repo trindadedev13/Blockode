@@ -23,6 +23,7 @@ public class ProjectBean extends BaseBean implements Parcelable {
   @Expose public String scId;
   public ProjectBasicInfoBean basicInfo;
   public ArrayList<VariableBean> variables;
+  public ArrayList<BlockBean> blocks;
 
   public ProjectBean() {}
 
@@ -30,14 +31,22 @@ public class ProjectBean extends BaseBean implements Parcelable {
     this.scId = parcel.readString();
     this.basicInfo = ParcelUtil.readParcelable(parcel, ProjectBasicInfoBean.class);
     this.variables = (ArrayList<VariableBean>) ParcelUtil.readSerializable(parcel, ArrayList.class);
+    this.blocks = (ArrayList<BlockBean>) ParcelUtil.readSerializable(parcel, ArrayList.class);
   }
 
   public void copy(final ProjectBean other) {
     this.scId = other.scId;
     this.basicInfo = other.basicInfo;
     this.variables = other.variables;
+    this.blocks = other.blocks;
   }
 
+  @Override
+  public Creator getCreator() {
+    return CREATOR;
+  }
+
+  @Override
   public int describeContents() {
     return 0;
   }
@@ -45,13 +54,16 @@ public class ProjectBean extends BaseBean implements Parcelable {
   @Override
   public void print() {
     PrintUtil.print(this.scId);
-    PrintUtil.print(this.basicInfo);
+    basicInfo.print();
     PrintUtil.print(this.variables);
+    PrintUtil.print(this.blocks);
   }
 
+  @Override
   public void writeToParcel(final Parcel parcel, final int flags) {
     parcel.writeString(this.scId);
     parcel.writeParcelable(this.basicInfo, flags);
-    parcel.writeSerializable(this.variables);
+    parcel.writeTypedList(this.variables);
+    parcel.writeTypedList(this.blocks);
   }
 }

@@ -7,9 +7,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import dev.trindadedev.blockode.beans.BlockBean;
+import dev.trindadedev.blockode.utils.BlockUtil;
 import dev.trindadedev.blockode.utils.LayoutUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class BlockPane extends RelativeLayout {
   public static final int INSERT_ABOVE = 1;
@@ -306,6 +308,18 @@ public class BlockPane extends RelativeLayout {
     return arrayList;
   }
 
+  public ArrayList<Block> getBlocksAsView() {
+    ArrayList<Block> arrayList = new ArrayList();
+    Block block = (Block) findViewWithTag(Integer.valueOf(this.root.nextBlock));
+    if (block != null) {
+      Iterator it = block.getAllChildren().iterator();
+      while (it.hasNext()) {
+        arrayList.add(((Block) it.next()));
+      }
+    }
+    return arrayList;
+  }
+
   public Block getHitBlock(float f, float f2) {
     this.hitTarget = null;
     this.maxDepth = -1;
@@ -582,6 +596,20 @@ public class BlockPane extends RelativeLayout {
     while (it.hasNext()) {
       removeView((Block) it.next());
     }
+  }
+
+  public void setBlocks(List<BlockBean> blockBeans) {
+    removeAllViews();
+    this.possibleTargets.clear();
+    this.nearestTarget = null;
+    if (blockBeans == null || blockBeans.isEmpty()) return;
+    for (BlockBean bean : blockBeans) {
+      Block block = new Block(getContext(), INSERT_NORMAL, BlockUtil.getSpecString(bean.opCode, bean.type), bean.type, bean.opCode, new Object[0]);
+      block.setScId(getScId());
+      block.pane = this;
+      addView(block);
+    }
+    calculateWidthHeight(); 
   }
 
   public void removeRelation(Block block) {

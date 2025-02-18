@@ -16,11 +16,14 @@ import dev.trindadedev.blockode.R;
 import dev.trindadedev.blockode.content.blocks.JavaBlocks;
 import dev.trindadedev.blockode.databinding.ActivityLogicEditorBinding;
 import dev.trindadedev.blockode.editor.generator.JavaGenerator;
+import dev.trindadedev.blockode.project.manage.ProjectManager;
 import dev.trindadedev.blockode.ui.activities.editor.palette.PaletteAnimator;
 import dev.trindadedev.blockode.ui.activities.editor.palette.PaletteBlocksManager;
 import dev.trindadedev.blockode.ui.base.BaseAppCompatActivity;
 import dev.trindadedev.blockode.ui.components.editor.block.OnBlockCategorySelectListener;
 import dev.trindadedev.blockode.utils.BlockUtil;
+import dev.trindadedev.blockode.utils.FileUtil;
+import dev.trindadedev.blockode.utils.GsonUtil;
 import dev.trindadedev.blockode.utils.StringUtil;
 
 public class LogicEditorActivity extends BaseAppCompatActivity
@@ -46,6 +49,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   private PaletteBlocksManager paletteBlocksManager;
   private JavaBlocks javaBlocks;
   private PaletteAnimator paletteAnimator;
+  private ProjectManager projectManager;
 
   @Override
   @NonNull
@@ -56,21 +60,22 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Override
   protected void onBindLayout(@Nullable final Bundle savedInstanceState) {
+    configureData(savedInstanceState);
     paletteAnimator = new PaletteAnimator(this);
     paletteBlocksManager = new PaletteBlocksManager(this, binding.paletteBlock);
     javaBlocks = new JavaBlocks(paletteBlocksManager);
+    projectManager = new ProjectManager(this, editorState.project.scId);
   }
 
   @Override
   public void onPostBind(@Nullable final Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
-    configureData(savedInstanceState);
     configurePaletteAnimator();
     configurePaletteManager();
     configureBlockPane();
     configureToolbar(binding.toolbar);
     getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
-    javaBlocks.createRoot(editorState.getClassName());
+    javaBlocks.createRoot(editorState.project.basicInfo.mainClassPackage);
     paletteAnimator.adjustLayout2(getResources().getConfiguration().orientation);
     binding.paletteBlock.getPaletteSelector().setOnBlockCategorySelectListener(this);
     binding.paletteBlock.getPaletteSelector().getItems().get(0).setSelected(true);
@@ -103,7 +108,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
 
   @Override
   public void onSaveInstanceState(final Bundle bundle) {
-    bundle.putSerializable("editor_state", editorState);
+    bundle.putParcelable("editor_state", editorState);
   }
 
   @Override
@@ -122,21 +127,22 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   @Override
   protected void configureToolbar(@NonNull MaterialToolbar toolbar) {
     super.configureToolbar(toolbar);
-    toolbar.setSubtitle(editorState.getClassName());
+    toolbar.setSubtitle(editorState.project.basicInfo.mainClassPackage);
   }
 
   /** Get and define all needed variables */
   private final void configureData(@Nullable final Bundle savedInstanceState) {
     if (savedInstanceState == null) {
-      editorState = getSerializable("editor_state", EditorState.class);
+      editorState = getParcelable("editor_state", EditorState.class);
     } else {
-      editorState = getSerializable(savedInstanceState, "editor_state", EditorState.class);
+      editorState = getParcelable(savedInstanceState, "editor_state", EditorState.class);
     }
   }
 
   /** Configures editor BlockPane */
   private final void configureBlockPane() {
-    binding.editor.getBlockPane().setScId(editorState.getScId());
+    binding.editor.getBlockPane().setScId(editorState.project.scId);
+    binding.editor.getBlockPane().setBlocks(projectManager.getCurrentProject().blocks);
   }
 
   private final void configurePaletteAnimator() {
@@ -152,7 +158,7 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void configurePaletteManager() {
-    paletteBlocksManager.setScId(editorState.getScId());
+    paletteBlocksManager.setScId(editorState.project.scId);
     paletteBlocksManager.setBlockPane(binding.editor.getBlockPane());
     var paletteBlockTouchListener = paletteBlocksManager.getPaletteBlockTouchListener();
     paletteBlockTouchListener.dummy = binding.dummy;
@@ -162,6 +168,8 @@ public class LogicEditorActivity extends BaseAppCompatActivity
   }
 
   private final void save() {
+    var blocksJson = GsonUtil.getGson().toJson(binding.editor.getBlockPane().getBlocks());
+    FileUtil.writeText(ProjectManager.getBlocksFile(projectManager.getScId()).getAbsolutePath(), blocksJson);
     paletteBlocksManager.getPaletteButtonClickListener().getVariablesManager().saveVariables();
   }
 

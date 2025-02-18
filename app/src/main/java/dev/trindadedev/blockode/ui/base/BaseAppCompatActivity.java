@@ -3,6 +3,7 @@ package dev.trindadedev.blockode.ui.base;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -98,14 +99,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
   @Nullable
   protected <T extends Serializable> T getSerializable(final String key, final Class<T> clazz) {
     var extras = getIntent().getExtras();
-    if (extras == null) return null;
-    if (!extras.containsKey(key)) return null;
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      return extras.getSerializable(key, clazz);
-    } else {
-      return clazz.cast(extras.getSerializable(key));
-    }
+    return getSerializable(extras, key, clazz);
   }
 
   @Nullable
@@ -118,6 +112,25 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
       return bundle.getSerializable(key, clazz);
     } else {
       return clazz.cast(bundle.getSerializable(key));
+    }
+  }
+
+  @Nullable
+  protected <T extends Parcelable> T getParcelable(final String key, final Class<T> clazz) {
+    var extras = getIntent().getExtras();
+    return getParcelable(extras, key, clazz);
+  }
+
+  @Nullable
+  protected <T extends Parcelable> T getParcelable(
+      final Bundle bundle, final String key, final Class<T> clazz) {
+    if (bundle == null) return null;
+    if (!bundle.containsKey(key)) return null;
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      return bundle.getParcelable(key, clazz);
+    } else {
+      return clazz.cast(bundle.getParcelable(key));
     }
   }
 

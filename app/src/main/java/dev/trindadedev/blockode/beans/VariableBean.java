@@ -32,6 +32,12 @@ public class VariableBean extends BaseBean implements Parcelable {
     this.name = other.name;
   }
 
+  @Override
+  public Creator getCreator() {
+    return CREATOR;
+  }
+
+  @Override
   public int describeContents() {
     return 0;
   }
@@ -42,6 +48,7 @@ public class VariableBean extends BaseBean implements Parcelable {
     PrintUtil.print(this.name);
   }
 
+  @Override
   public void writeToParcel(Parcel parcel, int flags) {
     parcel.writeInt(this.type);
     parcel.writeString(this.name);

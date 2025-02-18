@@ -1,10 +1,11 @@
 package dev.trindadedev.blockode.beans;
 
+import android.os.Parcelable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public abstract class BaseBean {
-  public String toString(BaseBean var1) {
+  public String toString(final BaseBean var1) {
     StringBuffer var2 = new StringBuffer();
     var2.append("[");
     Field[] var4 = var1.getClass().getFields();
@@ -26,4 +27,6 @@ public abstract class BaseBean {
   }
 
   public abstract void print();
+
+  public abstract Parcelable.Creator getCreator();
 }

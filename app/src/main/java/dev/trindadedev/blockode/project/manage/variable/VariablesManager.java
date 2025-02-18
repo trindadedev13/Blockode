@@ -59,7 +59,7 @@ public class VariablesManager extends Contextualizable {
    * @ see getVariablesFile()
    */
   public List<VariableBean> readVariables() {
-    var variables = new ProjectManager(context, scId).getProjectByScId().variables;
+    var variables = ProjectManager.getProjectByScId(scId).variables;
     return variables;
   }
 
